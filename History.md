@@ -30,3 +30,7 @@
 >> Foi descoberto que precisaria instalar o rosdep para minha versão do ROS.
 >> Para instalar, vá para o diretório catkin_ws e execute esta linha de comando para sua DISTRO
 >>>$ rosdep install --from-paths src --ignore-src --rosdistro $DISTRO
+
+## __30-3-2019__
+>>  Novos teste com o código test_move.py.
+>>  Foi feito novas tragetórias com o braço e foi aferiguado que, por segurança, as juntas do robô só podem girar 356° para não danificar a fiação eletrica interna do robô.
