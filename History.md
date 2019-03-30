@@ -1,13 +1,12 @@
 # **History**
-
-## Participantes: 
-## __21-09-2017__
-	
+## __22-02-2019__
 >	Início. 
 
-## __22-09-2017__
+## __20-3-2019__
+>	Unboxing e fixação do robô a mesa.
 
->	Desmontar Teco e limpar, separando peça a peça... 
-	Reorganizar estrutura...
+## __24-3-2019__
+> Ligou-se robô e foi executado os primeiro passos recomendados no manual do University Robots.
 
->>	### Garra
+ ## __26-3-2019__
+ > 
