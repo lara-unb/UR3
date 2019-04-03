@@ -41,3 +41,6 @@
 >> Hoje fiz mais um pesquisa para tentar fazer a garra rg2 funcional, não obtive sucesso. 
 
 >>Parece não existir muitas referência para a pinça robôtica. Nós próximos dias, estarei fazendo mais pesquisas a respeito do assunto. 
+
+## __03-04-2019__
+>> Teste
