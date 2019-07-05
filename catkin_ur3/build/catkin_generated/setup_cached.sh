@@ -7,9 +7,7 @@
 # new environment variables
 
 # modified environment variables
-export CMAKE_PREFIX_PATH="/home/rafael/catkin_arm/devel:$CMAKE_PREFIX_PATH"
-export LD_LIBRARY_PATH="/home/rafael/catkin_arm/devel/lib:$LD_LIBRARY_PATH"
-export PKG_CONFIG_PATH="/home/rafael/catkin_arm/devel/lib/pkgconfig:$PKG_CONFIG_PATH"
-export PWD="/home/rafael/catkin_arm/build"
-export ROSLISP_PACKAGE_DIRECTORIES="/home/rafael/catkin_arm/devel/share/common-lisp"
-export ROS_PACKAGE_PATH="/home/rafael/catkin_arm/src:$ROS_PACKAGE_PATH"
+export LD_LIBRARY_PATH="/opt/ros/kinetic/lib:/opt/ros/kinetic/lib/x86_64-linux-gnu"
+export PKG_CONFIG_PATH="/opt/ros/kinetic/lib/pkgconfig:/opt/ros/kinetic/lib/x86_64-linux-gnu/pkgconfig"
+export PWD="/home/rafael/catkin_ur3/build"
+export ROS_PACKAGE_PATH="/home/rafael/catkin_ur3/src:/opt/ros/kinetic/share"

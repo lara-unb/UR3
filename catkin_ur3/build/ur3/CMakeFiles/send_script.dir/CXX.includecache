@@ -6,7 +6,7 @@
 
 #IncludeRegexTransform: 
 
-/home/rafael/catkin_arm/src/ur3/src/send_script.cpp
+/home/rafael/catkin_ur3/src/ur3/src/send_script.cpp
 sys/socket.h
 -
 sys/types.h

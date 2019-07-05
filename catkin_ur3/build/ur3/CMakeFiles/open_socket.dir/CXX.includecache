@@ -6,7 +6,7 @@
 
 #IncludeRegexTransform: 
 
-/home/rafael/catkin_arm/src/ur3/src/open_socket.cpp
+/home/rafael/catkin_ur3/src/ur3/src/open_socket.cpp
 X11/keysymdef.h
 -
 sys/socket.h

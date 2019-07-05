@@ -43,10 +43,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/rafael/catkin_arm/src
+CMAKE_SOURCE_DIR = /home/rafael/catkin_ur3/src
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/rafael/catkin_arm/build
+CMAKE_BINARY_DIR = /home/rafael/catkin_ur3/build
 
 # Utility rule file for roscpp_generate_messages_py.
 
@@ -63,10 +63,10 @@ ur3/CMakeFiles/roscpp_generate_messages_py.dir/build: roscpp_generate_messages_p
 .PHONY : ur3/CMakeFiles/roscpp_generate_messages_py.dir/build
 
 ur3/CMakeFiles/roscpp_generate_messages_py.dir/clean:
-	cd /home/rafael/catkin_arm/build/ur3 && $(CMAKE_COMMAND) -P CMakeFiles/roscpp_generate_messages_py.dir/cmake_clean.cmake
+	cd /home/rafael/catkin_ur3/build/ur3 && $(CMAKE_COMMAND) -P CMakeFiles/roscpp_generate_messages_py.dir/cmake_clean.cmake
 .PHONY : ur3/CMakeFiles/roscpp_generate_messages_py.dir/clean
 
 ur3/CMakeFiles/roscpp_generate_messages_py.dir/depend:
-	cd /home/rafael/catkin_arm/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/rafael/catkin_arm/src /home/rafael/catkin_arm/src/ur3 /home/rafael/catkin_arm/build /home/rafael/catkin_arm/build/ur3 /home/rafael/catkin_arm/build/ur3/CMakeFiles/roscpp_generate_messages_py.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/rafael/catkin_ur3/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/rafael/catkin_ur3/src /home/rafael/catkin_ur3/src/ur3 /home/rafael/catkin_ur3/build /home/rafael/catkin_ur3/build/ur3 /home/rafael/catkin_ur3/build/ur3/CMakeFiles/roscpp_generate_messages_py.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : ur3/CMakeFiles/roscpp_generate_messages_py.dir/depend
 

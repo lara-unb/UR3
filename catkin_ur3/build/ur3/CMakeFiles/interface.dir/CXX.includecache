@@ -6,7 +6,7 @@
 
 #IncludeRegexTransform: 
 
-/home/rafael/catkin_arm/src/ur3/include/ur3/open_socket.h
+/home/rafael/catkin_ur3/src/ur3/include/ur3/open_socket.h
 X11/keysymdef.h
 -
 sys/socket.h
@@ -38,7 +38,7 @@ sstream
 inttypes.h
 -
 
-/home/rafael/catkin_arm/src/ur3/include/ur3/send_script.h
+/home/rafael/catkin_ur3/src/ur3/include/ur3/send_script.h
 sys/socket.h
 -
 sys/types.h
@@ -60,11 +60,11 @@ errno.h
 arpa/inet.h
 -
 
-/home/rafael/catkin_arm/src/ur3/src/interface.cpp
+/home/rafael/catkin_ur3/src/ur3/src/interface.cpp
 ros/ros.h
-/home/rafael/catkin_arm/src/ur3/src/ros/ros.h
+/home/rafael/catkin_ur3/src/ur3/src/ros/ros.h
 std_msgs/String.h
-/home/rafael/catkin_arm/src/ur3/src/std_msgs/String.h
+/home/rafael/catkin_ur3/src/ur3/src/std_msgs/String.h
 X11/keysymdef.h
 -
 sys/socket.h
@@ -100,11 +100,11 @@ math.h
 ctime
 -
 open_socket.h
-/home/rafael/catkin_arm/src/ur3/src/open_socket.h
+/home/rafael/catkin_ur3/src/ur3/src/open_socket.h
 send_script.h
-/home/rafael/catkin_arm/src/ur3/src/send_script.h
+/home/rafael/catkin_ur3/src/ur3/src/send_script.h
 
-/home/rafael/catkin_arm/src/ur3/src/open_socket.cpp
+/home/rafael/catkin_ur3/src/ur3/src/open_socket.cpp
 X11/keysymdef.h
 -
 sys/socket.h
@@ -136,7 +136,7 @@ sstream
 inttypes.h
 -
 
-/home/rafael/catkin_arm/src/ur3/src/send_script.cpp
+/home/rafael/catkin_ur3/src/ur3/src/send_script.cpp
 sys/socket.h
 -
 sys/types.h
