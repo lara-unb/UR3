@@ -1,0 +1,40 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/rafael/catkin_arm/src/ur3/src/open_socket.cpp
+X11/keysymdef.h
+-
+sys/socket.h
+-
+stdlib.h
+-
+netinet/in.h
+-
+iostream
+-
+stdio.h
+-
+string.h
+-
+unistd.h
+-
+fcntl.h
+-
+errno.h
+-
+termios.h
+-
+string
+-
+stdlib.h
+-
+sstream
+-
+inttypes.h
+-
+

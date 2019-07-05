@@ -1,0 +1,1 @@
+/usr/bin/c++  -fPIC   -shared -Wl,-soname,libopen_socket.so -o /home/rafael/catkin_arm/devel/lib/libopen_socket.so CMakeFiles/open_socket.dir/src/open_socket.cpp.o 

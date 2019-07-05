@@ -1,0 +1,2 @@
+ur3
+-DCATKIN_DEVEL_PREFIX=/home/rafael/catkin_arm/devel -DCMAKE_INSTALL_PREFIX=/home/rafael/catkin_arm/install -G Unix Makefiles
