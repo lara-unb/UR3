@@ -3,6 +3,7 @@
 ////////////////////////////////////////////////////////////////////////
 #include "ros/ros.h"
 #include "std_msgs/String.h"
+#include "ur3/data_msg.h"
 #include <X11/keysymdef.h>
 #include <sys/socket.h>
 #include <stdlib.h> 
@@ -54,9 +55,9 @@ int main(int argc, char **argv){
    	/////////////////////////////
 	// criação de um arquivo .csv para armazenar os dados
 	FILE *fp;
-    char filename[20]= "pitu.csv";
+    char filename[20]= "dados.csv";
 	fp=fopen(filename,"w+");
-	fprintf(fp,"t, r, v, p, to\n");
+	fprintf(fp,"     t     ,     r     ,     v     ,     p     ,     m     \n");
     float tempo = 0;
 	//////////////////////
 	double vel_float = 0;
@@ -71,24 +72,22 @@ int main(int argc, char **argv){
 	/////////////////////
 	float norma_float = 1000000.0;
 	
-	int conta = 0;
+	float conta = 0;
 	///////////////////////
 	//ROS 
 	ros::init(argc, argv, "talker");
 	ros::NodeHandle n;
-	ros::Publisher chatter_pub = n.advertise<std_msgs::String>("chatter", 1000);
+	//ros::Publisher chatter_pub = n.advertise<std_msgs::String>("chatter", 1000);
+	ros::Publisher data_msg_pub = n.advertise<ur3::data_msg>("Data", 0);
 	ros::Rate loop_rate(125);
 	//tic();
 	///////////////////////
+	ur3::data_msg data;
 	
     while (ros::ok()){
-
-		std_msgs::String msg;
-		std::ostringstream ss;
-		ss << torque_float;
-		msg.data = ss.str();
-		//ROS_INFO("%s", msg.data.c_str());
-		
+		data.pose = pose_float;
+		data.velocity = vel_float;
+		data.torque = vel_float;
 
 		referencia = sin ((conta*PI)/180);
 		buffer_in = (int)(referencia*norma_float);
@@ -107,13 +106,13 @@ int main(int argc, char **argv){
 		vel_float = ((double)vel_int32)/norma_float;
 		pose_float = ((double)pose_int32)/norma_float;
 		torque_float = ((double)torque_int32)/norma_float;
-		fprintf(fp, "\n%f, %f, %f, %f, %f", tempo, referencia, vel_float,
+		fprintf(fp, "\n%10.5f, %10.5f, %10.5f, %10.5f, %10.5f", tempo, referencia, vel_float,
 			 pose_float, torque_float);
 		//printf("\n%f, %f, %f\n", vel_float, pose_float, torque_float);
 		tempo = tempo + 0.008;
-		conta = conta + 1;
+		conta = conta + 0.5;
 	
-		chatter_pub.publish(msg);
+		data_msg_pub.publish(data);
 		ros::spinOnce();
 		loop_rate.sleep();
 			

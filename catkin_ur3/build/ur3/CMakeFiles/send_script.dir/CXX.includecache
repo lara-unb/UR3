@@ -1,4 +1,4 @@
-#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
 
 #IncludeRegexScan: ^.*$
 
@@ -6,7 +6,7 @@
 
 #IncludeRegexTransform: 
 
-/home/rafael/catkin_ur3/src/ur3/src/send_script.cpp
+/home/rafael/UR3/catkin_ur3/src/ur3/src/send_script.cpp
 sys/socket.h
 -
 sys/types.h

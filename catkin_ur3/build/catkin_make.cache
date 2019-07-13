@@ -1,2 +1,2 @@
 ur3
--DCATKIN_DEVEL_PREFIX=/home/rafael/catkin_ur3/devel -DCMAKE_INSTALL_PREFIX=/home/rafael/catkin_ur3/install -G Unix Makefiles
+-DCATKIN_DEVEL_PREFIX=/home/rafael/UR3/catkin_ur3/devel -DCMAKE_INSTALL_PREFIX=/home/rafael/UR3/catkin_ur3/install -G Unix Makefiles
