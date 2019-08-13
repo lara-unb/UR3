@@ -1,8 +1,10 @@
 
 "use strict";
 
-let data_msg = require('./data_msg.js');
+let arm_msg = require('./arm_msg.js');
+let gripper_msg = require('./gripper_msg.js');
 
 module.exports = {
-  data_msg: data_msg,
+  arm_msg: arm_msg,
+  gripper_msg: gripper_msg,
 };

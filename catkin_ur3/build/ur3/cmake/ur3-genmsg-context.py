@@ -1,6 +1,6 @@
 # generated from genmsg/cmake/pkg-genmsg.context.in
 
-messages_str = "/home/rafael/UR3/catkin_ur3/src/ur3/msg/data_msg.msg"
+messages_str = "/home/rafael/UR3/catkin_ur3/src/ur3/msg/arm_msg.msg"
 services_str = ""
 pkg_name = "ur3"
 dependencies_str = ""

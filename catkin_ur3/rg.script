@@ -245,29 +245,50 @@ def unnamed():
 			v_juntas = get_actual_joint_speeds()
 			p_juntas = get_actual_joint_positions()
 			t_juntas = get_joint_torques()
-			vel  = v_juntas[5]*1000000
-			pose = p_juntas[5]*1000000
-			torque = t_juntas[5]*1000000
-			socket_send_int(vel)
-			socket_send_int(pose)
-			socket_send_int(torque)
+			
+			socket_send_int(p_juntas[0]*1000000)
+			socket_send_int(v_juntas[0]*1000000)
+			socket_send_int(t_juntas[0]*1000000)
+			socket_send_int(p_juntas[1]*1000000)
+			socket_send_int(v_juntas[1]*1000000)
+			socket_send_int(t_juntas[1]*1000000)
+			socket_send_int(p_juntas[2]*1000000)
+			socket_send_int(v_juntas[2]*1000000)
+			socket_send_int(t_juntas[2]*1000000)
+			socket_send_int(p_juntas[3]*1000000)
+			socket_send_int(v_juntas[3]*1000000)
+			socket_send_int(t_juntas[3]*1000000)
+			socket_send_int(p_juntas[4]*1000000)
+			socket_send_int(v_juntas[4]*1000000)
+			socket_send_int(t_juntas[4]*1000000)
+			socket_send_int(p_juntas[5]*1000000)
+			socket_send_int(v_juntas[5]*1000000)
+			socket_send_int(t_juntas[5]*1000000)
 			
 			sleep(0.008)
-			raf = socket_read_binary_integer(1)
-			el = raf[1]
+			rafa = socket_read_binary_integer(1)
+			el = rafa[1]
 			el = el/1000000.00
 
 		end
+		movej([0, -1.570796, 0,-1.570796, 0, 0],1.4, 1.05)
+	end
+
+    thread data_j():
+		while True:
+			sleep(0.008)
+			
+		end
 	end
 	
+	
 	thrd_grip = run ler_garra()
-	c  = 1
+	thrd_data = run data_j()
 	while True:
-		speedj([0,0,0,0,0,el], 100, 0.001) 
-		c = c + 1
+		speedj([el/4,el/4,el/4,el/4,el/4,el/4], 100, 0.001) 
 	end
 	#speedj([0,0,0,0,0,0], 0.5, 5)
-	movej([0, -1.570796, 0,-1.570796, 0, 0],1.4, 1.05)
+	
 	########################################################
 	#RG2(0,4,0.0,True,False,False)                         #
 	# Tem que ser feito uma thread para a abertura da garra#

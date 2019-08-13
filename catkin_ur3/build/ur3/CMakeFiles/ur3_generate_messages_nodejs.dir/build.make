@@ -53,16 +53,16 @@ CMAKE_BINARY_DIR = /home/rafael/UR3/catkin_ur3/build
 # Include the progress variables for this target.
 include ur3/CMakeFiles/ur3_generate_messages_nodejs.dir/progress.make
 
-ur3/CMakeFiles/ur3_generate_messages_nodejs: /home/rafael/UR3/catkin_ur3/devel/share/gennodejs/ros/ur3/msg/data_msg.js
+ur3/CMakeFiles/ur3_generate_messages_nodejs: /home/rafael/UR3/catkin_ur3/devel/share/gennodejs/ros/ur3/msg/arm_msg.js
 
 
-/home/rafael/UR3/catkin_ur3/devel/share/gennodejs/ros/ur3/msg/data_msg.js: /opt/ros/melodic/lib/gennodejs/gen_nodejs.py
-/home/rafael/UR3/catkin_ur3/devel/share/gennodejs/ros/ur3/msg/data_msg.js: /home/rafael/UR3/catkin_ur3/src/ur3/msg/data_msg.msg
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/rafael/UR3/catkin_ur3/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Generating Javascript code from ur3/data_msg.msg"
-	cd /home/rafael/UR3/catkin_ur3/build/ur3 && ../catkin_generated/env_cached.sh /usr/bin/python2 /opt/ros/melodic/share/gennodejs/cmake/../../../lib/gennodejs/gen_nodejs.py /home/rafael/UR3/catkin_ur3/src/ur3/msg/data_msg.msg -Iur3:/home/rafael/UR3/catkin_ur3/src/ur3/msg -p ur3 -o /home/rafael/UR3/catkin_ur3/devel/share/gennodejs/ros/ur3/msg
+/home/rafael/UR3/catkin_ur3/devel/share/gennodejs/ros/ur3/msg/arm_msg.js: /opt/ros/melodic/lib/gennodejs/gen_nodejs.py
+/home/rafael/UR3/catkin_ur3/devel/share/gennodejs/ros/ur3/msg/arm_msg.js: /home/rafael/UR3/catkin_ur3/src/ur3/msg/arm_msg.msg
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/rafael/UR3/catkin_ur3/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Generating Javascript code from ur3/arm_msg.msg"
+	cd /home/rafael/UR3/catkin_ur3/build/ur3 && ../catkin_generated/env_cached.sh /usr/bin/python2 /opt/ros/melodic/share/gennodejs/cmake/../../../lib/gennodejs/gen_nodejs.py /home/rafael/UR3/catkin_ur3/src/ur3/msg/arm_msg.msg -Iur3:/home/rafael/UR3/catkin_ur3/src/ur3/msg -p ur3 -o /home/rafael/UR3/catkin_ur3/devel/share/gennodejs/ros/ur3/msg
 
 ur3_generate_messages_nodejs: ur3/CMakeFiles/ur3_generate_messages_nodejs
-ur3_generate_messages_nodejs: /home/rafael/UR3/catkin_ur3/devel/share/gennodejs/ros/ur3/msg/data_msg.js
+ur3_generate_messages_nodejs: /home/rafael/UR3/catkin_ur3/devel/share/gennodejs/ros/ur3/msg/arm_msg.js
 ur3_generate_messages_nodejs: ur3/CMakeFiles/ur3_generate_messages_nodejs.dir/build.make
 
 .PHONY : ur3_generate_messages_nodejs

@@ -68,6 +68,18 @@ install/strip/fast: preinstall/fast
 	/usr/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
 .PHONY : install/strip/fast
 
+# Special rule for the target install/local
+install/local: preinstall
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing only the local directory..."
+	/usr/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
+.PHONY : install/local
+
+# Special rule for the target install/local
+install/local/fast: preinstall/fast
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing only the local directory..."
+	/usr/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
+.PHONY : install/local/fast
+
 # Special rule for the target install
 install: preinstall
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
@@ -122,18 +134,6 @@ rebuild_cache:
 rebuild_cache/fast: rebuild_cache
 
 .PHONY : rebuild_cache/fast
-
-# Special rule for the target install/local
-install/local: preinstall
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing only the local directory..."
-	/usr/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
-.PHONY : install/local
-
-# Special rule for the target install/local
-install/local/fast: preinstall/fast
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing only the local directory..."
-	/usr/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
-.PHONY : install/local/fast
 
 # The main all target
 all: cmake_check_build_system
@@ -318,6 +318,21 @@ rosgraph_msgs_generate_messages_lisp/fast:
 .PHONY : rosgraph_msgs_generate_messages_lisp/fast
 
 # Convenience name for target.
+ur3/CMakeFiles/_ur3_generate_messages_check_deps_arm_msg.dir/rule:
+	cd /home/rafael/UR3/catkin_ur3/build && $(MAKE) -f CMakeFiles/Makefile2 ur3/CMakeFiles/_ur3_generate_messages_check_deps_arm_msg.dir/rule
+.PHONY : ur3/CMakeFiles/_ur3_generate_messages_check_deps_arm_msg.dir/rule
+
+# Convenience name for target.
+_ur3_generate_messages_check_deps_arm_msg: ur3/CMakeFiles/_ur3_generate_messages_check_deps_arm_msg.dir/rule
+
+.PHONY : _ur3_generate_messages_check_deps_arm_msg
+
+# fast build rule for target.
+_ur3_generate_messages_check_deps_arm_msg/fast:
+	cd /home/rafael/UR3/catkin_ur3/build && $(MAKE) -f ur3/CMakeFiles/_ur3_generate_messages_check_deps_arm_msg.dir/build.make ur3/CMakeFiles/_ur3_generate_messages_check_deps_arm_msg.dir/build
+.PHONY : _ur3_generate_messages_check_deps_arm_msg/fast
+
+# Convenience name for target.
 ur3/CMakeFiles/ur3_generate_messages_cpp.dir/rule:
 	cd /home/rafael/UR3/catkin_ur3/build && $(MAKE) -f CMakeFiles/Makefile2 ur3/CMakeFiles/ur3_generate_messages_cpp.dir/rule
 .PHONY : ur3/CMakeFiles/ur3_generate_messages_cpp.dir/rule
@@ -453,21 +468,6 @@ ur3_generate_messages_py/fast:
 .PHONY : ur3_generate_messages_py/fast
 
 # Convenience name for target.
-ur3/CMakeFiles/_ur3_generate_messages_check_deps_data_msg.dir/rule:
-	cd /home/rafael/UR3/catkin_ur3/build && $(MAKE) -f CMakeFiles/Makefile2 ur3/CMakeFiles/_ur3_generate_messages_check_deps_data_msg.dir/rule
-.PHONY : ur3/CMakeFiles/_ur3_generate_messages_check_deps_data_msg.dir/rule
-
-# Convenience name for target.
-_ur3_generate_messages_check_deps_data_msg: ur3/CMakeFiles/_ur3_generate_messages_check_deps_data_msg.dir/rule
-
-.PHONY : _ur3_generate_messages_check_deps_data_msg
-
-# fast build rule for target.
-_ur3_generate_messages_check_deps_data_msg/fast:
-	cd /home/rafael/UR3/catkin_ur3/build && $(MAKE) -f ur3/CMakeFiles/_ur3_generate_messages_check_deps_data_msg.dir/build.make ur3/CMakeFiles/_ur3_generate_messages_check_deps_data_msg.dir/build
-.PHONY : _ur3_generate_messages_check_deps_data_msg/fast
-
-# Convenience name for target.
 ur3/CMakeFiles/ur3_geneus.dir/rule:
 	cd /home/rafael/UR3/catkin_ur3/build && $(MAKE) -f CMakeFiles/Makefile2 ur3/CMakeFiles/ur3_geneus.dir/rule
 .PHONY : ur3/CMakeFiles/ur3_geneus.dir/rule
@@ -588,6 +588,36 @@ send_script/fast:
 .PHONY : send_script/fast
 
 # Convenience name for target.
+ur3/CMakeFiles/join_data.dir/rule:
+	cd /home/rafael/UR3/catkin_ur3/build && $(MAKE) -f CMakeFiles/Makefile2 ur3/CMakeFiles/join_data.dir/rule
+.PHONY : ur3/CMakeFiles/join_data.dir/rule
+
+# Convenience name for target.
+join_data: ur3/CMakeFiles/join_data.dir/rule
+
+.PHONY : join_data
+
+# fast build rule for target.
+join_data/fast:
+	cd /home/rafael/UR3/catkin_ur3/build && $(MAKE) -f ur3/CMakeFiles/join_data.dir/build.make ur3/CMakeFiles/join_data.dir/build
+.PHONY : join_data/fast
+
+# Convenience name for target.
+ur3/CMakeFiles/reverse_word.dir/rule:
+	cd /home/rafael/UR3/catkin_ur3/build && $(MAKE) -f CMakeFiles/Makefile2 ur3/CMakeFiles/reverse_word.dir/rule
+.PHONY : ur3/CMakeFiles/reverse_word.dir/rule
+
+# Convenience name for target.
+reverse_word: ur3/CMakeFiles/reverse_word.dir/rule
+
+.PHONY : reverse_word
+
+# fast build rule for target.
+reverse_word/fast:
+	cd /home/rafael/UR3/catkin_ur3/build && $(MAKE) -f ur3/CMakeFiles/reverse_word.dir/build.make ur3/CMakeFiles/reverse_word.dir/build
+.PHONY : reverse_word/fast
+
+# Convenience name for target.
 ur3/CMakeFiles/interface.dir/rule:
 	cd /home/rafael/UR3/catkin_ur3/build && $(MAKE) -f CMakeFiles/Makefile2 ur3/CMakeFiles/interface.dir/rule
 .PHONY : ur3/CMakeFiles/interface.dir/rule
@@ -644,6 +674,39 @@ src/interface.cpp.s:
 	cd /home/rafael/UR3/catkin_ur3/build && $(MAKE) -f ur3/CMakeFiles/interface.dir/build.make ur3/CMakeFiles/interface.dir/src/interface.cpp.s
 .PHONY : src/interface.cpp.s
 
+src/join_data.o: src/join_data.cpp.o
+
+.PHONY : src/join_data.o
+
+# target to build an object file
+src/join_data.cpp.o:
+	cd /home/rafael/UR3/catkin_ur3/build && $(MAKE) -f ur3/CMakeFiles/join_data.dir/build.make ur3/CMakeFiles/join_data.dir/src/join_data.cpp.o
+	cd /home/rafael/UR3/catkin_ur3/build && $(MAKE) -f ur3/CMakeFiles/reverse_word.dir/build.make ur3/CMakeFiles/reverse_word.dir/src/join_data.cpp.o
+	cd /home/rafael/UR3/catkin_ur3/build && $(MAKE) -f ur3/CMakeFiles/interface.dir/build.make ur3/CMakeFiles/interface.dir/src/join_data.cpp.o
+.PHONY : src/join_data.cpp.o
+
+src/join_data.i: src/join_data.cpp.i
+
+.PHONY : src/join_data.i
+
+# target to preprocess a source file
+src/join_data.cpp.i:
+	cd /home/rafael/UR3/catkin_ur3/build && $(MAKE) -f ur3/CMakeFiles/join_data.dir/build.make ur3/CMakeFiles/join_data.dir/src/join_data.cpp.i
+	cd /home/rafael/UR3/catkin_ur3/build && $(MAKE) -f ur3/CMakeFiles/reverse_word.dir/build.make ur3/CMakeFiles/reverse_word.dir/src/join_data.cpp.i
+	cd /home/rafael/UR3/catkin_ur3/build && $(MAKE) -f ur3/CMakeFiles/interface.dir/build.make ur3/CMakeFiles/interface.dir/src/join_data.cpp.i
+.PHONY : src/join_data.cpp.i
+
+src/join_data.s: src/join_data.cpp.s
+
+.PHONY : src/join_data.s
+
+# target to generate assembly for a file
+src/join_data.cpp.s:
+	cd /home/rafael/UR3/catkin_ur3/build && $(MAKE) -f ur3/CMakeFiles/join_data.dir/build.make ur3/CMakeFiles/join_data.dir/src/join_data.cpp.s
+	cd /home/rafael/UR3/catkin_ur3/build && $(MAKE) -f ur3/CMakeFiles/reverse_word.dir/build.make ur3/CMakeFiles/reverse_word.dir/src/join_data.cpp.s
+	cd /home/rafael/UR3/catkin_ur3/build && $(MAKE) -f ur3/CMakeFiles/interface.dir/build.make ur3/CMakeFiles/interface.dir/src/join_data.cpp.s
+.PHONY : src/join_data.cpp.s
+
 src/open_socket.o: src/open_socket.cpp.o
 
 .PHONY : src/open_socket.o
@@ -673,6 +736,33 @@ src/open_socket.cpp.s:
 	cd /home/rafael/UR3/catkin_ur3/build && $(MAKE) -f ur3/CMakeFiles/open_socket.dir/build.make ur3/CMakeFiles/open_socket.dir/src/open_socket.cpp.s
 	cd /home/rafael/UR3/catkin_ur3/build && $(MAKE) -f ur3/CMakeFiles/interface.dir/build.make ur3/CMakeFiles/interface.dir/src/open_socket.cpp.s
 .PHONY : src/open_socket.cpp.s
+
+src/reverse_word.o: src/reverse_word.cpp.o
+
+.PHONY : src/reverse_word.o
+
+# target to build an object file
+src/reverse_word.cpp.o:
+	cd /home/rafael/UR3/catkin_ur3/build && $(MAKE) -f ur3/CMakeFiles/interface.dir/build.make ur3/CMakeFiles/interface.dir/src/reverse_word.cpp.o
+.PHONY : src/reverse_word.cpp.o
+
+src/reverse_word.i: src/reverse_word.cpp.i
+
+.PHONY : src/reverse_word.i
+
+# target to preprocess a source file
+src/reverse_word.cpp.i:
+	cd /home/rafael/UR3/catkin_ur3/build && $(MAKE) -f ur3/CMakeFiles/interface.dir/build.make ur3/CMakeFiles/interface.dir/src/reverse_word.cpp.i
+.PHONY : src/reverse_word.cpp.i
+
+src/reverse_word.s: src/reverse_word.cpp.s
+
+.PHONY : src/reverse_word.s
+
+# target to generate assembly for a file
+src/reverse_word.cpp.s:
+	cd /home/rafael/UR3/catkin_ur3/build && $(MAKE) -f ur3/CMakeFiles/interface.dir/build.make ur3/CMakeFiles/interface.dir/src/reverse_word.cpp.s
+.PHONY : src/reverse_word.cpp.s
 
 src/send_script.o: src/send_script.cpp.o
 
@@ -711,6 +801,8 @@ help:
 	@echo "... clean"
 	@echo "... depend"
 	@echo "... install/strip"
+	@echo "... install/local"
+	@echo "... install"
 	@echo "... std_msgs_generate_messages_py"
 	@echo "... std_msgs_generate_messages_nodejs"
 	@echo "... std_msgs_generate_messages_eus"
@@ -721,9 +813,9 @@ help:
 	@echo "... std_msgs_generate_messages_cpp"
 	@echo "... ur3_generate_messages"
 	@echo "... rosgraph_msgs_generate_messages_lisp"
+	@echo "... _ur3_generate_messages_check_deps_arm_msg"
 	@echo "... ur3_generate_messages_cpp"
 	@echo "... rosgraph_msgs_generate_messages_eus"
-	@echo "... install"
 	@echo "... std_msgs_generate_messages_lisp"
 	@echo "... ur3_generate_messages_eus"
 	@echo "... edit_cache"
@@ -733,7 +825,6 @@ help:
 	@echo "... roscpp_generate_messages_lisp"
 	@echo "... ur3_generate_messages_py"
 	@echo "... list_install_components"
-	@echo "... _ur3_generate_messages_check_deps_data_msg"
 	@echo "... ur3_geneus"
 	@echo "... ur3_generate_messages_lisp"
 	@echo "... ur3_genlisp"
@@ -743,16 +834,23 @@ help:
 	@echo "... test"
 	@echo "... open_socket"
 	@echo "... send_script"
+	@echo "... join_data"
+	@echo "... reverse_word"
 	@echo "... interface"
 	@echo "... roscpp_generate_messages_cpp"
 	@echo "... rebuild_cache"
-	@echo "... install/local"
 	@echo "... src/interface.o"
 	@echo "... src/interface.i"
 	@echo "... src/interface.s"
+	@echo "... src/join_data.o"
+	@echo "... src/join_data.i"
+	@echo "... src/join_data.s"
 	@echo "... src/open_socket.o"
 	@echo "... src/open_socket.i"
 	@echo "... src/open_socket.s"
+	@echo "... src/reverse_word.o"
+	@echo "... src/reverse_word.i"
+	@echo "... src/reverse_word.s"
 	@echo "... src/send_script.o"
 	@echo "... src/send_script.i"
 	@echo "... src/send_script.s"

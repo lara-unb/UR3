@@ -1,7 +1,9 @@
 (cl:defpackage ur3-msg
   (:use )
   (:export
-   "<DATA_MSG>"
-   "DATA_MSG"
+   "<ARM_MSG>"
+   "ARM_MSG"
+   "<GRIPPER_MSG>"
+   "GRIPPER_MSG"
   ))
 
