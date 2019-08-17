@@ -49,13 +49,13 @@ int main(int argc, char **argv){
 	////////////////////////////////////
 	// Declaração dos buffers de entrada e saida 
     int32_t buffer_in  = 0;
-	int8_t buffer_out[72]; 
+	int8_t buffer_out[2024]; 
    	/////////////////////////////
 	// criação de um arquivo .csv para armazenar os dados
 	FILE *fp;
     char filename[20]= "dados.csv";
 	fp=fopen(filename,"w+");
-	fprintf(fp,"     t     ,     r     ,     v     ,     p     ,     m     \n");
+	fprintf(fp,"     t     ,   vj0    ,    vj1    ,    vj2   ,    vj3   ,    vj4   ,    vj5    ,    bytes \n");
     float tempo = 0;
 	//////////////////////
 	double vel_float = 0;
@@ -76,10 +76,12 @@ int main(int argc, char **argv){
 	ros::init(argc, argv, "talker");
 	ros::NodeHandle n;
 	//Declaração das publicões 
-	ros::Publisher arm_pub = n.advertise<ur3::arm_msg>("arm",0);
-	ros::Rate loop_rate(125);
+	ros::Publisher arm_pub = n.advertise<ur3::arm_msg>("arm",32);
+	ros::Rate loop_rate(50);
 	//Declaração das estruturas de dados para as publicações
 	ur3::arm_msg arm;
+	int number = 0;
+	int x = 0;
 	//////////////////////////////////////////////////////////
     while (ros::ok()){
 		/////////////////////////////////////////////////////
@@ -87,7 +89,10 @@ int main(int argc, char **argv){
 		buffer_in = (int)(referencia*norma_float);
 		buffer_in = reverse(buffer_in);
 		send(new_socket, &buffer_in, sizeof buffer_in, 0);
-    	recv(new_socket, &buffer_out, sizeof buffer_out, 0);
+		number = 0;
+		///////////////////////////////////////////////////////////
+		number = recv(new_socket, &buffer_out, 128, 0);
+		
 		/////////////////////////////////////////////////////
 		data_join_out = join_data(buffer_out);
 		/////////////////////////////////////////////////
@@ -119,16 +124,18 @@ int main(int argc, char **argv){
 		arm.velocity[0] = data_join_out[1];
 		arm.torque[0] = data_join_out[2];
 		//////////////////////////////////////
-		fprintf(fp, "\n%10.5f, %10.5f, %10.5f, %10.5f, %10.5f", tempo, referencia, vel_float,
-			 pose_float, torque_float);
-		//printf("\n%f, %f, %f\n", vel_float, pose_float, torque_float);
-		tempo = tempo + 0.008;
-		conta = conta + 0.5;
+		fprintf(fp, "\n%10.5f, %10.5f, %10.5f, %10.5f, %10.5f, %10.5f, %10.5f,  %i", tempo, data_join_out[1],
+		 data_join_out[4], data_join_out[7], data_join_out[10], data_join_out[13], data_join_out[16], number);
+		
+		tempo = tempo + 0.02;
+		conta = conta + 1;
 	
-		//join5_pub.publish(data_join5);
+		
 		arm_pub.publish(arm);
 		ros::spinOnce();
 		loop_rate.sleep();		
+		
+
 	}
 	fclose(fp);
 	return 0;

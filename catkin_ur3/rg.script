@@ -264,28 +264,24 @@ def unnamed():
 			socket_send_int(p_juntas[5]*1000000)
 			socket_send_int(v_juntas[5]*1000000)
 			socket_send_int(t_juntas[5]*1000000)
+			#socket_send_int(largura*1000000)
 			
-			sleep(0.008)
+			
 			rafa = socket_read_binary_integer(1)
 			el = rafa[1]
 			el = el/1000000.00
-
+			sync()
+			#sleep(0.008)
 		end
 		movej([0, -1.570796, 0,-1.570796, 0, 0],1.4, 1.05)
 	end
 
-    thread data_j():
-		while True:
-			sleep(0.008)
-			
-		end
-	end
+  
 	
 	
 	thrd_grip = run ler_garra()
-	thrd_data = run data_j()
 	while True:
-		speedj([el/4,el/4,el/4,el/4,el/4,el/4], 100, 0.001) 
+		speedj([el/2,el/2,el/2,el/2,el/2,el/2], 100, 0.001) 
 	end
 	#speedj([0,0,0,0,0,0], 0.5, 5)
 	
