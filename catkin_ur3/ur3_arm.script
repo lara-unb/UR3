@@ -14,7 +14,8 @@ def unnamed():
   # begin: URCap Installation Node
   #   Source: RG - On Robot, 1.9.0, OnRobot A/S
   #   Type: RG Configuration
-  global v_join = [0,0,0,0,0,0,0]
+  global velocity = [0,0,0,0,0,0]
+  global gripper = [0,0]
   global measure_width=0
   global grip_detected=False
   global lost_grip=False
@@ -264,43 +265,43 @@ def unnamed():
 			socket_send_int(p_juntas[5]*1000000)
 			socket_send_int(v_juntas[5]*1000000)
 			socket_send_int(t_juntas[5]*1000000)
-			#socket_send_int(largura*1000000)
+			socket_send_int(largura*1000000)
+			socket_send_int(2*1000000)
 			
 			
-			velocity = socket_read_binary_integer(6)
-			v_join[1] = velocity[1]
-			v_join[1] = v_join[1]/1000000.00
-			v_join[2] = velocity[2]
-			v_join[2] = v_join[2]/1000000.00
-			v_join[3] = velocity[3]
-			v_join[3] = v_join[3]/1000000.00
-			v_join[4] = velocity[4]
-			v_join[4] = v_join[4]/1000000.00
-			v_join[5] = velocity[5]
-			v_join[5] = v_join[5]/1000000.00
-			v_join[6] = velocity[6]
-			v_join[6] = v_join[6]/1000000.00
+			velocity = socket_read_binary_integer(8)
+			velocity[1] = velocity[1]/1000000.00
+			velocity[2] = velocity[2]/1000000.00
+			velocity[3] = velocity[2]/1000000.00
+			velocity[4] = velocity[4]/1000000.00
+			velocity[5] = velocity[5]/1000000.00
+			velocity[6] = velocity[6]/1000000.00
+			gripper[1] = velocity[7]/1000000.00
+			gripper[2] = velocity[8]/1000000.00
+
 			sync()
-			#sleep(0.008)
+			
 		end
 		movej([0, -1.570796, 0,-1.570796, 0, 0],1.4, 1.05)
 	end
 
-  	thread rg2_thrd()
-	   RG2(90,4,0.0,True,False,False) 
+  	thread rg2_thrd():
+	  	while True:
+	   		RG2(gripper[1],gripper[2],0.0,True,False,False) 
+	   		sync()
+		end
 	end
 
 	
 	thrd_rg2 = run rg2_thrd() 
 	thrd_grip = run ler_garra()
 	while True:
-		speedj([v_join[1]/2,v_join[2]/2,v_join[3]/2,v_join[4],v_join[5],v_join[6]], 100, 0.001) 
-		RG2(90,4,0.0,True,False,False) 
+		speedj([velocity[1]/2,velocity[2]/2,velocity[3]/2,velocity[4]/2,velocity[5]/2,velocity[6]/2], 100, 0.001)
 	end
 	#speedj([0,0,0,0,0,0], 0.5, 5)
 	
 	########################################################
-	RG2(0,4,0.0,True,False,False)                         #
+	#RG2(0,4,0.0,True,False,False)                         #
 	# Tem que ser feito uma thread para a abertura da garra#
 	########################################################
 	

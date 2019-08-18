@@ -44,7 +44,7 @@ int send_script(){
     fclose(fp1);
     sleep(5);
     // mada o arquivo que será esxecutado
-    FILE *fp = fopen("rg.script", "rb");
+    FILE *fp = fopen("ur3_arm.script", "rb");
     if(fp == NULL){
         perror("File");
         return 2;
