@@ -6,6 +6,26 @@
 
 #IncludeRegexTransform: 
 
+/home/rafael/UR3/catkin_ur3/devel/include/ur3/gripper_msg.h
+string
+-
+vector
+-
+map
+-
+ros/types.h
+-
+ros/serialization.h
+-
+ros/builtin_message_traits.h
+-
+ros/message_operations.h
+-
+std_msgs/Header.h
+-
+control_msgs/GripperCommand.h
+-
+
 /home/rafael/UR3/catkin_ur3/src/ur3/include/ur3/join_data.h
 sys/socket.h
 -
@@ -111,8 +131,8 @@ sensor_msgs/JointState.h
 /home/rafael/UR3/catkin_ur3/src/ur3/src/sensor_msgs/JointState.h
 sensor_msgs/Joy.h
 /home/rafael/UR3/catkin_ur3/src/ur3/src/sensor_msgs/Joy.h
-control_msgs/GripperCommand.h
-/home/rafael/UR3/catkin_ur3/src/ur3/src/control_msgs/GripperCommand.h
+ur3/gripper_msg.h
+/home/rafael/UR3/catkin_ur3/src/ur3/src/ur3/gripper_msg.h
 X11/keysymdef.h
 -
 sys/socket.h

@@ -14,8 +14,8 @@ def unnamed():
   # begin: URCap Installation Node
   #   Source: RG - On Robot, 1.9.0, OnRobot A/S
   #   Type: RG Configuration
-  global velocity = [0,0,0,0,0,0]
-  global gripper = [0,0]
+  global velocity = [0,0,0,0,0,0,0,0,0]
+  global gripper = [0,0,0]
   global measure_width=0
   global grip_detected=False
   global lost_grip=False
@@ -265,14 +265,14 @@ def unnamed():
 			socket_send_int(p_juntas[5]*1000000)
 			socket_send_int(v_juntas[5]*1000000)
 			socket_send_int(t_juntas[5]*1000000)
-			socket_send_int(largura*1000000)
-			socket_send_int(2*1000000)
+			socket_send_int(largura*1000000) # position
+			socket_send_int(2*1000000) # max_effort
 			
 			
 			velocity = socket_read_binary_integer(8)
 			velocity[1] = velocity[1]/1000000.00
 			velocity[2] = velocity[2]/1000000.00
-			velocity[3] = velocity[2]/1000000.00
+			velocity[3] = velocity[3]/1000000.00
 			velocity[4] = velocity[4]/1000000.00
 			velocity[5] = velocity[5]/1000000.00
 			velocity[6] = velocity[6]/1000000.00

@@ -53,20 +53,29 @@ CMAKE_BINARY_DIR = /home/rafael/UR3/catkin_ur3/build
 # Include the progress variables for this target.
 include ur3/CMakeFiles/ur3_generate_messages_eus.dir/progress.make
 
+ur3/CMakeFiles/ur3_generate_messages_eus: /home/rafael/UR3/catkin_ur3/devel/share/roseus/ros/ur3/msg/gripper_msg.l
 ur3/CMakeFiles/ur3_generate_messages_eus: /home/rafael/UR3/catkin_ur3/devel/share/roseus/ros/ur3/msg/arm_msg.l
 ur3/CMakeFiles/ur3_generate_messages_eus: /home/rafael/UR3/catkin_ur3/devel/share/roseus/ros/ur3/manifest.l
 
 
+/home/rafael/UR3/catkin_ur3/devel/share/roseus/ros/ur3/msg/gripper_msg.l: /opt/ros/melodic/lib/geneus/gen_eus.py
+/home/rafael/UR3/catkin_ur3/devel/share/roseus/ros/ur3/msg/gripper_msg.l: /home/rafael/UR3/catkin_ur3/src/ur3/msg/gripper_msg.msg
+/home/rafael/UR3/catkin_ur3/devel/share/roseus/ros/ur3/msg/gripper_msg.l: /opt/ros/melodic/share/control_msgs/msg/GripperCommand.msg
+/home/rafael/UR3/catkin_ur3/devel/share/roseus/ros/ur3/msg/gripper_msg.l: /opt/ros/melodic/share/std_msgs/msg/Header.msg
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/rafael/UR3/catkin_ur3/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Generating EusLisp code from ur3/gripper_msg.msg"
+	cd /home/rafael/UR3/catkin_ur3/build/ur3 && ../catkin_generated/env_cached.sh /usr/bin/python2 /opt/ros/melodic/share/geneus/cmake/../../../lib/geneus/gen_eus.py /home/rafael/UR3/catkin_ur3/src/ur3/msg/gripper_msg.msg -Iur3:/home/rafael/UR3/catkin_ur3/src/ur3/msg -Istd_msgs:/opt/ros/melodic/share/std_msgs/cmake/../msg -Icontrol_msgs:/opt/ros/melodic/share/control_msgs/cmake/../msg -Iactionlib_msgs:/opt/ros/melodic/share/actionlib_msgs/cmake/../msg -Igeometry_msgs:/opt/ros/melodic/share/geometry_msgs/cmake/../msg -Itrajectory_msgs:/opt/ros/melodic/share/trajectory_msgs/cmake/../msg -p ur3 -o /home/rafael/UR3/catkin_ur3/devel/share/roseus/ros/ur3/msg
+
 /home/rafael/UR3/catkin_ur3/devel/share/roseus/ros/ur3/msg/arm_msg.l: /opt/ros/melodic/lib/geneus/gen_eus.py
 /home/rafael/UR3/catkin_ur3/devel/share/roseus/ros/ur3/msg/arm_msg.l: /home/rafael/UR3/catkin_ur3/src/ur3/msg/arm_msg.msg
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/rafael/UR3/catkin_ur3/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Generating EusLisp code from ur3/arm_msg.msg"
-	cd /home/rafael/UR3/catkin_ur3/build/ur3 && ../catkin_generated/env_cached.sh /usr/bin/python2 /opt/ros/melodic/share/geneus/cmake/../../../lib/geneus/gen_eus.py /home/rafael/UR3/catkin_ur3/src/ur3/msg/arm_msg.msg -Iur3:/home/rafael/UR3/catkin_ur3/src/ur3/msg -p ur3 -o /home/rafael/UR3/catkin_ur3/devel/share/roseus/ros/ur3/msg
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/rafael/UR3/catkin_ur3/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Generating EusLisp code from ur3/arm_msg.msg"
+	cd /home/rafael/UR3/catkin_ur3/build/ur3 && ../catkin_generated/env_cached.sh /usr/bin/python2 /opt/ros/melodic/share/geneus/cmake/../../../lib/geneus/gen_eus.py /home/rafael/UR3/catkin_ur3/src/ur3/msg/arm_msg.msg -Iur3:/home/rafael/UR3/catkin_ur3/src/ur3/msg -Istd_msgs:/opt/ros/melodic/share/std_msgs/cmake/../msg -Icontrol_msgs:/opt/ros/melodic/share/control_msgs/cmake/../msg -Iactionlib_msgs:/opt/ros/melodic/share/actionlib_msgs/cmake/../msg -Igeometry_msgs:/opt/ros/melodic/share/geometry_msgs/cmake/../msg -Itrajectory_msgs:/opt/ros/melodic/share/trajectory_msgs/cmake/../msg -p ur3 -o /home/rafael/UR3/catkin_ur3/devel/share/roseus/ros/ur3/msg
 
 /home/rafael/UR3/catkin_ur3/devel/share/roseus/ros/ur3/manifest.l: /opt/ros/melodic/lib/geneus/gen_eus.py
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/rafael/UR3/catkin_ur3/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Generating EusLisp manifest code for ur3"
-	cd /home/rafael/UR3/catkin_ur3/build/ur3 && ../catkin_generated/env_cached.sh /usr/bin/python2 /opt/ros/melodic/share/geneus/cmake/../../../lib/geneus/gen_eus.py -m -o /home/rafael/UR3/catkin_ur3/devel/share/roseus/ros/ur3 ur3
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/rafael/UR3/catkin_ur3/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Generating EusLisp manifest code for ur3"
+	cd /home/rafael/UR3/catkin_ur3/build/ur3 && ../catkin_generated/env_cached.sh /usr/bin/python2 /opt/ros/melodic/share/geneus/cmake/../../../lib/geneus/gen_eus.py -m -o /home/rafael/UR3/catkin_ur3/devel/share/roseus/ros/ur3 ur3 std_msgs control_msgs
 
 ur3_generate_messages_eus: ur3/CMakeFiles/ur3_generate_messages_eus
+ur3_generate_messages_eus: /home/rafael/UR3/catkin_ur3/devel/share/roseus/ros/ur3/msg/gripper_msg.l
 ur3_generate_messages_eus: /home/rafael/UR3/catkin_ur3/devel/share/roseus/ros/ur3/msg/arm_msg.l
 ur3_generate_messages_eus: /home/rafael/UR3/catkin_ur3/devel/share/roseus/ros/ur3/manifest.l
 ur3_generate_messages_eus: ur3/CMakeFiles/ur3_generate_messages_eus.dir/build.make

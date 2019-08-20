@@ -131,7 +131,7 @@ foreach(library ${libraries})
     set(lib_path "")
     set(lib "${library}-NOTFOUND")
     # since the path where the library is found is returned we have to iterate over the paths manually
-    foreach(path /home/rafael/UR3/catkin_ur3/devel/lib;/opt/ros/melodic/lib)
+    foreach(path /home/rafael/UR3/catkin_ur3/devel/lib;/home/rafael/UR3/catkin_ur3/devel/lib;/opt/ros/melodic/lib)
       find_library(lib ${library}
         PATHS ${path}
         NO_DEFAULT_PATH NO_CMAKE_FIND_ROOT_PATH)
@@ -162,7 +162,7 @@ foreach(t ${ur3_EXPORTED_TARGETS})
   endif()
 endforeach()
 
-set(depends "message_runtime;roscpp;rospy;std_msgs")
+set(depends "message_runtime;roscpp;rospy;std_msgs;control_msgs")
 foreach(depend ${depends})
   string(REPLACE " " ";" depend_list ${depend})
   # the package name of the dependency must be kept in a unique variable so that it is not overwritten in recursive calls

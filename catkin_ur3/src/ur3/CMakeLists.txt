@@ -12,6 +12,7 @@ find_package(catkin REQUIRED COMPONENTS
   rospy
   std_msgs
   message_generation
+  control_msgs
 )
 
 ## System dependencies are found with CMake's conventions
@@ -51,6 +52,7 @@ find_package(catkin REQUIRED COMPONENTS
 add_message_files(
    FILES
    arm_msg.msg
+   gripper_msg.msg
  )
 
 ## Generate services in the 'srv' folder
@@ -68,7 +70,8 @@ add_message_files(
 # )
 
 ## Generate added messages and services with any dependencies listed here
- generate_messages()
+#quando for criar uma nova mensagem
+ generate_messages(DEPENDENCIES std_msgs control_msgs)
 
 ################################################
 ## Declare ROS dynamic reconfigure parameters ##
@@ -103,7 +106,8 @@ catkin_package(
   INCLUDE_DIRS include
   LIBRARIES ur3
   CATKIN_DEPENDS message_runtime
-  CATKIN_DEPENDS roscpp rospy std_msgs
+  #quando for criar uma nova mensagem
+  CATKIN_DEPENDS roscpp rospy std_msgs control_msgs 
   DEPENDS system_lib
 )
 

@@ -68,18 +68,6 @@ install/strip/fast: preinstall/fast
 	/usr/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
 .PHONY : install/strip/fast
 
-# Special rule for the target install/local
-install/local: preinstall
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing only the local directory..."
-	/usr/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
-.PHONY : install/local
-
-# Special rule for the target install/local
-install/local/fast: preinstall/fast
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing only the local directory..."
-	/usr/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
-.PHONY : install/local/fast
-
 # Special rule for the target install
 install: preinstall
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
@@ -91,17 +79,6 @@ install/fast: preinstall/fast
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
 	/usr/bin/cmake -P cmake_install.cmake
 .PHONY : install/fast
-
-# Special rule for the target edit_cache
-edit_cache:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
-	/usr/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
-.PHONY : edit_cache
-
-# Special rule for the target edit_cache
-edit_cache/fast: edit_cache
-
-.PHONY : edit_cache/fast
 
 # Special rule for the target list_install_components
 list_install_components:
@@ -123,6 +100,29 @@ test:
 test/fast: test
 
 .PHONY : test/fast
+
+# Special rule for the target edit_cache
+edit_cache:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
+	/usr/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
+.PHONY : edit_cache
+
+# Special rule for the target edit_cache
+edit_cache/fast: edit_cache
+
+.PHONY : edit_cache/fast
+
+# Special rule for the target install/local
+install/local: preinstall
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing only the local directory..."
+	/usr/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
+.PHONY : install/local
+
+# Special rule for the target install/local
+install/local/fast: preinstall/fast
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing only the local directory..."
+	/usr/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
+.PHONY : install/local/fast
 
 # Special rule for the target rebuild_cache
 rebuild_cache:
@@ -168,6 +168,201 @@ depend:
 .PHONY : depend
 
 # Convenience name for target.
+ur3/CMakeFiles/reverse_word.dir/rule:
+	cd /home/rafael/UR3/catkin_ur3/build && $(MAKE) -f CMakeFiles/Makefile2 ur3/CMakeFiles/reverse_word.dir/rule
+.PHONY : ur3/CMakeFiles/reverse_word.dir/rule
+
+# Convenience name for target.
+reverse_word: ur3/CMakeFiles/reverse_word.dir/rule
+
+.PHONY : reverse_word
+
+# fast build rule for target.
+reverse_word/fast:
+	cd /home/rafael/UR3/catkin_ur3/build && $(MAKE) -f ur3/CMakeFiles/reverse_word.dir/build.make ur3/CMakeFiles/reverse_word.dir/build
+.PHONY : reverse_word/fast
+
+# Convenience name for target.
+ur3/CMakeFiles/join_data.dir/rule:
+	cd /home/rafael/UR3/catkin_ur3/build && $(MAKE) -f CMakeFiles/Makefile2 ur3/CMakeFiles/join_data.dir/rule
+.PHONY : ur3/CMakeFiles/join_data.dir/rule
+
+# Convenience name for target.
+join_data: ur3/CMakeFiles/join_data.dir/rule
+
+.PHONY : join_data
+
+# fast build rule for target.
+join_data/fast:
+	cd /home/rafael/UR3/catkin_ur3/build && $(MAKE) -f ur3/CMakeFiles/join_data.dir/build.make ur3/CMakeFiles/join_data.dir/build
+.PHONY : join_data/fast
+
+# Convenience name for target.
+ur3/CMakeFiles/send_script.dir/rule:
+	cd /home/rafael/UR3/catkin_ur3/build && $(MAKE) -f CMakeFiles/Makefile2 ur3/CMakeFiles/send_script.dir/rule
+.PHONY : ur3/CMakeFiles/send_script.dir/rule
+
+# Convenience name for target.
+send_script: ur3/CMakeFiles/send_script.dir/rule
+
+.PHONY : send_script
+
+# fast build rule for target.
+send_script/fast:
+	cd /home/rafael/UR3/catkin_ur3/build && $(MAKE) -f ur3/CMakeFiles/send_script.dir/build.make ur3/CMakeFiles/send_script.dir/build
+.PHONY : send_script/fast
+
+# Convenience name for target.
+ur3/CMakeFiles/open_socket.dir/rule:
+	cd /home/rafael/UR3/catkin_ur3/build && $(MAKE) -f CMakeFiles/Makefile2 ur3/CMakeFiles/open_socket.dir/rule
+.PHONY : ur3/CMakeFiles/open_socket.dir/rule
+
+# Convenience name for target.
+open_socket: ur3/CMakeFiles/open_socket.dir/rule
+
+.PHONY : open_socket
+
+# fast build rule for target.
+open_socket/fast:
+	cd /home/rafael/UR3/catkin_ur3/build && $(MAKE) -f ur3/CMakeFiles/open_socket.dir/build.make ur3/CMakeFiles/open_socket.dir/build
+.PHONY : open_socket/fast
+
+# Convenience name for target.
+ur3/CMakeFiles/ur3_generate_messages_nodejs.dir/rule:
+	cd /home/rafael/UR3/catkin_ur3/build && $(MAKE) -f CMakeFiles/Makefile2 ur3/CMakeFiles/ur3_generate_messages_nodejs.dir/rule
+.PHONY : ur3/CMakeFiles/ur3_generate_messages_nodejs.dir/rule
+
+# Convenience name for target.
+ur3_generate_messages_nodejs: ur3/CMakeFiles/ur3_generate_messages_nodejs.dir/rule
+
+.PHONY : ur3_generate_messages_nodejs
+
+# fast build rule for target.
+ur3_generate_messages_nodejs/fast:
+	cd /home/rafael/UR3/catkin_ur3/build && $(MAKE) -f ur3/CMakeFiles/ur3_generate_messages_nodejs.dir/build.make ur3/CMakeFiles/ur3_generate_messages_nodejs.dir/build
+.PHONY : ur3_generate_messages_nodejs/fast
+
+# Convenience name for target.
+ur3/CMakeFiles/ur3_genlisp.dir/rule:
+	cd /home/rafael/UR3/catkin_ur3/build && $(MAKE) -f CMakeFiles/Makefile2 ur3/CMakeFiles/ur3_genlisp.dir/rule
+.PHONY : ur3/CMakeFiles/ur3_genlisp.dir/rule
+
+# Convenience name for target.
+ur3_genlisp: ur3/CMakeFiles/ur3_genlisp.dir/rule
+
+.PHONY : ur3_genlisp
+
+# fast build rule for target.
+ur3_genlisp/fast:
+	cd /home/rafael/UR3/catkin_ur3/build && $(MAKE) -f ur3/CMakeFiles/ur3_genlisp.dir/build.make ur3/CMakeFiles/ur3_genlisp.dir/build
+.PHONY : ur3_genlisp/fast
+
+# Convenience name for target.
+ur3/CMakeFiles/ur3_generate_messages_lisp.dir/rule:
+	cd /home/rafael/UR3/catkin_ur3/build && $(MAKE) -f CMakeFiles/Makefile2 ur3/CMakeFiles/ur3_generate_messages_lisp.dir/rule
+.PHONY : ur3/CMakeFiles/ur3_generate_messages_lisp.dir/rule
+
+# Convenience name for target.
+ur3_generate_messages_lisp: ur3/CMakeFiles/ur3_generate_messages_lisp.dir/rule
+
+.PHONY : ur3_generate_messages_lisp
+
+# fast build rule for target.
+ur3_generate_messages_lisp/fast:
+	cd /home/rafael/UR3/catkin_ur3/build && $(MAKE) -f ur3/CMakeFiles/ur3_generate_messages_lisp.dir/build.make ur3/CMakeFiles/ur3_generate_messages_lisp.dir/build
+.PHONY : ur3_generate_messages_lisp/fast
+
+# Convenience name for target.
+ur3/CMakeFiles/ur3_geneus.dir/rule:
+	cd /home/rafael/UR3/catkin_ur3/build && $(MAKE) -f CMakeFiles/Makefile2 ur3/CMakeFiles/ur3_geneus.dir/rule
+.PHONY : ur3/CMakeFiles/ur3_geneus.dir/rule
+
+# Convenience name for target.
+ur3_geneus: ur3/CMakeFiles/ur3_geneus.dir/rule
+
+.PHONY : ur3_geneus
+
+# fast build rule for target.
+ur3_geneus/fast:
+	cd /home/rafael/UR3/catkin_ur3/build && $(MAKE) -f ur3/CMakeFiles/ur3_geneus.dir/build.make ur3/CMakeFiles/ur3_geneus.dir/build
+.PHONY : ur3_geneus/fast
+
+# Convenience name for target.
+ur3/CMakeFiles/ur3_generate_messages_eus.dir/rule:
+	cd /home/rafael/UR3/catkin_ur3/build && $(MAKE) -f CMakeFiles/Makefile2 ur3/CMakeFiles/ur3_generate_messages_eus.dir/rule
+.PHONY : ur3/CMakeFiles/ur3_generate_messages_eus.dir/rule
+
+# Convenience name for target.
+ur3_generate_messages_eus: ur3/CMakeFiles/ur3_generate_messages_eus.dir/rule
+
+.PHONY : ur3_generate_messages_eus
+
+# fast build rule for target.
+ur3_generate_messages_eus/fast:
+	cd /home/rafael/UR3/catkin_ur3/build && $(MAKE) -f ur3/CMakeFiles/ur3_generate_messages_eus.dir/build.make ur3/CMakeFiles/ur3_generate_messages_eus.dir/build
+.PHONY : ur3_generate_messages_eus/fast
+
+# Convenience name for target.
+ur3/CMakeFiles/ur3_gencpp.dir/rule:
+	cd /home/rafael/UR3/catkin_ur3/build && $(MAKE) -f CMakeFiles/Makefile2 ur3/CMakeFiles/ur3_gencpp.dir/rule
+.PHONY : ur3/CMakeFiles/ur3_gencpp.dir/rule
+
+# Convenience name for target.
+ur3_gencpp: ur3/CMakeFiles/ur3_gencpp.dir/rule
+
+.PHONY : ur3_gencpp
+
+# fast build rule for target.
+ur3_gencpp/fast:
+	cd /home/rafael/UR3/catkin_ur3/build && $(MAKE) -f ur3/CMakeFiles/ur3_gencpp.dir/build.make ur3/CMakeFiles/ur3_gencpp.dir/build
+.PHONY : ur3_gencpp/fast
+
+# Convenience name for target.
+ur3/CMakeFiles/ur3_generate_messages_cpp.dir/rule:
+	cd /home/rafael/UR3/catkin_ur3/build && $(MAKE) -f CMakeFiles/Makefile2 ur3/CMakeFiles/ur3_generate_messages_cpp.dir/rule
+.PHONY : ur3/CMakeFiles/ur3_generate_messages_cpp.dir/rule
+
+# Convenience name for target.
+ur3_generate_messages_cpp: ur3/CMakeFiles/ur3_generate_messages_cpp.dir/rule
+
+.PHONY : ur3_generate_messages_cpp
+
+# fast build rule for target.
+ur3_generate_messages_cpp/fast:
+	cd /home/rafael/UR3/catkin_ur3/build && $(MAKE) -f ur3/CMakeFiles/ur3_generate_messages_cpp.dir/build.make ur3/CMakeFiles/ur3_generate_messages_cpp.dir/build
+.PHONY : ur3_generate_messages_cpp/fast
+
+# Convenience name for target.
+ur3/CMakeFiles/_ur3_generate_messages_check_deps_arm_msg.dir/rule:
+	cd /home/rafael/UR3/catkin_ur3/build && $(MAKE) -f CMakeFiles/Makefile2 ur3/CMakeFiles/_ur3_generate_messages_check_deps_arm_msg.dir/rule
+.PHONY : ur3/CMakeFiles/_ur3_generate_messages_check_deps_arm_msg.dir/rule
+
+# Convenience name for target.
+_ur3_generate_messages_check_deps_arm_msg: ur3/CMakeFiles/_ur3_generate_messages_check_deps_arm_msg.dir/rule
+
+.PHONY : _ur3_generate_messages_check_deps_arm_msg
+
+# fast build rule for target.
+_ur3_generate_messages_check_deps_arm_msg/fast:
+	cd /home/rafael/UR3/catkin_ur3/build && $(MAKE) -f ur3/CMakeFiles/_ur3_generate_messages_check_deps_arm_msg.dir/build.make ur3/CMakeFiles/_ur3_generate_messages_check_deps_arm_msg.dir/build
+.PHONY : _ur3_generate_messages_check_deps_arm_msg/fast
+
+# Convenience name for target.
+ur3/CMakeFiles/_ur3_generate_messages_check_deps_gripper_msg.dir/rule:
+	cd /home/rafael/UR3/catkin_ur3/build && $(MAKE) -f CMakeFiles/Makefile2 ur3/CMakeFiles/_ur3_generate_messages_check_deps_gripper_msg.dir/rule
+.PHONY : ur3/CMakeFiles/_ur3_generate_messages_check_deps_gripper_msg.dir/rule
+
+# Convenience name for target.
+_ur3_generate_messages_check_deps_gripper_msg: ur3/CMakeFiles/_ur3_generate_messages_check_deps_gripper_msg.dir/rule
+
+.PHONY : _ur3_generate_messages_check_deps_gripper_msg
+
+# fast build rule for target.
+_ur3_generate_messages_check_deps_gripper_msg/fast:
+	cd /home/rafael/UR3/catkin_ur3/build && $(MAKE) -f ur3/CMakeFiles/_ur3_generate_messages_check_deps_gripper_msg.dir/build.make ur3/CMakeFiles/_ur3_generate_messages_check_deps_gripper_msg.dir/build
+.PHONY : _ur3_generate_messages_check_deps_gripper_msg/fast
+
+# Convenience name for target.
 ur3/CMakeFiles/std_msgs_generate_messages_py.dir/rule:
 	cd /home/rafael/UR3/catkin_ur3/build && $(MAKE) -f CMakeFiles/Makefile2 ur3/CMakeFiles/std_msgs_generate_messages_py.dir/rule
 .PHONY : ur3/CMakeFiles/std_msgs_generate_messages_py.dir/rule
@@ -198,19 +393,19 @@ std_msgs_generate_messages_nodejs/fast:
 .PHONY : std_msgs_generate_messages_nodejs/fast
 
 # Convenience name for target.
-ur3/CMakeFiles/std_msgs_generate_messages_eus.dir/rule:
-	cd /home/rafael/UR3/catkin_ur3/build && $(MAKE) -f CMakeFiles/Makefile2 ur3/CMakeFiles/std_msgs_generate_messages_eus.dir/rule
-.PHONY : ur3/CMakeFiles/std_msgs_generate_messages_eus.dir/rule
+ur3/CMakeFiles/rosgraph_msgs_generate_messages_nodejs.dir/rule:
+	cd /home/rafael/UR3/catkin_ur3/build && $(MAKE) -f CMakeFiles/Makefile2 ur3/CMakeFiles/rosgraph_msgs_generate_messages_nodejs.dir/rule
+.PHONY : ur3/CMakeFiles/rosgraph_msgs_generate_messages_nodejs.dir/rule
 
 # Convenience name for target.
-std_msgs_generate_messages_eus: ur3/CMakeFiles/std_msgs_generate_messages_eus.dir/rule
+rosgraph_msgs_generate_messages_nodejs: ur3/CMakeFiles/rosgraph_msgs_generate_messages_nodejs.dir/rule
 
-.PHONY : std_msgs_generate_messages_eus
+.PHONY : rosgraph_msgs_generate_messages_nodejs
 
 # fast build rule for target.
-std_msgs_generate_messages_eus/fast:
-	cd /home/rafael/UR3/catkin_ur3/build && $(MAKE) -f ur3/CMakeFiles/std_msgs_generate_messages_eus.dir/build.make ur3/CMakeFiles/std_msgs_generate_messages_eus.dir/build
-.PHONY : std_msgs_generate_messages_eus/fast
+rosgraph_msgs_generate_messages_nodejs/fast:
+	cd /home/rafael/UR3/catkin_ur3/build && $(MAKE) -f ur3/CMakeFiles/rosgraph_msgs_generate_messages_nodejs.dir/build.make ur3/CMakeFiles/rosgraph_msgs_generate_messages_nodejs.dir/build
+.PHONY : rosgraph_msgs_generate_messages_nodejs/fast
 
 # Convenience name for target.
 ur3/CMakeFiles/rosgraph_msgs_generate_messages_py.dir/rule:
@@ -228,49 +423,64 @@ rosgraph_msgs_generate_messages_py/fast:
 .PHONY : rosgraph_msgs_generate_messages_py/fast
 
 # Convenience name for target.
-ur3/CMakeFiles/rosgraph_msgs_generate_messages_nodejs.dir/rule:
-	cd /home/rafael/UR3/catkin_ur3/build && $(MAKE) -f CMakeFiles/Makefile2 ur3/CMakeFiles/rosgraph_msgs_generate_messages_nodejs.dir/rule
-.PHONY : ur3/CMakeFiles/rosgraph_msgs_generate_messages_nodejs.dir/rule
+ur3/CMakeFiles/control_msgs_generate_messages_py.dir/rule:
+	cd /home/rafael/UR3/catkin_ur3/build && $(MAKE) -f CMakeFiles/Makefile2 ur3/CMakeFiles/control_msgs_generate_messages_py.dir/rule
+.PHONY : ur3/CMakeFiles/control_msgs_generate_messages_py.dir/rule
 
 # Convenience name for target.
-rosgraph_msgs_generate_messages_nodejs: ur3/CMakeFiles/rosgraph_msgs_generate_messages_nodejs.dir/rule
+control_msgs_generate_messages_py: ur3/CMakeFiles/control_msgs_generate_messages_py.dir/rule
 
-.PHONY : rosgraph_msgs_generate_messages_nodejs
+.PHONY : control_msgs_generate_messages_py
 
 # fast build rule for target.
-rosgraph_msgs_generate_messages_nodejs/fast:
-	cd /home/rafael/UR3/catkin_ur3/build && $(MAKE) -f ur3/CMakeFiles/rosgraph_msgs_generate_messages_nodejs.dir/build.make ur3/CMakeFiles/rosgraph_msgs_generate_messages_nodejs.dir/build
-.PHONY : rosgraph_msgs_generate_messages_nodejs/fast
+control_msgs_generate_messages_py/fast:
+	cd /home/rafael/UR3/catkin_ur3/build && $(MAKE) -f ur3/CMakeFiles/control_msgs_generate_messages_py.dir/build.make ur3/CMakeFiles/control_msgs_generate_messages_py.dir/build
+.PHONY : control_msgs_generate_messages_py/fast
 
 # Convenience name for target.
-ur3/CMakeFiles/ur3_gencpp.dir/rule:
-	cd /home/rafael/UR3/catkin_ur3/build && $(MAKE) -f CMakeFiles/Makefile2 ur3/CMakeFiles/ur3_gencpp.dir/rule
-.PHONY : ur3/CMakeFiles/ur3_gencpp.dir/rule
+ur3/CMakeFiles/actionlib_msgs_generate_messages_nodejs.dir/rule:
+	cd /home/rafael/UR3/catkin_ur3/build && $(MAKE) -f CMakeFiles/Makefile2 ur3/CMakeFiles/actionlib_msgs_generate_messages_nodejs.dir/rule
+.PHONY : ur3/CMakeFiles/actionlib_msgs_generate_messages_nodejs.dir/rule
 
 # Convenience name for target.
-ur3_gencpp: ur3/CMakeFiles/ur3_gencpp.dir/rule
+actionlib_msgs_generate_messages_nodejs: ur3/CMakeFiles/actionlib_msgs_generate_messages_nodejs.dir/rule
 
-.PHONY : ur3_gencpp
+.PHONY : actionlib_msgs_generate_messages_nodejs
 
 # fast build rule for target.
-ur3_gencpp/fast:
-	cd /home/rafael/UR3/catkin_ur3/build && $(MAKE) -f ur3/CMakeFiles/ur3_gencpp.dir/build.make ur3/CMakeFiles/ur3_gencpp.dir/build
-.PHONY : ur3_gencpp/fast
+actionlib_msgs_generate_messages_nodejs/fast:
+	cd /home/rafael/UR3/catkin_ur3/build && $(MAKE) -f ur3/CMakeFiles/actionlib_msgs_generate_messages_nodejs.dir/build.make ur3/CMakeFiles/actionlib_msgs_generate_messages_nodejs.dir/build
+.PHONY : actionlib_msgs_generate_messages_nodejs/fast
 
 # Convenience name for target.
-ur3/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/rule:
-	cd /home/rafael/UR3/catkin_ur3/build && $(MAKE) -f CMakeFiles/Makefile2 ur3/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/rule
-.PHONY : ur3/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/rule
+ur3/CMakeFiles/std_msgs_generate_messages_eus.dir/rule:
+	cd /home/rafael/UR3/catkin_ur3/build && $(MAKE) -f CMakeFiles/Makefile2 ur3/CMakeFiles/std_msgs_generate_messages_eus.dir/rule
+.PHONY : ur3/CMakeFiles/std_msgs_generate_messages_eus.dir/rule
 
 # Convenience name for target.
-rosgraph_msgs_generate_messages_cpp: ur3/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/rule
+std_msgs_generate_messages_eus: ur3/CMakeFiles/std_msgs_generate_messages_eus.dir/rule
 
-.PHONY : rosgraph_msgs_generate_messages_cpp
+.PHONY : std_msgs_generate_messages_eus
 
 # fast build rule for target.
-rosgraph_msgs_generate_messages_cpp/fast:
-	cd /home/rafael/UR3/catkin_ur3/build && $(MAKE) -f ur3/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/build.make ur3/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/build
-.PHONY : rosgraph_msgs_generate_messages_cpp/fast
+std_msgs_generate_messages_eus/fast:
+	cd /home/rafael/UR3/catkin_ur3/build && $(MAKE) -f ur3/CMakeFiles/std_msgs_generate_messages_eus.dir/build.make ur3/CMakeFiles/std_msgs_generate_messages_eus.dir/build
+.PHONY : std_msgs_generate_messages_eus/fast
+
+# Convenience name for target.
+ur3/CMakeFiles/trajectory_msgs_generate_messages_py.dir/rule:
+	cd /home/rafael/UR3/catkin_ur3/build && $(MAKE) -f CMakeFiles/Makefile2 ur3/CMakeFiles/trajectory_msgs_generate_messages_py.dir/rule
+.PHONY : ur3/CMakeFiles/trajectory_msgs_generate_messages_py.dir/rule
+
+# Convenience name for target.
+trajectory_msgs_generate_messages_py: ur3/CMakeFiles/trajectory_msgs_generate_messages_py.dir/rule
+
+.PHONY : trajectory_msgs_generate_messages_py
+
+# fast build rule for target.
+trajectory_msgs_generate_messages_py/fast:
+	cd /home/rafael/UR3/catkin_ur3/build && $(MAKE) -f ur3/CMakeFiles/trajectory_msgs_generate_messages_py.dir/build.make ur3/CMakeFiles/trajectory_msgs_generate_messages_py.dir/build
+.PHONY : trajectory_msgs_generate_messages_py/fast
 
 # Convenience name for target.
 ur3/CMakeFiles/std_msgs_generate_messages_cpp.dir/rule:
@@ -288,64 +498,19 @@ std_msgs_generate_messages_cpp/fast:
 .PHONY : std_msgs_generate_messages_cpp/fast
 
 # Convenience name for target.
-ur3/CMakeFiles/ur3_generate_messages.dir/rule:
-	cd /home/rafael/UR3/catkin_ur3/build && $(MAKE) -f CMakeFiles/Makefile2 ur3/CMakeFiles/ur3_generate_messages.dir/rule
-.PHONY : ur3/CMakeFiles/ur3_generate_messages.dir/rule
+ur3/CMakeFiles/control_msgs_generate_messages_cpp.dir/rule:
+	cd /home/rafael/UR3/catkin_ur3/build && $(MAKE) -f CMakeFiles/Makefile2 ur3/CMakeFiles/control_msgs_generate_messages_cpp.dir/rule
+.PHONY : ur3/CMakeFiles/control_msgs_generate_messages_cpp.dir/rule
 
 # Convenience name for target.
-ur3_generate_messages: ur3/CMakeFiles/ur3_generate_messages.dir/rule
+control_msgs_generate_messages_cpp: ur3/CMakeFiles/control_msgs_generate_messages_cpp.dir/rule
 
-.PHONY : ur3_generate_messages
+.PHONY : control_msgs_generate_messages_cpp
 
 # fast build rule for target.
-ur3_generate_messages/fast:
-	cd /home/rafael/UR3/catkin_ur3/build && $(MAKE) -f ur3/CMakeFiles/ur3_generate_messages.dir/build.make ur3/CMakeFiles/ur3_generate_messages.dir/build
-.PHONY : ur3_generate_messages/fast
-
-# Convenience name for target.
-ur3/CMakeFiles/rosgraph_msgs_generate_messages_lisp.dir/rule:
-	cd /home/rafael/UR3/catkin_ur3/build && $(MAKE) -f CMakeFiles/Makefile2 ur3/CMakeFiles/rosgraph_msgs_generate_messages_lisp.dir/rule
-.PHONY : ur3/CMakeFiles/rosgraph_msgs_generate_messages_lisp.dir/rule
-
-# Convenience name for target.
-rosgraph_msgs_generate_messages_lisp: ur3/CMakeFiles/rosgraph_msgs_generate_messages_lisp.dir/rule
-
-.PHONY : rosgraph_msgs_generate_messages_lisp
-
-# fast build rule for target.
-rosgraph_msgs_generate_messages_lisp/fast:
-	cd /home/rafael/UR3/catkin_ur3/build && $(MAKE) -f ur3/CMakeFiles/rosgraph_msgs_generate_messages_lisp.dir/build.make ur3/CMakeFiles/rosgraph_msgs_generate_messages_lisp.dir/build
-.PHONY : rosgraph_msgs_generate_messages_lisp/fast
-
-# Convenience name for target.
-ur3/CMakeFiles/_ur3_generate_messages_check_deps_arm_msg.dir/rule:
-	cd /home/rafael/UR3/catkin_ur3/build && $(MAKE) -f CMakeFiles/Makefile2 ur3/CMakeFiles/_ur3_generate_messages_check_deps_arm_msg.dir/rule
-.PHONY : ur3/CMakeFiles/_ur3_generate_messages_check_deps_arm_msg.dir/rule
-
-# Convenience name for target.
-_ur3_generate_messages_check_deps_arm_msg: ur3/CMakeFiles/_ur3_generate_messages_check_deps_arm_msg.dir/rule
-
-.PHONY : _ur3_generate_messages_check_deps_arm_msg
-
-# fast build rule for target.
-_ur3_generate_messages_check_deps_arm_msg/fast:
-	cd /home/rafael/UR3/catkin_ur3/build && $(MAKE) -f ur3/CMakeFiles/_ur3_generate_messages_check_deps_arm_msg.dir/build.make ur3/CMakeFiles/_ur3_generate_messages_check_deps_arm_msg.dir/build
-.PHONY : _ur3_generate_messages_check_deps_arm_msg/fast
-
-# Convenience name for target.
-ur3/CMakeFiles/ur3_generate_messages_cpp.dir/rule:
-	cd /home/rafael/UR3/catkin_ur3/build && $(MAKE) -f CMakeFiles/Makefile2 ur3/CMakeFiles/ur3_generate_messages_cpp.dir/rule
-.PHONY : ur3/CMakeFiles/ur3_generate_messages_cpp.dir/rule
-
-# Convenience name for target.
-ur3_generate_messages_cpp: ur3/CMakeFiles/ur3_generate_messages_cpp.dir/rule
-
-.PHONY : ur3_generate_messages_cpp
-
-# fast build rule for target.
-ur3_generate_messages_cpp/fast:
-	cd /home/rafael/UR3/catkin_ur3/build && $(MAKE) -f ur3/CMakeFiles/ur3_generate_messages_cpp.dir/build.make ur3/CMakeFiles/ur3_generate_messages_cpp.dir/build
-.PHONY : ur3_generate_messages_cpp/fast
+control_msgs_generate_messages_cpp/fast:
+	cd /home/rafael/UR3/catkin_ur3/build && $(MAKE) -f ur3/CMakeFiles/control_msgs_generate_messages_cpp.dir/build.make ur3/CMakeFiles/control_msgs_generate_messages_cpp.dir/build
+.PHONY : control_msgs_generate_messages_cpp/fast
 
 # Convenience name for target.
 ur3/CMakeFiles/rosgraph_msgs_generate_messages_eus.dir/rule:
@@ -363,6 +528,36 @@ rosgraph_msgs_generate_messages_eus/fast:
 .PHONY : rosgraph_msgs_generate_messages_eus/fast
 
 # Convenience name for target.
+ur3/CMakeFiles/actionlib_msgs_generate_messages_cpp.dir/rule:
+	cd /home/rafael/UR3/catkin_ur3/build && $(MAKE) -f CMakeFiles/Makefile2 ur3/CMakeFiles/actionlib_msgs_generate_messages_cpp.dir/rule
+.PHONY : ur3/CMakeFiles/actionlib_msgs_generate_messages_cpp.dir/rule
+
+# Convenience name for target.
+actionlib_msgs_generate_messages_cpp: ur3/CMakeFiles/actionlib_msgs_generate_messages_cpp.dir/rule
+
+.PHONY : actionlib_msgs_generate_messages_cpp
+
+# fast build rule for target.
+actionlib_msgs_generate_messages_cpp/fast:
+	cd /home/rafael/UR3/catkin_ur3/build && $(MAKE) -f ur3/CMakeFiles/actionlib_msgs_generate_messages_cpp.dir/build.make ur3/CMakeFiles/actionlib_msgs_generate_messages_cpp.dir/build
+.PHONY : actionlib_msgs_generate_messages_cpp/fast
+
+# Convenience name for target.
+ur3/CMakeFiles/roscpp_generate_messages_cpp.dir/rule:
+	cd /home/rafael/UR3/catkin_ur3/build && $(MAKE) -f CMakeFiles/Makefile2 ur3/CMakeFiles/roscpp_generate_messages_cpp.dir/rule
+.PHONY : ur3/CMakeFiles/roscpp_generate_messages_cpp.dir/rule
+
+# Convenience name for target.
+roscpp_generate_messages_cpp: ur3/CMakeFiles/roscpp_generate_messages_cpp.dir/rule
+
+.PHONY : roscpp_generate_messages_cpp
+
+# fast build rule for target.
+roscpp_generate_messages_cpp/fast:
+	cd /home/rafael/UR3/catkin_ur3/build && $(MAKE) -f ur3/CMakeFiles/roscpp_generate_messages_cpp.dir/build.make ur3/CMakeFiles/roscpp_generate_messages_cpp.dir/build
+.PHONY : roscpp_generate_messages_cpp/fast
+
+# Convenience name for target.
 ur3/CMakeFiles/std_msgs_generate_messages_lisp.dir/rule:
 	cd /home/rafael/UR3/catkin_ur3/build && $(MAKE) -f CMakeFiles/Makefile2 ur3/CMakeFiles/std_msgs_generate_messages_lisp.dir/rule
 .PHONY : ur3/CMakeFiles/std_msgs_generate_messages_lisp.dir/rule
@@ -378,19 +573,109 @@ std_msgs_generate_messages_lisp/fast:
 .PHONY : std_msgs_generate_messages_lisp/fast
 
 # Convenience name for target.
-ur3/CMakeFiles/ur3_generate_messages_eus.dir/rule:
-	cd /home/rafael/UR3/catkin_ur3/build && $(MAKE) -f CMakeFiles/Makefile2 ur3/CMakeFiles/ur3_generate_messages_eus.dir/rule
-.PHONY : ur3/CMakeFiles/ur3_generate_messages_eus.dir/rule
+ur3/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/rule:
+	cd /home/rafael/UR3/catkin_ur3/build && $(MAKE) -f CMakeFiles/Makefile2 ur3/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/rule
+.PHONY : ur3/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/rule
 
 # Convenience name for target.
-ur3_generate_messages_eus: ur3/CMakeFiles/ur3_generate_messages_eus.dir/rule
+rosgraph_msgs_generate_messages_cpp: ur3/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/rule
 
-.PHONY : ur3_generate_messages_eus
+.PHONY : rosgraph_msgs_generate_messages_cpp
 
 # fast build rule for target.
-ur3_generate_messages_eus/fast:
-	cd /home/rafael/UR3/catkin_ur3/build && $(MAKE) -f ur3/CMakeFiles/ur3_generate_messages_eus.dir/build.make ur3/CMakeFiles/ur3_generate_messages_eus.dir/build
-.PHONY : ur3_generate_messages_eus/fast
+rosgraph_msgs_generate_messages_cpp/fast:
+	cd /home/rafael/UR3/catkin_ur3/build && $(MAKE) -f ur3/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/build.make ur3/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/build
+.PHONY : rosgraph_msgs_generate_messages_cpp/fast
+
+# Convenience name for target.
+ur3/CMakeFiles/rosgraph_msgs_generate_messages_lisp.dir/rule:
+	cd /home/rafael/UR3/catkin_ur3/build && $(MAKE) -f CMakeFiles/Makefile2 ur3/CMakeFiles/rosgraph_msgs_generate_messages_lisp.dir/rule
+.PHONY : ur3/CMakeFiles/rosgraph_msgs_generate_messages_lisp.dir/rule
+
+# Convenience name for target.
+rosgraph_msgs_generate_messages_lisp: ur3/CMakeFiles/rosgraph_msgs_generate_messages_lisp.dir/rule
+
+.PHONY : rosgraph_msgs_generate_messages_lisp
+
+# fast build rule for target.
+rosgraph_msgs_generate_messages_lisp/fast:
+	cd /home/rafael/UR3/catkin_ur3/build && $(MAKE) -f ur3/CMakeFiles/rosgraph_msgs_generate_messages_lisp.dir/build.make ur3/CMakeFiles/rosgraph_msgs_generate_messages_lisp.dir/build
+.PHONY : rosgraph_msgs_generate_messages_lisp/fast
+
+# Convenience name for target.
+ur3/CMakeFiles/ur3_generate_messages.dir/rule:
+	cd /home/rafael/UR3/catkin_ur3/build && $(MAKE) -f CMakeFiles/Makefile2 ur3/CMakeFiles/ur3_generate_messages.dir/rule
+.PHONY : ur3/CMakeFiles/ur3_generate_messages.dir/rule
+
+# Convenience name for target.
+ur3_generate_messages: ur3/CMakeFiles/ur3_generate_messages.dir/rule
+
+.PHONY : ur3_generate_messages
+
+# fast build rule for target.
+ur3_generate_messages/fast:
+	cd /home/rafael/UR3/catkin_ur3/build && $(MAKE) -f ur3/CMakeFiles/ur3_generate_messages.dir/build.make ur3/CMakeFiles/ur3_generate_messages.dir/build
+.PHONY : ur3_generate_messages/fast
+
+# Convenience name for target.
+ur3/CMakeFiles/ur3_generate_messages_py.dir/rule:
+	cd /home/rafael/UR3/catkin_ur3/build && $(MAKE) -f CMakeFiles/Makefile2 ur3/CMakeFiles/ur3_generate_messages_py.dir/rule
+.PHONY : ur3/CMakeFiles/ur3_generate_messages_py.dir/rule
+
+# Convenience name for target.
+ur3_generate_messages_py: ur3/CMakeFiles/ur3_generate_messages_py.dir/rule
+
+.PHONY : ur3_generate_messages_py
+
+# fast build rule for target.
+ur3_generate_messages_py/fast:
+	cd /home/rafael/UR3/catkin_ur3/build && $(MAKE) -f ur3/CMakeFiles/ur3_generate_messages_py.dir/build.make ur3/CMakeFiles/ur3_generate_messages_py.dir/build
+.PHONY : ur3_generate_messages_py/fast
+
+# Convenience name for target.
+ur3/CMakeFiles/roscpp_generate_messages_lisp.dir/rule:
+	cd /home/rafael/UR3/catkin_ur3/build && $(MAKE) -f CMakeFiles/Makefile2 ur3/CMakeFiles/roscpp_generate_messages_lisp.dir/rule
+.PHONY : ur3/CMakeFiles/roscpp_generate_messages_lisp.dir/rule
+
+# Convenience name for target.
+roscpp_generate_messages_lisp: ur3/CMakeFiles/roscpp_generate_messages_lisp.dir/rule
+
+.PHONY : roscpp_generate_messages_lisp
+
+# fast build rule for target.
+roscpp_generate_messages_lisp/fast:
+	cd /home/rafael/UR3/catkin_ur3/build && $(MAKE) -f ur3/CMakeFiles/roscpp_generate_messages_lisp.dir/build.make ur3/CMakeFiles/roscpp_generate_messages_lisp.dir/build
+.PHONY : roscpp_generate_messages_lisp/fast
+
+# Convenience name for target.
+ur3/CMakeFiles/control_msgs_generate_messages_nodejs.dir/rule:
+	cd /home/rafael/UR3/catkin_ur3/build && $(MAKE) -f CMakeFiles/Makefile2 ur3/CMakeFiles/control_msgs_generate_messages_nodejs.dir/rule
+.PHONY : ur3/CMakeFiles/control_msgs_generate_messages_nodejs.dir/rule
+
+# Convenience name for target.
+control_msgs_generate_messages_nodejs: ur3/CMakeFiles/control_msgs_generate_messages_nodejs.dir/rule
+
+.PHONY : control_msgs_generate_messages_nodejs
+
+# fast build rule for target.
+control_msgs_generate_messages_nodejs/fast:
+	cd /home/rafael/UR3/catkin_ur3/build && $(MAKE) -f ur3/CMakeFiles/control_msgs_generate_messages_nodejs.dir/build.make ur3/CMakeFiles/control_msgs_generate_messages_nodejs.dir/build
+.PHONY : control_msgs_generate_messages_nodejs/fast
+
+# Convenience name for target.
+ur3/CMakeFiles/geometry_msgs_generate_messages_nodejs.dir/rule:
+	cd /home/rafael/UR3/catkin_ur3/build && $(MAKE) -f CMakeFiles/Makefile2 ur3/CMakeFiles/geometry_msgs_generate_messages_nodejs.dir/rule
+.PHONY : ur3/CMakeFiles/geometry_msgs_generate_messages_nodejs.dir/rule
+
+# Convenience name for target.
+geometry_msgs_generate_messages_nodejs: ur3/CMakeFiles/geometry_msgs_generate_messages_nodejs.dir/rule
+
+.PHONY : geometry_msgs_generate_messages_nodejs
+
+# fast build rule for target.
+geometry_msgs_generate_messages_nodejs/fast:
+	cd /home/rafael/UR3/catkin_ur3/build && $(MAKE) -f ur3/CMakeFiles/geometry_msgs_generate_messages_nodejs.dir/build.make ur3/CMakeFiles/geometry_msgs_generate_messages_nodejs.dir/build
+.PHONY : geometry_msgs_generate_messages_nodejs/fast
 
 # Convenience name for target.
 ur3/CMakeFiles/roscpp_generate_messages_nodejs.dir/rule:
@@ -423,124 +708,124 @@ roscpp_generate_messages_eus/fast:
 .PHONY : roscpp_generate_messages_eus/fast
 
 # Convenience name for target.
-ur3/CMakeFiles/roscpp_generate_messages_py.dir/rule:
-	cd /home/rafael/UR3/catkin_ur3/build && $(MAKE) -f CMakeFiles/Makefile2 ur3/CMakeFiles/roscpp_generate_messages_py.dir/rule
-.PHONY : ur3/CMakeFiles/roscpp_generate_messages_py.dir/rule
+ur3/CMakeFiles/geometry_msgs_generate_messages_eus.dir/rule:
+	cd /home/rafael/UR3/catkin_ur3/build && $(MAKE) -f CMakeFiles/Makefile2 ur3/CMakeFiles/geometry_msgs_generate_messages_eus.dir/rule
+.PHONY : ur3/CMakeFiles/geometry_msgs_generate_messages_eus.dir/rule
 
 # Convenience name for target.
-roscpp_generate_messages_py: ur3/CMakeFiles/roscpp_generate_messages_py.dir/rule
+geometry_msgs_generate_messages_eus: ur3/CMakeFiles/geometry_msgs_generate_messages_eus.dir/rule
 
-.PHONY : roscpp_generate_messages_py
+.PHONY : geometry_msgs_generate_messages_eus
 
 # fast build rule for target.
-roscpp_generate_messages_py/fast:
-	cd /home/rafael/UR3/catkin_ur3/build && $(MAKE) -f ur3/CMakeFiles/roscpp_generate_messages_py.dir/build.make ur3/CMakeFiles/roscpp_generate_messages_py.dir/build
-.PHONY : roscpp_generate_messages_py/fast
+geometry_msgs_generate_messages_eus/fast:
+	cd /home/rafael/UR3/catkin_ur3/build && $(MAKE) -f ur3/CMakeFiles/geometry_msgs_generate_messages_eus.dir/build.make ur3/CMakeFiles/geometry_msgs_generate_messages_eus.dir/build
+.PHONY : geometry_msgs_generate_messages_eus/fast
 
 # Convenience name for target.
-ur3/CMakeFiles/roscpp_generate_messages_lisp.dir/rule:
-	cd /home/rafael/UR3/catkin_ur3/build && $(MAKE) -f CMakeFiles/Makefile2 ur3/CMakeFiles/roscpp_generate_messages_lisp.dir/rule
-.PHONY : ur3/CMakeFiles/roscpp_generate_messages_lisp.dir/rule
+ur3/CMakeFiles/control_msgs_generate_messages_eus.dir/rule:
+	cd /home/rafael/UR3/catkin_ur3/build && $(MAKE) -f CMakeFiles/Makefile2 ur3/CMakeFiles/control_msgs_generate_messages_eus.dir/rule
+.PHONY : ur3/CMakeFiles/control_msgs_generate_messages_eus.dir/rule
 
 # Convenience name for target.
-roscpp_generate_messages_lisp: ur3/CMakeFiles/roscpp_generate_messages_lisp.dir/rule
+control_msgs_generate_messages_eus: ur3/CMakeFiles/control_msgs_generate_messages_eus.dir/rule
 
-.PHONY : roscpp_generate_messages_lisp
+.PHONY : control_msgs_generate_messages_eus
 
 # fast build rule for target.
-roscpp_generate_messages_lisp/fast:
-	cd /home/rafael/UR3/catkin_ur3/build && $(MAKE) -f ur3/CMakeFiles/roscpp_generate_messages_lisp.dir/build.make ur3/CMakeFiles/roscpp_generate_messages_lisp.dir/build
-.PHONY : roscpp_generate_messages_lisp/fast
+control_msgs_generate_messages_eus/fast:
+	cd /home/rafael/UR3/catkin_ur3/build && $(MAKE) -f ur3/CMakeFiles/control_msgs_generate_messages_eus.dir/build.make ur3/CMakeFiles/control_msgs_generate_messages_eus.dir/build
+.PHONY : control_msgs_generate_messages_eus/fast
 
 # Convenience name for target.
-ur3/CMakeFiles/ur3_generate_messages_py.dir/rule:
-	cd /home/rafael/UR3/catkin_ur3/build && $(MAKE) -f CMakeFiles/Makefile2 ur3/CMakeFiles/ur3_generate_messages_py.dir/rule
-.PHONY : ur3/CMakeFiles/ur3_generate_messages_py.dir/rule
+ur3/CMakeFiles/control_msgs_generate_messages_lisp.dir/rule:
+	cd /home/rafael/UR3/catkin_ur3/build && $(MAKE) -f CMakeFiles/Makefile2 ur3/CMakeFiles/control_msgs_generate_messages_lisp.dir/rule
+.PHONY : ur3/CMakeFiles/control_msgs_generate_messages_lisp.dir/rule
 
 # Convenience name for target.
-ur3_generate_messages_py: ur3/CMakeFiles/ur3_generate_messages_py.dir/rule
+control_msgs_generate_messages_lisp: ur3/CMakeFiles/control_msgs_generate_messages_lisp.dir/rule
 
-.PHONY : ur3_generate_messages_py
+.PHONY : control_msgs_generate_messages_lisp
 
 # fast build rule for target.
-ur3_generate_messages_py/fast:
-	cd /home/rafael/UR3/catkin_ur3/build && $(MAKE) -f ur3/CMakeFiles/ur3_generate_messages_py.dir/build.make ur3/CMakeFiles/ur3_generate_messages_py.dir/build
-.PHONY : ur3_generate_messages_py/fast
+control_msgs_generate_messages_lisp/fast:
+	cd /home/rafael/UR3/catkin_ur3/build && $(MAKE) -f ur3/CMakeFiles/control_msgs_generate_messages_lisp.dir/build.make ur3/CMakeFiles/control_msgs_generate_messages_lisp.dir/build
+.PHONY : control_msgs_generate_messages_lisp/fast
 
 # Convenience name for target.
-ur3/CMakeFiles/ur3_geneus.dir/rule:
-	cd /home/rafael/UR3/catkin_ur3/build && $(MAKE) -f CMakeFiles/Makefile2 ur3/CMakeFiles/ur3_geneus.dir/rule
-.PHONY : ur3/CMakeFiles/ur3_geneus.dir/rule
+ur3/CMakeFiles/actionlib_msgs_generate_messages_eus.dir/rule:
+	cd /home/rafael/UR3/catkin_ur3/build && $(MAKE) -f CMakeFiles/Makefile2 ur3/CMakeFiles/actionlib_msgs_generate_messages_eus.dir/rule
+.PHONY : ur3/CMakeFiles/actionlib_msgs_generate_messages_eus.dir/rule
 
 # Convenience name for target.
-ur3_geneus: ur3/CMakeFiles/ur3_geneus.dir/rule
+actionlib_msgs_generate_messages_eus: ur3/CMakeFiles/actionlib_msgs_generate_messages_eus.dir/rule
 
-.PHONY : ur3_geneus
+.PHONY : actionlib_msgs_generate_messages_eus
 
 # fast build rule for target.
-ur3_geneus/fast:
-	cd /home/rafael/UR3/catkin_ur3/build && $(MAKE) -f ur3/CMakeFiles/ur3_geneus.dir/build.make ur3/CMakeFiles/ur3_geneus.dir/build
-.PHONY : ur3_geneus/fast
+actionlib_msgs_generate_messages_eus/fast:
+	cd /home/rafael/UR3/catkin_ur3/build && $(MAKE) -f ur3/CMakeFiles/actionlib_msgs_generate_messages_eus.dir/build.make ur3/CMakeFiles/actionlib_msgs_generate_messages_eus.dir/build
+.PHONY : actionlib_msgs_generate_messages_eus/fast
 
 # Convenience name for target.
-ur3/CMakeFiles/ur3_generate_messages_lisp.dir/rule:
-	cd /home/rafael/UR3/catkin_ur3/build && $(MAKE) -f CMakeFiles/Makefile2 ur3/CMakeFiles/ur3_generate_messages_lisp.dir/rule
-.PHONY : ur3/CMakeFiles/ur3_generate_messages_lisp.dir/rule
+ur3/CMakeFiles/actionlib_msgs_generate_messages_lisp.dir/rule:
+	cd /home/rafael/UR3/catkin_ur3/build && $(MAKE) -f CMakeFiles/Makefile2 ur3/CMakeFiles/actionlib_msgs_generate_messages_lisp.dir/rule
+.PHONY : ur3/CMakeFiles/actionlib_msgs_generate_messages_lisp.dir/rule
 
 # Convenience name for target.
-ur3_generate_messages_lisp: ur3/CMakeFiles/ur3_generate_messages_lisp.dir/rule
+actionlib_msgs_generate_messages_lisp: ur3/CMakeFiles/actionlib_msgs_generate_messages_lisp.dir/rule
 
-.PHONY : ur3_generate_messages_lisp
+.PHONY : actionlib_msgs_generate_messages_lisp
 
 # fast build rule for target.
-ur3_generate_messages_lisp/fast:
-	cd /home/rafael/UR3/catkin_ur3/build && $(MAKE) -f ur3/CMakeFiles/ur3_generate_messages_lisp.dir/build.make ur3/CMakeFiles/ur3_generate_messages_lisp.dir/build
-.PHONY : ur3_generate_messages_lisp/fast
+actionlib_msgs_generate_messages_lisp/fast:
+	cd /home/rafael/UR3/catkin_ur3/build && $(MAKE) -f ur3/CMakeFiles/actionlib_msgs_generate_messages_lisp.dir/build.make ur3/CMakeFiles/actionlib_msgs_generate_messages_lisp.dir/build
+.PHONY : actionlib_msgs_generate_messages_lisp/fast
 
 # Convenience name for target.
-ur3/CMakeFiles/ur3_genlisp.dir/rule:
-	cd /home/rafael/UR3/catkin_ur3/build && $(MAKE) -f CMakeFiles/Makefile2 ur3/CMakeFiles/ur3_genlisp.dir/rule
-.PHONY : ur3/CMakeFiles/ur3_genlisp.dir/rule
+ur3/CMakeFiles/actionlib_msgs_generate_messages_py.dir/rule:
+	cd /home/rafael/UR3/catkin_ur3/build && $(MAKE) -f CMakeFiles/Makefile2 ur3/CMakeFiles/actionlib_msgs_generate_messages_py.dir/rule
+.PHONY : ur3/CMakeFiles/actionlib_msgs_generate_messages_py.dir/rule
 
 # Convenience name for target.
-ur3_genlisp: ur3/CMakeFiles/ur3_genlisp.dir/rule
+actionlib_msgs_generate_messages_py: ur3/CMakeFiles/actionlib_msgs_generate_messages_py.dir/rule
 
-.PHONY : ur3_genlisp
+.PHONY : actionlib_msgs_generate_messages_py
 
 # fast build rule for target.
-ur3_genlisp/fast:
-	cd /home/rafael/UR3/catkin_ur3/build && $(MAKE) -f ur3/CMakeFiles/ur3_genlisp.dir/build.make ur3/CMakeFiles/ur3_genlisp.dir/build
-.PHONY : ur3_genlisp/fast
+actionlib_msgs_generate_messages_py/fast:
+	cd /home/rafael/UR3/catkin_ur3/build && $(MAKE) -f ur3/CMakeFiles/actionlib_msgs_generate_messages_py.dir/build.make ur3/CMakeFiles/actionlib_msgs_generate_messages_py.dir/build
+.PHONY : actionlib_msgs_generate_messages_py/fast
 
 # Convenience name for target.
-ur3/CMakeFiles/ur3_generate_messages_nodejs.dir/rule:
-	cd /home/rafael/UR3/catkin_ur3/build && $(MAKE) -f CMakeFiles/Makefile2 ur3/CMakeFiles/ur3_generate_messages_nodejs.dir/rule
-.PHONY : ur3/CMakeFiles/ur3_generate_messages_nodejs.dir/rule
+ur3/CMakeFiles/geometry_msgs_generate_messages_cpp.dir/rule:
+	cd /home/rafael/UR3/catkin_ur3/build && $(MAKE) -f CMakeFiles/Makefile2 ur3/CMakeFiles/geometry_msgs_generate_messages_cpp.dir/rule
+.PHONY : ur3/CMakeFiles/geometry_msgs_generate_messages_cpp.dir/rule
 
 # Convenience name for target.
-ur3_generate_messages_nodejs: ur3/CMakeFiles/ur3_generate_messages_nodejs.dir/rule
+geometry_msgs_generate_messages_cpp: ur3/CMakeFiles/geometry_msgs_generate_messages_cpp.dir/rule
 
-.PHONY : ur3_generate_messages_nodejs
+.PHONY : geometry_msgs_generate_messages_cpp
 
 # fast build rule for target.
-ur3_generate_messages_nodejs/fast:
-	cd /home/rafael/UR3/catkin_ur3/build && $(MAKE) -f ur3/CMakeFiles/ur3_generate_messages_nodejs.dir/build.make ur3/CMakeFiles/ur3_generate_messages_nodejs.dir/build
-.PHONY : ur3_generate_messages_nodejs/fast
+geometry_msgs_generate_messages_cpp/fast:
+	cd /home/rafael/UR3/catkin_ur3/build && $(MAKE) -f ur3/CMakeFiles/geometry_msgs_generate_messages_cpp.dir/build.make ur3/CMakeFiles/geometry_msgs_generate_messages_cpp.dir/build
+.PHONY : geometry_msgs_generate_messages_cpp/fast
 
 # Convenience name for target.
-ur3/CMakeFiles/ur3_gennodejs.dir/rule:
-	cd /home/rafael/UR3/catkin_ur3/build && $(MAKE) -f CMakeFiles/Makefile2 ur3/CMakeFiles/ur3_gennodejs.dir/rule
-.PHONY : ur3/CMakeFiles/ur3_gennodejs.dir/rule
+ur3/CMakeFiles/geometry_msgs_generate_messages_lisp.dir/rule:
+	cd /home/rafael/UR3/catkin_ur3/build && $(MAKE) -f CMakeFiles/Makefile2 ur3/CMakeFiles/geometry_msgs_generate_messages_lisp.dir/rule
+.PHONY : ur3/CMakeFiles/geometry_msgs_generate_messages_lisp.dir/rule
 
 # Convenience name for target.
-ur3_gennodejs: ur3/CMakeFiles/ur3_gennodejs.dir/rule
+geometry_msgs_generate_messages_lisp: ur3/CMakeFiles/geometry_msgs_generate_messages_lisp.dir/rule
 
-.PHONY : ur3_gennodejs
+.PHONY : geometry_msgs_generate_messages_lisp
 
 # fast build rule for target.
-ur3_gennodejs/fast:
-	cd /home/rafael/UR3/catkin_ur3/build && $(MAKE) -f ur3/CMakeFiles/ur3_gennodejs.dir/build.make ur3/CMakeFiles/ur3_gennodejs.dir/build
-.PHONY : ur3_gennodejs/fast
+geometry_msgs_generate_messages_lisp/fast:
+	cd /home/rafael/UR3/catkin_ur3/build && $(MAKE) -f ur3/CMakeFiles/geometry_msgs_generate_messages_lisp.dir/build.make ur3/CMakeFiles/geometry_msgs_generate_messages_lisp.dir/build
+.PHONY : geometry_msgs_generate_messages_lisp/fast
 
 # Convenience name for target.
 ur3/CMakeFiles/ur3_genpy.dir/rule:
@@ -558,64 +843,94 @@ ur3_genpy/fast:
 .PHONY : ur3_genpy/fast
 
 # Convenience name for target.
-ur3/CMakeFiles/open_socket.dir/rule:
-	cd /home/rafael/UR3/catkin_ur3/build && $(MAKE) -f CMakeFiles/Makefile2 ur3/CMakeFiles/open_socket.dir/rule
-.PHONY : ur3/CMakeFiles/open_socket.dir/rule
+ur3/CMakeFiles/ur3_gennodejs.dir/rule:
+	cd /home/rafael/UR3/catkin_ur3/build && $(MAKE) -f CMakeFiles/Makefile2 ur3/CMakeFiles/ur3_gennodejs.dir/rule
+.PHONY : ur3/CMakeFiles/ur3_gennodejs.dir/rule
 
 # Convenience name for target.
-open_socket: ur3/CMakeFiles/open_socket.dir/rule
+ur3_gennodejs: ur3/CMakeFiles/ur3_gennodejs.dir/rule
 
-.PHONY : open_socket
+.PHONY : ur3_gennodejs
 
 # fast build rule for target.
-open_socket/fast:
-	cd /home/rafael/UR3/catkin_ur3/build && $(MAKE) -f ur3/CMakeFiles/open_socket.dir/build.make ur3/CMakeFiles/open_socket.dir/build
-.PHONY : open_socket/fast
+ur3_gennodejs/fast:
+	cd /home/rafael/UR3/catkin_ur3/build && $(MAKE) -f ur3/CMakeFiles/ur3_gennodejs.dir/build.make ur3/CMakeFiles/ur3_gennodejs.dir/build
+.PHONY : ur3_gennodejs/fast
 
 # Convenience name for target.
-ur3/CMakeFiles/send_script.dir/rule:
-	cd /home/rafael/UR3/catkin_ur3/build && $(MAKE) -f CMakeFiles/Makefile2 ur3/CMakeFiles/send_script.dir/rule
-.PHONY : ur3/CMakeFiles/send_script.dir/rule
+ur3/CMakeFiles/geometry_msgs_generate_messages_py.dir/rule:
+	cd /home/rafael/UR3/catkin_ur3/build && $(MAKE) -f CMakeFiles/Makefile2 ur3/CMakeFiles/geometry_msgs_generate_messages_py.dir/rule
+.PHONY : ur3/CMakeFiles/geometry_msgs_generate_messages_py.dir/rule
 
 # Convenience name for target.
-send_script: ur3/CMakeFiles/send_script.dir/rule
+geometry_msgs_generate_messages_py: ur3/CMakeFiles/geometry_msgs_generate_messages_py.dir/rule
 
-.PHONY : send_script
+.PHONY : geometry_msgs_generate_messages_py
 
 # fast build rule for target.
-send_script/fast:
-	cd /home/rafael/UR3/catkin_ur3/build && $(MAKE) -f ur3/CMakeFiles/send_script.dir/build.make ur3/CMakeFiles/send_script.dir/build
-.PHONY : send_script/fast
+geometry_msgs_generate_messages_py/fast:
+	cd /home/rafael/UR3/catkin_ur3/build && $(MAKE) -f ur3/CMakeFiles/geometry_msgs_generate_messages_py.dir/build.make ur3/CMakeFiles/geometry_msgs_generate_messages_py.dir/build
+.PHONY : geometry_msgs_generate_messages_py/fast
 
 # Convenience name for target.
-ur3/CMakeFiles/join_data.dir/rule:
-	cd /home/rafael/UR3/catkin_ur3/build && $(MAKE) -f CMakeFiles/Makefile2 ur3/CMakeFiles/join_data.dir/rule
-.PHONY : ur3/CMakeFiles/join_data.dir/rule
+ur3/CMakeFiles/trajectory_msgs_generate_messages_cpp.dir/rule:
+	cd /home/rafael/UR3/catkin_ur3/build && $(MAKE) -f CMakeFiles/Makefile2 ur3/CMakeFiles/trajectory_msgs_generate_messages_cpp.dir/rule
+.PHONY : ur3/CMakeFiles/trajectory_msgs_generate_messages_cpp.dir/rule
 
 # Convenience name for target.
-join_data: ur3/CMakeFiles/join_data.dir/rule
+trajectory_msgs_generate_messages_cpp: ur3/CMakeFiles/trajectory_msgs_generate_messages_cpp.dir/rule
 
-.PHONY : join_data
+.PHONY : trajectory_msgs_generate_messages_cpp
 
 # fast build rule for target.
-join_data/fast:
-	cd /home/rafael/UR3/catkin_ur3/build && $(MAKE) -f ur3/CMakeFiles/join_data.dir/build.make ur3/CMakeFiles/join_data.dir/build
-.PHONY : join_data/fast
+trajectory_msgs_generate_messages_cpp/fast:
+	cd /home/rafael/UR3/catkin_ur3/build && $(MAKE) -f ur3/CMakeFiles/trajectory_msgs_generate_messages_cpp.dir/build.make ur3/CMakeFiles/trajectory_msgs_generate_messages_cpp.dir/build
+.PHONY : trajectory_msgs_generate_messages_cpp/fast
 
 # Convenience name for target.
-ur3/CMakeFiles/reverse_word.dir/rule:
-	cd /home/rafael/UR3/catkin_ur3/build && $(MAKE) -f CMakeFiles/Makefile2 ur3/CMakeFiles/reverse_word.dir/rule
-.PHONY : ur3/CMakeFiles/reverse_word.dir/rule
+ur3/CMakeFiles/roscpp_generate_messages_py.dir/rule:
+	cd /home/rafael/UR3/catkin_ur3/build && $(MAKE) -f CMakeFiles/Makefile2 ur3/CMakeFiles/roscpp_generate_messages_py.dir/rule
+.PHONY : ur3/CMakeFiles/roscpp_generate_messages_py.dir/rule
 
 # Convenience name for target.
-reverse_word: ur3/CMakeFiles/reverse_word.dir/rule
+roscpp_generate_messages_py: ur3/CMakeFiles/roscpp_generate_messages_py.dir/rule
 
-.PHONY : reverse_word
+.PHONY : roscpp_generate_messages_py
 
 # fast build rule for target.
-reverse_word/fast:
-	cd /home/rafael/UR3/catkin_ur3/build && $(MAKE) -f ur3/CMakeFiles/reverse_word.dir/build.make ur3/CMakeFiles/reverse_word.dir/build
-.PHONY : reverse_word/fast
+roscpp_generate_messages_py/fast:
+	cd /home/rafael/UR3/catkin_ur3/build && $(MAKE) -f ur3/CMakeFiles/roscpp_generate_messages_py.dir/build.make ur3/CMakeFiles/roscpp_generate_messages_py.dir/build
+.PHONY : roscpp_generate_messages_py/fast
+
+# Convenience name for target.
+ur3/CMakeFiles/trajectory_msgs_generate_messages_eus.dir/rule:
+	cd /home/rafael/UR3/catkin_ur3/build && $(MAKE) -f CMakeFiles/Makefile2 ur3/CMakeFiles/trajectory_msgs_generate_messages_eus.dir/rule
+.PHONY : ur3/CMakeFiles/trajectory_msgs_generate_messages_eus.dir/rule
+
+# Convenience name for target.
+trajectory_msgs_generate_messages_eus: ur3/CMakeFiles/trajectory_msgs_generate_messages_eus.dir/rule
+
+.PHONY : trajectory_msgs_generate_messages_eus
+
+# fast build rule for target.
+trajectory_msgs_generate_messages_eus/fast:
+	cd /home/rafael/UR3/catkin_ur3/build && $(MAKE) -f ur3/CMakeFiles/trajectory_msgs_generate_messages_eus.dir/build.make ur3/CMakeFiles/trajectory_msgs_generate_messages_eus.dir/build
+.PHONY : trajectory_msgs_generate_messages_eus/fast
+
+# Convenience name for target.
+ur3/CMakeFiles/trajectory_msgs_generate_messages_lisp.dir/rule:
+	cd /home/rafael/UR3/catkin_ur3/build && $(MAKE) -f CMakeFiles/Makefile2 ur3/CMakeFiles/trajectory_msgs_generate_messages_lisp.dir/rule
+.PHONY : ur3/CMakeFiles/trajectory_msgs_generate_messages_lisp.dir/rule
+
+# Convenience name for target.
+trajectory_msgs_generate_messages_lisp: ur3/CMakeFiles/trajectory_msgs_generate_messages_lisp.dir/rule
+
+.PHONY : trajectory_msgs_generate_messages_lisp
+
+# fast build rule for target.
+trajectory_msgs_generate_messages_lisp/fast:
+	cd /home/rafael/UR3/catkin_ur3/build && $(MAKE) -f ur3/CMakeFiles/trajectory_msgs_generate_messages_lisp.dir/build.make ur3/CMakeFiles/trajectory_msgs_generate_messages_lisp.dir/build
+.PHONY : trajectory_msgs_generate_messages_lisp/fast
 
 # Convenience name for target.
 ur3/CMakeFiles/interface.dir/rule:
@@ -633,19 +948,19 @@ interface/fast:
 .PHONY : interface/fast
 
 # Convenience name for target.
-ur3/CMakeFiles/roscpp_generate_messages_cpp.dir/rule:
-	cd /home/rafael/UR3/catkin_ur3/build && $(MAKE) -f CMakeFiles/Makefile2 ur3/CMakeFiles/roscpp_generate_messages_cpp.dir/rule
-.PHONY : ur3/CMakeFiles/roscpp_generate_messages_cpp.dir/rule
+ur3/CMakeFiles/trajectory_msgs_generate_messages_nodejs.dir/rule:
+	cd /home/rafael/UR3/catkin_ur3/build && $(MAKE) -f CMakeFiles/Makefile2 ur3/CMakeFiles/trajectory_msgs_generate_messages_nodejs.dir/rule
+.PHONY : ur3/CMakeFiles/trajectory_msgs_generate_messages_nodejs.dir/rule
 
 # Convenience name for target.
-roscpp_generate_messages_cpp: ur3/CMakeFiles/roscpp_generate_messages_cpp.dir/rule
+trajectory_msgs_generate_messages_nodejs: ur3/CMakeFiles/trajectory_msgs_generate_messages_nodejs.dir/rule
 
-.PHONY : roscpp_generate_messages_cpp
+.PHONY : trajectory_msgs_generate_messages_nodejs
 
 # fast build rule for target.
-roscpp_generate_messages_cpp/fast:
-	cd /home/rafael/UR3/catkin_ur3/build && $(MAKE) -f ur3/CMakeFiles/roscpp_generate_messages_cpp.dir/build.make ur3/CMakeFiles/roscpp_generate_messages_cpp.dir/build
-.PHONY : roscpp_generate_messages_cpp/fast
+trajectory_msgs_generate_messages_nodejs/fast:
+	cd /home/rafael/UR3/catkin_ur3/build && $(MAKE) -f ur3/CMakeFiles/trajectory_msgs_generate_messages_nodejs.dir/build.make ur3/CMakeFiles/trajectory_msgs_generate_messages_nodejs.dir/build
+.PHONY : trajectory_msgs_generate_messages_nodejs/fast
 
 src/interface.o: src/interface.cpp.o
 
@@ -680,8 +995,8 @@ src/join_data.o: src/join_data.cpp.o
 
 # target to build an object file
 src/join_data.cpp.o:
-	cd /home/rafael/UR3/catkin_ur3/build && $(MAKE) -f ur3/CMakeFiles/join_data.dir/build.make ur3/CMakeFiles/join_data.dir/src/join_data.cpp.o
 	cd /home/rafael/UR3/catkin_ur3/build && $(MAKE) -f ur3/CMakeFiles/reverse_word.dir/build.make ur3/CMakeFiles/reverse_word.dir/src/join_data.cpp.o
+	cd /home/rafael/UR3/catkin_ur3/build && $(MAKE) -f ur3/CMakeFiles/join_data.dir/build.make ur3/CMakeFiles/join_data.dir/src/join_data.cpp.o
 	cd /home/rafael/UR3/catkin_ur3/build && $(MAKE) -f ur3/CMakeFiles/interface.dir/build.make ur3/CMakeFiles/interface.dir/src/join_data.cpp.o
 .PHONY : src/join_data.cpp.o
 
@@ -691,8 +1006,8 @@ src/join_data.i: src/join_data.cpp.i
 
 # target to preprocess a source file
 src/join_data.cpp.i:
-	cd /home/rafael/UR3/catkin_ur3/build && $(MAKE) -f ur3/CMakeFiles/join_data.dir/build.make ur3/CMakeFiles/join_data.dir/src/join_data.cpp.i
 	cd /home/rafael/UR3/catkin_ur3/build && $(MAKE) -f ur3/CMakeFiles/reverse_word.dir/build.make ur3/CMakeFiles/reverse_word.dir/src/join_data.cpp.i
+	cd /home/rafael/UR3/catkin_ur3/build && $(MAKE) -f ur3/CMakeFiles/join_data.dir/build.make ur3/CMakeFiles/join_data.dir/src/join_data.cpp.i
 	cd /home/rafael/UR3/catkin_ur3/build && $(MAKE) -f ur3/CMakeFiles/interface.dir/build.make ur3/CMakeFiles/interface.dir/src/join_data.cpp.i
 .PHONY : src/join_data.cpp.i
 
@@ -702,8 +1017,8 @@ src/join_data.s: src/join_data.cpp.s
 
 # target to generate assembly for a file
 src/join_data.cpp.s:
-	cd /home/rafael/UR3/catkin_ur3/build && $(MAKE) -f ur3/CMakeFiles/join_data.dir/build.make ur3/CMakeFiles/join_data.dir/src/join_data.cpp.s
 	cd /home/rafael/UR3/catkin_ur3/build && $(MAKE) -f ur3/CMakeFiles/reverse_word.dir/build.make ur3/CMakeFiles/reverse_word.dir/src/join_data.cpp.s
+	cd /home/rafael/UR3/catkin_ur3/build && $(MAKE) -f ur3/CMakeFiles/join_data.dir/build.make ur3/CMakeFiles/join_data.dir/src/join_data.cpp.s
 	cd /home/rafael/UR3/catkin_ur3/build && $(MAKE) -f ur3/CMakeFiles/interface.dir/build.make ur3/CMakeFiles/interface.dir/src/join_data.cpp.s
 .PHONY : src/join_data.cpp.s
 
@@ -801,44 +1116,65 @@ help:
 	@echo "... clean"
 	@echo "... depend"
 	@echo "... install/strip"
-	@echo "... install/local"
 	@echo "... install"
+	@echo "... list_install_components"
+	@echo "... test"
+	@echo "... reverse_word"
+	@echo "... join_data"
+	@echo "... send_script"
+	@echo "... open_socket"
+	@echo "... ur3_generate_messages_nodejs"
+	@echo "... ur3_genlisp"
+	@echo "... ur3_generate_messages_lisp"
+	@echo "... ur3_geneus"
+	@echo "... edit_cache"
+	@echo "... ur3_generate_messages_eus"
+	@echo "... ur3_gencpp"
+	@echo "... ur3_generate_messages_cpp"
+	@echo "... _ur3_generate_messages_check_deps_arm_msg"
+	@echo "... install/local"
+	@echo "... _ur3_generate_messages_check_deps_gripper_msg"
 	@echo "... std_msgs_generate_messages_py"
 	@echo "... std_msgs_generate_messages_nodejs"
-	@echo "... std_msgs_generate_messages_eus"
-	@echo "... rosgraph_msgs_generate_messages_py"
 	@echo "... rosgraph_msgs_generate_messages_nodejs"
-	@echo "... ur3_gencpp"
-	@echo "... rosgraph_msgs_generate_messages_cpp"
+	@echo "... rosgraph_msgs_generate_messages_py"
+	@echo "... control_msgs_generate_messages_py"
+	@echo "... actionlib_msgs_generate_messages_nodejs"
+	@echo "... std_msgs_generate_messages_eus"
+	@echo "... trajectory_msgs_generate_messages_py"
 	@echo "... std_msgs_generate_messages_cpp"
-	@echo "... ur3_generate_messages"
-	@echo "... rosgraph_msgs_generate_messages_lisp"
-	@echo "... _ur3_generate_messages_check_deps_arm_msg"
-	@echo "... ur3_generate_messages_cpp"
+	@echo "... control_msgs_generate_messages_cpp"
 	@echo "... rosgraph_msgs_generate_messages_eus"
+	@echo "... actionlib_msgs_generate_messages_cpp"
+	@echo "... rebuild_cache"
+	@echo "... roscpp_generate_messages_cpp"
 	@echo "... std_msgs_generate_messages_lisp"
-	@echo "... ur3_generate_messages_eus"
-	@echo "... edit_cache"
+	@echo "... rosgraph_msgs_generate_messages_cpp"
+	@echo "... rosgraph_msgs_generate_messages_lisp"
+	@echo "... ur3_generate_messages"
+	@echo "... ur3_generate_messages_py"
+	@echo "... roscpp_generate_messages_lisp"
+	@echo "... control_msgs_generate_messages_nodejs"
+	@echo "... geometry_msgs_generate_messages_nodejs"
 	@echo "... roscpp_generate_messages_nodejs"
 	@echo "... roscpp_generate_messages_eus"
-	@echo "... roscpp_generate_messages_py"
-	@echo "... roscpp_generate_messages_lisp"
-	@echo "... ur3_generate_messages_py"
-	@echo "... list_install_components"
-	@echo "... ur3_geneus"
-	@echo "... ur3_generate_messages_lisp"
-	@echo "... ur3_genlisp"
-	@echo "... ur3_generate_messages_nodejs"
-	@echo "... ur3_gennodejs"
+	@echo "... geometry_msgs_generate_messages_eus"
+	@echo "... control_msgs_generate_messages_eus"
+	@echo "... control_msgs_generate_messages_lisp"
+	@echo "... actionlib_msgs_generate_messages_eus"
+	@echo "... actionlib_msgs_generate_messages_lisp"
+	@echo "... actionlib_msgs_generate_messages_py"
+	@echo "... geometry_msgs_generate_messages_cpp"
+	@echo "... geometry_msgs_generate_messages_lisp"
 	@echo "... ur3_genpy"
-	@echo "... test"
-	@echo "... open_socket"
-	@echo "... send_script"
-	@echo "... join_data"
-	@echo "... reverse_word"
+	@echo "... ur3_gennodejs"
+	@echo "... geometry_msgs_generate_messages_py"
+	@echo "... trajectory_msgs_generate_messages_cpp"
+	@echo "... roscpp_generate_messages_py"
+	@echo "... trajectory_msgs_generate_messages_eus"
+	@echo "... trajectory_msgs_generate_messages_lisp"
 	@echo "... interface"
-	@echo "... roscpp_generate_messages_cpp"
-	@echo "... rebuild_cache"
+	@echo "... trajectory_msgs_generate_messages_nodejs"
 	@echo "... src/interface.o"
 	@echo "... src/interface.i"
 	@echo "... src/interface.s"

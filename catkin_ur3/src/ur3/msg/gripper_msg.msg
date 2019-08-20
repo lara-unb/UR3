@@ -1,3 +1,2 @@
-float32 pose
-float32 velocity
-float32 torque
+std_msgs/Header header
+control_msgs/GripperCommand gripper

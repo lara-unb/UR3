@@ -103,6 +103,15 @@ float* join_data(int8_t* buffer_out){
 	data[15] = ((float)pose_int32)/norma_float;
 	data[16] = ((float)vel_int32)/norma_float;
 	data[17] = ((float)torque_int32)/norma_float;
+	//////////////////////////////////////////////////////////
+	memcpy(&vel_int32, &buffer_out[72], sizeof(int32_t));
+	memcpy(&torque_int32, &buffer_out[76], sizeof(int32_t));
+
+	vel_int32 = reverse_word(vel_int32);
+	torque_int32 = reverse_word(torque_int32);
+
+	data[18] = ((float)vel_int32)/norma_float;
+	data[19] = ((float)torque_int32)/norma_float;
 	 
 	//////////////////////////////////////////////////////////
 	return data;
