@@ -6,5 +6,5 @@ CXX_FLAGS = -fPIC
 
 CXX_DEFINES = -DROSCONSOLE_BACKEND_LOG4CXX -DROS_BUILD_SHARED_LIBS=1 -DROS_PACKAGE_NAME=\"ur3\" -Dopen_socket_EXPORTS
 
-CXX_INCLUDES = -I/home/rafael/UR3/catkin_ur3/devel/include -I/home/rafael/UR3/catkin_ur3/src/ur3/include/ur3 -I/opt/ros/melodic/include -I/opt/ros/melodic/share/xmlrpcpp/cmake/../../../include/xmlrpcpp 
+CXX_INCLUDES = -I/home/rafael/UR3/catkin_ur3/devel/include -I/home/rafael/UR3/catkin_ur3/src/ur3/include/ur3 -I/home/rafael/UR3/catkin_ur3/src/ur3/msg -I/opt/ros/melodic/include -I/opt/ros/melodic/share/xmlrpcpp/cmake/../../../include/xmlrpcpp 
 

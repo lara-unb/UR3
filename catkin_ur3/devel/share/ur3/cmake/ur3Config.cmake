@@ -91,9 +91,9 @@ endif()
 # flag project as catkin-based to distinguish if a find_package()-ed project is a catkin project
 set(ur3_FOUND_CATKIN_PROJECT TRUE)
 
-if(NOT "/home/rafael/UR3/catkin_ur3/devel/include;/home/rafael/UR3/catkin_ur3/src/ur3/include " STREQUAL " ")
+if(NOT "/home/rafael/UR3/catkin_ur3/devel/include;/home/rafael/UR3/catkin_ur3/src/ur3/include;/home/rafael/UR3/catkin_ur3/src/ur3/msg " STREQUAL " ")
   set(ur3_INCLUDE_DIRS "")
-  set(_include_dirs "/home/rafael/UR3/catkin_ur3/devel/include;/home/rafael/UR3/catkin_ur3/src/ur3/include")
+  set(_include_dirs "/home/rafael/UR3/catkin_ur3/devel/include;/home/rafael/UR3/catkin_ur3/src/ur3/include;/home/rafael/UR3/catkin_ur3/src/ur3/msg")
   if(NOT " " STREQUAL " ")
     set(_report "Check the issue tracker '' and consider creating a ticket if the problem has not been reported yet.")
   elseif(NOT " " STREQUAL " ")
@@ -162,7 +162,7 @@ foreach(t ${ur3_EXPORTED_TARGETS})
   endif()
 endforeach()
 
-set(depends "message_runtime;roscpp;rospy;std_msgs;control_msgs")
+set(depends "message_runtime;roscpp;rospy;std_msgs;control_msgs;geometry_msgs")
 foreach(depend ${depends})
   string(REPLACE " " ";" depend_list ${depend})
   # the package name of the dependency must be kept in a unique variable so that it is not overwritten in recursive calls

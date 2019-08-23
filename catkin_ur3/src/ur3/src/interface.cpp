@@ -3,8 +3,12 @@
 ////////////////////////////////////////////////////////////////////////
 #include "ros/ros.h"
 #include "sensor_msgs/JointState.h"
+#include "control_msgs/GripperCommand.h"
+#include "std_msgs/Header.h"
 #include "sensor_msgs/Joy.h"
-#include "ur3/gripper_msg.h"
+#include "ur3/end_Effector_msg.h"
+#include "geometry_msgs/Wrench.h"
+#include "geometry_msgs/Pose.h"
 #include <X11/keysymdef.h>
 #include <sys/socket.h>
 #include <stdlib.h> 
@@ -27,6 +31,7 @@
 #define PI 3.1415
 float referencia = 0;
 float refe[8];
+int gripper_boll[1];
       
 /// little endian <-> big endian ///////
  int reverse(int32_t num){
@@ -62,20 +67,17 @@ void joyCallback(const sensor_msgs::Joy::ConstPtr& joy_data){
 	 	refe[4] = joy_data->axes[3];
 	 	refe[5] = joy_data->axes[0];
 	 }
-
-	 if(button2 == 1){
-		 refe[6] = refe[6] + 2;
-	 }
-	  if(button3 == 1){
-		 refe[6] = refe[6] - 2;
-	 }
-	 refe[7] = 4;	
+	 
+	 gripper_boll[0] = button2;
+	 gripper_boll[1] = button3; 
+	
 }
 ///////////////////////////////////////
 
 int main(int argc, char **argv){ 
+	bool statado;
 	refe[0] = 0; refe[1] = 0; refe[2] = 0; refe[3] = 0; refe[4] = 0;
-	refe[5] = 0; refe[6] = 40; refe[7] = 0; refe[8] = 0;
+	refe[5] = 0; refe[6] = 40; refe[7] = 10; refe[8] = 0;
 	float* data_join_out;
 	// primeira coisa:
 	// tem que enviar o arquivo urscript
@@ -107,18 +109,20 @@ int main(int argc, char **argv){
 	ros::NodeHandle n;
 	//Declaração das publicões 
 	ros::Publisher arm_pub = n.advertise<sensor_msgs::JointState>("arm",0);
-	ros::Publisher gripper_pub = n.advertise<ur3::gripper_msg>("gripper",0);
+	ros::Publisher end_Effector_pub = n.advertise<ur3::end_Effector_msg>("end_effector",0);
 	//ros::Publisher gripper_pub = n.advertise<control_msgs::GripperCommand>("gripper",0);
 	///////////////////////////////////////////////////////////////////////////////////
 	ros::Subscriber sub_joy = n.subscribe("joy", 10, joyCallback);
 	ros::Rate loop_rate(55);
 	//Declaração das estruturas de dados para as publicações
 	sensor_msgs::JointState arm;
-	ur3::gripper_msg gripper;
+	ur3::end_Effector_msg end_effector;
 	//control_msgs::GripperCommand gripper;
 	/////////////////////////////////////
-	gripper.gripper.position = 0;
-	gripper.gripper.max_effort = 0;
+	//gripper.position = 0;
+	//gripper.max_effort = 0;
+	//gripper.gripper.position = 0;
+	//gripper.gripper.max_effort = 0;
 	arm.header.frame_id = " ";
 	arm.name.resize(6);
 	arm.position.resize(6);
@@ -150,6 +154,13 @@ int main(int argc, char **argv){
 		buffer_in_[5] = (int)(refe[5]*norma_float);
 		buffer_in_[5] = reverse(buffer_in_[5]);
 		// gripper
+		if(gripper_boll[0] == 1){
+			refe[6] = refe[6] + 0.5;
+		}
+		if(gripper_boll[1] == 1){
+			refe[6] = refe[6] - 0.5;
+		} 
+		
 		buffer_in_[6] = (int)(refe[6]*norma_float);
 		buffer_in_[6] = reverse(buffer_in_[6]);
 		buffer_in_[7] = (int)(refe[7]*norma_float);
@@ -158,14 +169,46 @@ int main(int argc, char **argv){
 		/////////////////////////////////////////////////////////
 		number = 0;
 		///////////////////////////////////////////////////////////
-		number = recv(new_socket, &buffer_out, 128, 0);
+		number = recv(new_socket, &buffer_out, 256, 0);
 		
 		/////////////////////////////////////////////////////
 		data_join_out = join_data(buffer_out);
 		/////////////////////////////////////////////////
-		gripper.gripper.position = data_join_out[18];
-		gripper.gripper.max_effort = data_join_out[19];
+		// gripper
+		end_effector.gripper.position = data_join_out[18];
+		end_effector.gripper.max_effort = data_join_out[19];
+		end_effector.state.data = data_join_out[20]; // estado da grarr (aberto ou fechado)
 		/////////////////////////////////////////
+		// tcp pose
+		////position
+		end_effector.pose.position.x = data_join_out[21];
+		end_effector.pose.position.y = data_join_out[22];
+		end_effector.pose.position.z = data_join_out[23];
+		////orientation
+		end_effector.pose.orientation.x = data_join_out[24];
+		end_effector.pose.orientation.y = data_join_out[25];
+		end_effector.pose.orientation.z = data_join_out[26];
+		////////////////////////////////////////////////////
+		// tcp velocity
+		//// linear
+		end_effector.velocity.linear.x = data_join_out[27];
+		end_effector.velocity.linear.y = data_join_out[28];
+		end_effector.velocity.linear.z = data_join_out[29];
+		//// angular
+		end_effector.velocity.angular.x = data_join_out[30];
+		end_effector.velocity.angular.y = data_join_out[31];
+		end_effector.velocity.angular.z = data_join_out[32];
+		////////////////////////////////////////
+		// tcp force
+		//// force
+		end_effector.wrench.force.x = data_join_out[33];
+		end_effector.wrench.force.y = data_join_out[34];
+		end_effector.wrench.force.z = data_join_out[35];
+		//// torque
+		end_effector.wrench.torque.x = data_join_out[36];
+		end_effector.wrench.torque.x = data_join_out[37];
+		end_effector.wrench.torque.x = data_join_out[38];
+		////////////////////////////////////////
 		arm.position[5] = data_join_out[15];
 		arm.velocity[5] = data_join_out[16];
 		arm.effort[5] = data_join_out[17];
@@ -195,9 +238,9 @@ int main(int argc, char **argv){
 		tempo = tempo + 0.02;
 		
 		arm.header.stamp = ros::Time::now();
-		gripper.header.stamp = ros::Time::now();
+		end_effector.header.stamp = ros::Time::now();
 		arm_pub.publish(arm);
-		gripper_pub.publish(gripper);
+		end_Effector_pub.publish(end_effector);
 		ros::spinOnce();
 		loop_rate.sleep();		
 		

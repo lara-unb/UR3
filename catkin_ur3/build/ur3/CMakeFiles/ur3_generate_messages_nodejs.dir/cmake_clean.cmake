@@ -1,5 +1,6 @@
 file(REMOVE_RECURSE
   "CMakeFiles/ur3_generate_messages_nodejs"
+  "/home/rafael/UR3/catkin_ur3/devel/share/gennodejs/ros/ur3/msg/end_Effector_msg.js"
   "/home/rafael/UR3/catkin_ur3/devel/share/gennodejs/ros/ur3/msg/gripper_msg.js"
   "/home/rafael/UR3/catkin_ur3/devel/share/gennodejs/ros/ur3/msg/arm_msg.js"
 )

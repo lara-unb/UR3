@@ -16,7 +16,11 @@
 #include <ros/message_operations.h>
 
 #include <std_msgs/Header.h>
+#include <std_msgs/Bool.h>
+#include <geometry_msgs/Pose.h>
 #include <control_msgs/GripperCommand.h>
+#include <geometry_msgs/Wrench.h>
+#include <geometry_msgs/Vector3.h>
 
 namespace ur3
 {
@@ -27,11 +31,19 @@ struct gripper_msg_
 
   gripper_msg_()
     : header()
-    , gripper()  {
+    , state()
+    , pose()
+    , gripper()
+    , wrench()
+    , velocity()  {
     }
   gripper_msg_(const ContainerAllocator& _alloc)
     : header(_alloc)
-    , gripper(_alloc)  {
+    , state(_alloc)
+    , pose(_alloc)
+    , gripper(_alloc)
+    , wrench(_alloc)
+    , velocity(_alloc)  {
   (void)_alloc;
     }
 
@@ -40,8 +52,20 @@ struct gripper_msg_
    typedef  ::std_msgs::Header_<ContainerAllocator>  _header_type;
   _header_type header;
 
+   typedef  ::std_msgs::Bool_<ContainerAllocator>  _state_type;
+  _state_type state;
+
+   typedef  ::geometry_msgs::Pose_<ContainerAllocator>  _pose_type;
+  _pose_type pose;
+
    typedef  ::control_msgs::GripperCommand_<ContainerAllocator>  _gripper_type;
   _gripper_type gripper;
+
+   typedef  ::geometry_msgs::Wrench_<ContainerAllocator>  _wrench_type;
+  _wrench_type wrench;
+
+   typedef  ::geometry_msgs::Vector3_<ContainerAllocator>  _velocity_type;
+  _velocity_type velocity;
 
 
 
@@ -121,12 +145,12 @@ struct MD5Sum< ::ur3::gripper_msg_<ContainerAllocator> >
 {
   static const char* value()
   {
-    return "fc18072711edbb7f42a3cb3011b6a573";
+    return "ed2f79454cafcd1b110fff41cc4d9286";
   }
 
   static const char* value(const ::ur3::gripper_msg_<ContainerAllocator>&) { return value(); }
-  static const uint64_t static_value1 = 0xfc18072711edbb7fULL;
-  static const uint64_t static_value2 = 0x42a3cb3011b6a573ULL;
+  static const uint64_t static_value1 = 0xed2f79454cafcd1bULL;
+  static const uint64_t static_value2 = 0x110fff41cc4d9286ULL;
 };
 
 template<class ContainerAllocator>
@@ -145,8 +169,12 @@ struct Definition< ::ur3::gripper_msg_<ContainerAllocator> >
 {
   static const char* value()
   {
-    return "std_msgs/Header header\n"
+    return "Header header\n"
+"std_msgs/Bool state \n"
+"geometry_msgs/Pose pose \n"
 "control_msgs/GripperCommand gripper\n"
+"geometry_msgs/Wrench wrench\n"
+"geometry_msgs/Vector3 velocity\n"
 "================================================================================\n"
 "MSG: std_msgs/Header\n"
 "# Standard metadata for higher-level stamped data types.\n"
@@ -164,9 +192,54 @@ struct Definition< ::ur3::gripper_msg_<ContainerAllocator> >
 "string frame_id\n"
 "\n"
 "================================================================================\n"
+"MSG: std_msgs/Bool\n"
+"bool data\n"
+"================================================================================\n"
+"MSG: geometry_msgs/Pose\n"
+"# A representation of pose in free space, composed of position and orientation. \n"
+"Point position\n"
+"Quaternion orientation\n"
+"\n"
+"================================================================================\n"
+"MSG: geometry_msgs/Point\n"
+"# This contains the position of a point in free space\n"
+"float64 x\n"
+"float64 y\n"
+"float64 z\n"
+"\n"
+"================================================================================\n"
+"MSG: geometry_msgs/Quaternion\n"
+"# This represents an orientation in free space in quaternion form.\n"
+"\n"
+"float64 x\n"
+"float64 y\n"
+"float64 z\n"
+"float64 w\n"
+"\n"
+"================================================================================\n"
 "MSG: control_msgs/GripperCommand\n"
 "float64 position\n"
 "float64 max_effort\n"
+"\n"
+"================================================================================\n"
+"MSG: geometry_msgs/Wrench\n"
+"# This represents force in free space, separated into\n"
+"# its linear and angular parts.\n"
+"Vector3  force\n"
+"Vector3  torque\n"
+"\n"
+"================================================================================\n"
+"MSG: geometry_msgs/Vector3\n"
+"# This represents a vector in free space. \n"
+"# It is only meant to represent a direction. Therefore, it does not\n"
+"# make sense to apply a translation to it (e.g., when applying a \n"
+"# generic rigid transformation to a Vector3, tf2 will only apply the\n"
+"# rotation). If you want your data to be translatable too, use the\n"
+"# geometry_msgs/Point message instead.\n"
+"\n"
+"float64 x\n"
+"float64 y\n"
+"float64 z\n"
 ;
   }
 
@@ -186,7 +259,11 @@ namespace serialization
     template<typename Stream, typename T> inline static void allInOne(Stream& stream, T m)
     {
       stream.next(m.header);
+      stream.next(m.state);
+      stream.next(m.pose);
       stream.next(m.gripper);
+      stream.next(m.wrench);
+      stream.next(m.velocity);
     }
 
     ROS_DECLARE_ALLINONE_SERIALIZER
@@ -208,9 +285,21 @@ struct Printer< ::ur3::gripper_msg_<ContainerAllocator> >
     s << indent << "header: ";
     s << std::endl;
     Printer< ::std_msgs::Header_<ContainerAllocator> >::stream(s, indent + "  ", v.header);
+    s << indent << "state: ";
+    s << std::endl;
+    Printer< ::std_msgs::Bool_<ContainerAllocator> >::stream(s, indent + "  ", v.state);
+    s << indent << "pose: ";
+    s << std::endl;
+    Printer< ::geometry_msgs::Pose_<ContainerAllocator> >::stream(s, indent + "  ", v.pose);
     s << indent << "gripper: ";
     s << std::endl;
     Printer< ::control_msgs::GripperCommand_<ContainerAllocator> >::stream(s, indent + "  ", v.gripper);
+    s << indent << "wrench: ";
+    s << std::endl;
+    Printer< ::geometry_msgs::Wrench_<ContainerAllocator> >::stream(s, indent + "  ", v.wrench);
+    s << indent << "velocity: ";
+    s << std::endl;
+    Printer< ::geometry_msgs::Vector3_<ContainerAllocator> >::stream(s, indent + "  ", v.velocity);
   }
 };
 

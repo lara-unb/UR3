@@ -246,7 +246,9 @@ def unnamed():
 			v_juntas = get_actual_joint_speeds()
 			p_juntas = get_actual_joint_positions()
 			t_juntas = get_joint_torques()
-			
+			pose = get_target_tcp_pose()
+			speed = get_target_tcp_speed()
+			force = get_tcp_force()
 			socket_send_int(p_juntas[0]*1000000)
 			socket_send_int(v_juntas[0]*1000000)
 			socket_send_int(t_juntas[0]*1000000)
@@ -267,8 +269,30 @@ def unnamed():
 			socket_send_int(t_juntas[5]*1000000)
 			socket_send_int(largura*1000000) # position
 			socket_send_int(2*1000000) # max_effort
+			socket_send_int(1000000*get_digital_in(8)) #stado da grarra
+			socket_send_int(pose[0]*1000000)
+			socket_send_int(pose[1]*1000000)
+			socket_send_int(pose[2]*1000000)
+			socket_send_int(pose[3]*1000000)
+			socket_send_int(pose[4]*1000000)
+			socket_send_int(pose[5]*1000000)
+			socket_send_int(speed[0]*1000000)
+			socket_send_int(speed[1]*1000000)
+			socket_send_int(speed[2]*1000000)
+			socket_send_int(speed[3]*1000000)
+			socket_send_int(speed[4]*1000000)
+			socket_send_int(speed[5]*1000000)
+			socket_send_int(pose[5]*1000000)
+			socket_send_int(force[0]*1000000)
+			socket_send_int(force[1]*1000000)
+			socket_send_int(force[2]*1000000)
+			socket_send_int(force[3]*1000000)
+			socket_send_int(force[4]*1000000)
+			socket_send_int(force[5]*1000000)
+
+
 			
-			
+
 			velocity = socket_read_binary_integer(8)
 			velocity[1] = velocity[1]/1000000.00
 			velocity[2] = velocity[2]/1000000.00
@@ -278,7 +302,6 @@ def unnamed():
 			velocity[6] = velocity[6]/1000000.00
 			gripper[1] = velocity[7]/1000000.00
 			gripper[2] = velocity[8]/1000000.00
-
 			sync()
 			
 		end
@@ -296,7 +319,7 @@ def unnamed():
 	thrd_rg2 = run rg2_thrd() 
 	thrd_grip = run ler_garra()
 	while True:
-		speedj([velocity[1]/2,velocity[2]/2,velocity[3]/2,velocity[4]/2,velocity[5]/2,velocity[6]/2], 100, 0.001)
+		speedj([velocity[1]/2,velocity[2]/2,velocity[3]/2,velocity[4]/2,velocity[5]/2,velocity[6]/2], 5, 0.001)
 	end
 	#speedj([0,0,0,0,0,0], 0.5, 5)
 	

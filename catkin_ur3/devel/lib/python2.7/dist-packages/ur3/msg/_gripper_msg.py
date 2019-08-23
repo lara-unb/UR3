@@ -5,15 +5,20 @@ python3 = True if sys.hexversion > 0x03000000 else False
 import genpy
 import struct
 
+import geometry_msgs.msg
 import control_msgs.msg
 import std_msgs.msg
 
 class gripper_msg(genpy.Message):
-  _md5sum = "fc18072711edbb7f42a3cb3011b6a573"
+  _md5sum = "ed2f79454cafcd1b110fff41cc4d9286"
   _type = "ur3/gripper_msg"
   _has_header = True #flag to mark the presence of a Header object
-  _full_text = """std_msgs/Header header
+  _full_text = """Header header
+std_msgs/Bool state 
+geometry_msgs/Pose pose 
 control_msgs/GripperCommand gripper
+geometry_msgs/Wrench wrench
+geometry_msgs/Vector3 velocity
 ================================================================================
 MSG: std_msgs/Header
 # Standard metadata for higher-level stamped data types.
@@ -31,12 +36,56 @@ time stamp
 string frame_id
 
 ================================================================================
+MSG: std_msgs/Bool
+bool data
+================================================================================
+MSG: geometry_msgs/Pose
+# A representation of pose in free space, composed of position and orientation. 
+Point position
+Quaternion orientation
+
+================================================================================
+MSG: geometry_msgs/Point
+# This contains the position of a point in free space
+float64 x
+float64 y
+float64 z
+
+================================================================================
+MSG: geometry_msgs/Quaternion
+# This represents an orientation in free space in quaternion form.
+
+float64 x
+float64 y
+float64 z
+float64 w
+
+================================================================================
 MSG: control_msgs/GripperCommand
 float64 position
 float64 max_effort
-"""
-  __slots__ = ['header','gripper']
-  _slot_types = ['std_msgs/Header','control_msgs/GripperCommand']
+
+================================================================================
+MSG: geometry_msgs/Wrench
+# This represents force in free space, separated into
+# its linear and angular parts.
+Vector3  force
+Vector3  torque
+
+================================================================================
+MSG: geometry_msgs/Vector3
+# This represents a vector in free space. 
+# It is only meant to represent a direction. Therefore, it does not
+# make sense to apply a translation to it (e.g., when applying a 
+# generic rigid transformation to a Vector3, tf2 will only apply the
+# rotation). If you want your data to be translatable too, use the
+# geometry_msgs/Point message instead.
+
+float64 x
+float64 y
+float64 z"""
+  __slots__ = ['header','state','pose','gripper','wrench','velocity']
+  _slot_types = ['std_msgs/Header','std_msgs/Bool','geometry_msgs/Pose','control_msgs/GripperCommand','geometry_msgs/Wrench','geometry_msgs/Vector3']
 
   def __init__(self, *args, **kwds):
     """
@@ -46,7 +95,7 @@ float64 max_effort
     changes.  You cannot mix in-order arguments and keyword arguments.
 
     The available fields are:
-       header,gripper
+       header,state,pose,gripper,wrench,velocity
 
     :param args: complete set of field values, in .msg order
     :param kwds: use keyword arguments corresponding to message field names
@@ -57,11 +106,23 @@ float64 max_effort
       #message fields cannot be None, assign default values for those that are
       if self.header is None:
         self.header = std_msgs.msg.Header()
+      if self.state is None:
+        self.state = std_msgs.msg.Bool()
+      if self.pose is None:
+        self.pose = geometry_msgs.msg.Pose()
       if self.gripper is None:
         self.gripper = control_msgs.msg.GripperCommand()
+      if self.wrench is None:
+        self.wrench = geometry_msgs.msg.Wrench()
+      if self.velocity is None:
+        self.velocity = geometry_msgs.msg.Vector3()
     else:
       self.header = std_msgs.msg.Header()
+      self.state = std_msgs.msg.Bool()
+      self.pose = geometry_msgs.msg.Pose()
       self.gripper = control_msgs.msg.GripperCommand()
+      self.wrench = geometry_msgs.msg.Wrench()
+      self.velocity = geometry_msgs.msg.Vector3()
 
   def _get_types(self):
     """
@@ -84,7 +145,7 @@ float64 max_effort
         length = len(_x)
       buff.write(struct.pack('<I%ss'%length, length, _x))
       _x = self
-      buff.write(_get_struct_2d().pack(_x.gripper.position, _x.gripper.max_effort))
+      buff.write(_get_struct_B18d().pack(_x.state.data, _x.pose.position.x, _x.pose.position.y, _x.pose.position.z, _x.pose.orientation.x, _x.pose.orientation.y, _x.pose.orientation.z, _x.pose.orientation.w, _x.gripper.position, _x.gripper.max_effort, _x.wrench.force.x, _x.wrench.force.y, _x.wrench.force.z, _x.wrench.torque.x, _x.wrench.torque.y, _x.wrench.torque.z, _x.velocity.x, _x.velocity.y, _x.velocity.z))
     except struct.error as se: self._check_types(struct.error("%s: '%s' when writing '%s'" % (type(se), str(se), str(locals().get('_x', self)))))
     except TypeError as te: self._check_types(ValueError("%s: '%s' when writing '%s'" % (type(te), str(te), str(locals().get('_x', self)))))
 
@@ -96,8 +157,16 @@ float64 max_effort
     try:
       if self.header is None:
         self.header = std_msgs.msg.Header()
+      if self.state is None:
+        self.state = std_msgs.msg.Bool()
+      if self.pose is None:
+        self.pose = geometry_msgs.msg.Pose()
       if self.gripper is None:
         self.gripper = control_msgs.msg.GripperCommand()
+      if self.wrench is None:
+        self.wrench = geometry_msgs.msg.Wrench()
+      if self.velocity is None:
+        self.velocity = geometry_msgs.msg.Vector3()
       end = 0
       _x = self
       start = end
@@ -114,8 +183,9 @@ float64 max_effort
         self.header.frame_id = str[start:end]
       _x = self
       start = end
-      end += 16
-      (_x.gripper.position, _x.gripper.max_effort,) = _get_struct_2d().unpack(str[start:end])
+      end += 145
+      (_x.state.data, _x.pose.position.x, _x.pose.position.y, _x.pose.position.z, _x.pose.orientation.x, _x.pose.orientation.y, _x.pose.orientation.z, _x.pose.orientation.w, _x.gripper.position, _x.gripper.max_effort, _x.wrench.force.x, _x.wrench.force.y, _x.wrench.force.z, _x.wrench.torque.x, _x.wrench.torque.y, _x.wrench.torque.z, _x.velocity.x, _x.velocity.y, _x.velocity.z,) = _get_struct_B18d().unpack(str[start:end])
+      self.state.data = bool(self.state.data)
       return self
     except struct.error as e:
       raise genpy.DeserializationError(e) #most likely buffer underfill
@@ -137,7 +207,7 @@ float64 max_effort
         length = len(_x)
       buff.write(struct.pack('<I%ss'%length, length, _x))
       _x = self
-      buff.write(_get_struct_2d().pack(_x.gripper.position, _x.gripper.max_effort))
+      buff.write(_get_struct_B18d().pack(_x.state.data, _x.pose.position.x, _x.pose.position.y, _x.pose.position.z, _x.pose.orientation.x, _x.pose.orientation.y, _x.pose.orientation.z, _x.pose.orientation.w, _x.gripper.position, _x.gripper.max_effort, _x.wrench.force.x, _x.wrench.force.y, _x.wrench.force.z, _x.wrench.torque.x, _x.wrench.torque.y, _x.wrench.torque.z, _x.velocity.x, _x.velocity.y, _x.velocity.z))
     except struct.error as se: self._check_types(struct.error("%s: '%s' when writing '%s'" % (type(se), str(se), str(locals().get('_x', self)))))
     except TypeError as te: self._check_types(ValueError("%s: '%s' when writing '%s'" % (type(te), str(te), str(locals().get('_x', self)))))
 
@@ -150,8 +220,16 @@ float64 max_effort
     try:
       if self.header is None:
         self.header = std_msgs.msg.Header()
+      if self.state is None:
+        self.state = std_msgs.msg.Bool()
+      if self.pose is None:
+        self.pose = geometry_msgs.msg.Pose()
       if self.gripper is None:
         self.gripper = control_msgs.msg.GripperCommand()
+      if self.wrench is None:
+        self.wrench = geometry_msgs.msg.Wrench()
+      if self.velocity is None:
+        self.velocity = geometry_msgs.msg.Vector3()
       end = 0
       _x = self
       start = end
@@ -168,8 +246,9 @@ float64 max_effort
         self.header.frame_id = str[start:end]
       _x = self
       start = end
-      end += 16
-      (_x.gripper.position, _x.gripper.max_effort,) = _get_struct_2d().unpack(str[start:end])
+      end += 145
+      (_x.state.data, _x.pose.position.x, _x.pose.position.y, _x.pose.position.z, _x.pose.orientation.x, _x.pose.orientation.y, _x.pose.orientation.z, _x.pose.orientation.w, _x.gripper.position, _x.gripper.max_effort, _x.wrench.force.x, _x.wrench.force.y, _x.wrench.force.z, _x.wrench.torque.x, _x.wrench.torque.y, _x.wrench.torque.z, _x.velocity.x, _x.velocity.y, _x.velocity.z,) = _get_struct_B18d().unpack(str[start:end])
+      self.state.data = bool(self.state.data)
       return self
     except struct.error as e:
       raise genpy.DeserializationError(e) #most likely buffer underfill
@@ -178,15 +257,15 @@ _struct_I = genpy.struct_I
 def _get_struct_I():
     global _struct_I
     return _struct_I
-_struct_2d = None
-def _get_struct_2d():
-    global _struct_2d
-    if _struct_2d is None:
-        _struct_2d = struct.Struct("<2d")
-    return _struct_2d
 _struct_3I = None
 def _get_struct_3I():
     global _struct_3I
     if _struct_3I is None:
         _struct_3I = struct.Struct("<3I")
     return _struct_3I
+_struct_B18d = None
+def _get_struct_B18d():
+    global _struct_B18d
+    if _struct_B18d is None:
+        _struct_B18d = struct.Struct("<B18d")
+    return _struct_B18d

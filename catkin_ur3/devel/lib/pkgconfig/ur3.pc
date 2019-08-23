@@ -3,6 +3,6 @@ prefix=/home/rafael/UR3/catkin_ur3/devel
 Name: ur3
 Description: Description of ur3
 Version: 0.0.0
-Cflags: -I/home/rafael/UR3/catkin_ur3/devel/include -I/home/rafael/UR3/catkin_ur3/src/ur3/include
+Cflags: -I/home/rafael/UR3/catkin_ur3/devel/include -I/home/rafael/UR3/catkin_ur3/src/ur3/include -I/home/rafael/UR3/catkin_ur3/src/ur3/msg
 Libs: -L/home/rafael/UR3/catkin_ur3/devel/lib -lur3
-Requires: message_runtime roscpp rospy std_msgs control_msgs
+Requires: message_runtime roscpp rospy std_msgs control_msgs geometry_msgs

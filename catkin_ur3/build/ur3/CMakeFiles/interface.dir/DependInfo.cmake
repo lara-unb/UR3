@@ -23,6 +23,7 @@ set(CMAKE_TARGET_DEFINITIONS_CXX
 set(CMAKE_CXX_TARGET_INCLUDE_PATH
   "/home/rafael/UR3/catkin_ur3/devel/include"
   "/home/rafael/UR3/catkin_ur3/src/ur3/include/ur3"
+  "/home/rafael/UR3/catkin_ur3/src/ur3/msg"
   "/opt/ros/melodic/include"
   "/opt/ros/melodic/share/xmlrpcpp/cmake/../../../include/xmlrpcpp"
   )

@@ -417,6 +417,8 @@ trajectory_msgs_DIR:PATH=/opt/ros/melodic/share/trajectory_msgs/cmake
 //Value Computed by CMake
 ur3_BINARY_DIR:STATIC=/home/rafael/UR3/catkin_ur3/build/ur3
 
+ur3_DIR:PATH=
+
 //Value Computed by CMake
 ur3_SOURCE_DIR:STATIC=/home/rafael/UR3/catkin_ur3/src/ur3
 
