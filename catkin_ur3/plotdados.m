@@ -22,4 +22,4 @@ ylim([-6 6]);
 title('effort')
 grid on; 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-clear all;
+%clear all;

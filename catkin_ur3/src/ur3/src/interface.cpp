@@ -1,5 +1,5 @@
 // Programa para teste na junta 5 do ur3////////////////////////////////
-// compilar : g++ open_socket.cpp socket_ur3_server.cpp -o server///////
+
 ////////////////////////////////////////////////////////////////////////
 #include "ros/ros.h"
 #include "sensor_msgs/JointState.h"
@@ -77,7 +77,7 @@ void joyCallback(const sensor_msgs::Joy::ConstPtr& joy_data){
 int main(int argc, char **argv){ 
 	bool statado;
 	refe[0] = 0; refe[1] = 0; refe[2] = 0; refe[3] = 0; refe[4] = 0;
-	refe[5] = 0; refe[6] = 40; refe[7] = 10; refe[8] = 0;
+	refe[5] = 0; refe[6] = 40; refe[7] = 0; refe[8] = 0;
 	float* data_join_out;
 	// primeira coisa:
 	// tem que enviar o arquivo urscript
@@ -154,13 +154,10 @@ int main(int argc, char **argv){
 		buffer_in_[5] = (int)(refe[5]*norma_float);
 		buffer_in_[5] = reverse(buffer_in_[5]);
 		// gripper
-		if(gripper_boll[0] == 1){
-			refe[6] = refe[6] + 0.5;
-		}
-		if(gripper_boll[1] == 1){
-			refe[6] = refe[6] - 0.5;
-		} 
 		
+		refe[6] = gripper_boll[0];
+		refe[7] = gripper_boll[1];
+		//printf("\n%f",refe[7]);
 		buffer_in_[6] = (int)(refe[6]*norma_float);
 		buffer_in_[6] = reverse(buffer_in_[6]);
 		buffer_in_[7] = (int)(refe[7]*norma_float);

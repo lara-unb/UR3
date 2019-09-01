@@ -32,6 +32,7 @@ int send_script(){
     }
     // resetar o robô
     FILE *fp1 = fopen("prog_reset.script", "rb");
+    //FILE *fp1 = fopen("close.script", "rb");
     if(fp1 == NULL){
         perror("File");
         return 2;
@@ -42,7 +43,7 @@ int send_script(){
     }
 
     fclose(fp1);
-    sleep(10);
+    sleep(5);
     // mada o arquivo que será esxecutado
     FILE *fp = fopen("ur3_arm.script", "rb");
     if(fp == NULL){
