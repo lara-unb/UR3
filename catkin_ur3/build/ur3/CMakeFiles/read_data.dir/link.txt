@@ -1,0 +1,1 @@
+/usr/bin/c++ -fPIC   -shared -Wl,-soname,libread_data.so -o /home/rafael/UR3/catkin_ur3/devel/lib/libread_data.so CMakeFiles/read_data.dir/src/read_data.cpp.o 

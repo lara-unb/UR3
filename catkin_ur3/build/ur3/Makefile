@@ -528,6 +528,21 @@ control_msgs_generate_messages_cpp/fast:
 .PHONY : control_msgs_generate_messages_cpp/fast
 
 # Convenience name for target.
+ur3/CMakeFiles/read_data.dir/rule:
+	cd /home/rafael/UR3/catkin_ur3/build && $(MAKE) -f CMakeFiles/Makefile2 ur3/CMakeFiles/read_data.dir/rule
+.PHONY : ur3/CMakeFiles/read_data.dir/rule
+
+# Convenience name for target.
+read_data: ur3/CMakeFiles/read_data.dir/rule
+
+.PHONY : read_data
+
+# fast build rule for target.
+read_data/fast:
+	cd /home/rafael/UR3/catkin_ur3/build && $(MAKE) -f ur3/CMakeFiles/read_data.dir/build.make ur3/CMakeFiles/read_data.dir/build
+.PHONY : read_data/fast
+
+# Convenience name for target.
 ur3/CMakeFiles/rosgraph_msgs_generate_messages_eus.dir/rule:
 	cd /home/rafael/UR3/catkin_ur3/build && $(MAKE) -f CMakeFiles/Makefile2 ur3/CMakeFiles/rosgraph_msgs_generate_messages_eus.dir/rule
 .PHONY : ur3/CMakeFiles/rosgraph_msgs_generate_messages_eus.dir/rule
@@ -1067,6 +1082,36 @@ src/open_socket.cpp.s:
 	cd /home/rafael/UR3/catkin_ur3/build && $(MAKE) -f ur3/CMakeFiles/interface.dir/build.make ur3/CMakeFiles/interface.dir/src/open_socket.cpp.s
 .PHONY : src/open_socket.cpp.s
 
+src/read_data.o: src/read_data.cpp.o
+
+.PHONY : src/read_data.o
+
+# target to build an object file
+src/read_data.cpp.o:
+	cd /home/rafael/UR3/catkin_ur3/build && $(MAKE) -f ur3/CMakeFiles/read_data.dir/build.make ur3/CMakeFiles/read_data.dir/src/read_data.cpp.o
+	cd /home/rafael/UR3/catkin_ur3/build && $(MAKE) -f ur3/CMakeFiles/interface.dir/build.make ur3/CMakeFiles/interface.dir/src/read_data.cpp.o
+.PHONY : src/read_data.cpp.o
+
+src/read_data.i: src/read_data.cpp.i
+
+.PHONY : src/read_data.i
+
+# target to preprocess a source file
+src/read_data.cpp.i:
+	cd /home/rafael/UR3/catkin_ur3/build && $(MAKE) -f ur3/CMakeFiles/read_data.dir/build.make ur3/CMakeFiles/read_data.dir/src/read_data.cpp.i
+	cd /home/rafael/UR3/catkin_ur3/build && $(MAKE) -f ur3/CMakeFiles/interface.dir/build.make ur3/CMakeFiles/interface.dir/src/read_data.cpp.i
+.PHONY : src/read_data.cpp.i
+
+src/read_data.s: src/read_data.cpp.s
+
+.PHONY : src/read_data.s
+
+# target to generate assembly for a file
+src/read_data.cpp.s:
+	cd /home/rafael/UR3/catkin_ur3/build && $(MAKE) -f ur3/CMakeFiles/read_data.dir/build.make ur3/CMakeFiles/read_data.dir/src/read_data.cpp.s
+	cd /home/rafael/UR3/catkin_ur3/build && $(MAKE) -f ur3/CMakeFiles/interface.dir/build.make ur3/CMakeFiles/interface.dir/src/read_data.cpp.s
+.PHONY : src/read_data.cpp.s
+
 src/reverse_word.o: src/reverse_word.cpp.o
 
 .PHONY : src/reverse_word.o
@@ -1160,6 +1205,7 @@ help:
 	@echo "... trajectory_msgs_generate_messages_py"
 	@echo "... std_msgs_generate_messages_cpp"
 	@echo "... control_msgs_generate_messages_cpp"
+	@echo "... read_data"
 	@echo "... rosgraph_msgs_generate_messages_eus"
 	@echo "... actionlib_msgs_generate_messages_cpp"
 	@echo "... rebuild_cache"
@@ -1200,6 +1246,9 @@ help:
 	@echo "... src/open_socket.o"
 	@echo "... src/open_socket.i"
 	@echo "... src/open_socket.s"
+	@echo "... src/read_data.o"
+	@echo "... src/read_data.i"
+	@echo "... src/read_data.s"
 	@echo "... src/reverse_word.o"
 	@echo "... src/reverse_word.i"
 	@echo "... src/reverse_word.s"

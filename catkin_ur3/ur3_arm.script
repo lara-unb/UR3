@@ -133,7 +133,7 @@ def unnamed():
   set_tool_voltage(24)
   set_tcp(p[0,-0,0.18659,0,-0,0])
   HOSTNAME = "192.168.1.63"
-  PORT = 5000
+  PORT = 60200
   pi = 3.14159265359
   socket_open(HOSTNAME, PORT)
    
@@ -149,6 +149,21 @@ def unnamed():
 			pose = get_target_tcp_pose()
 			speed = get_target_tcp_speed()
 			force = get_tcp_force()
+
+			# signals input
+			velocity = socket_read_binary_integer(8)
+			velocity[1] = velocity[1]/1000000.00
+			velocity[2] = velocity[2]/1000000.00
+			velocity[3] = velocity[3]/1000000.00
+			velocity[4] = velocity[4]/1000000.00
+			velocity[5] = velocity[5]/1000000.00
+			velocity[6] = velocity[6]/1000000.00
+			# positions and torque
+			gripper[1] = velocity[7]/1000000.00
+			gripper[2] = velocity[8]/1000000.00
+			
+
+			#signals output
 			socket_send_int(p_juntas[0]*1000000)
 			socket_send_int(v_juntas[0]*1000000)
 			socket_send_int(t_juntas[0]*1000000)
@@ -167,22 +182,25 @@ def unnamed():
 			socket_send_int(p_juntas[5]*1000000)
 			socket_send_int(v_juntas[5]*1000000)
 			socket_send_int(t_juntas[5]*1000000)
+			#########################################
 			socket_send_int(largura*1000000) # position
-			socket_send_int(2*1000000) # max_effort
+			socket_send_int(get_analog_in(3)*1000000) # max_effort
 			socket_send_int(1000000*get_digital_in(8)) #stado da grarra
+
 			socket_send_int(pose[0]*1000000)
 			socket_send_int(pose[1]*1000000)
 			socket_send_int(pose[2]*1000000)
 			socket_send_int(pose[3]*1000000)
 			socket_send_int(pose[4]*1000000)
 			socket_send_int(pose[5]*1000000)
+
 			socket_send_int(speed[0]*1000000)
 			socket_send_int(speed[1]*1000000)
 			socket_send_int(speed[2]*1000000)
 			socket_send_int(speed[3]*1000000)
 			socket_send_int(speed[4]*1000000)
 			socket_send_int(speed[5]*1000000)
-			socket_send_int(pose[5]*1000000)
+
 			socket_send_int(force[0]*1000000)
 			socket_send_int(force[1]*1000000)
 			socket_send_int(force[2]*1000000)
@@ -190,20 +208,10 @@ def unnamed():
 			socket_send_int(force[4]*1000000)
 			socket_send_int(force[5]*1000000)
 
+			socket_send_int(velocity[6]*1000000)
 
 			
-
-			velocity = socket_read_binary_integer(8)
-			velocity[1] = velocity[1]/1000000.00
-			velocity[2] = velocity[2]/1000000.00
-			velocity[3] = velocity[3]/1000000.00
-			velocity[4] = velocity[4]/1000000.00
-			velocity[5] = velocity[5]/1000000.00
-			velocity[6] = velocity[6]/1000000.00
-			gripper[1] = velocity[7]/1000000.00
-			gripper[2] = velocity[8]/1000000.00
 			sync()
-			
 		end
 		movej([0, -1.570796, 0,-1.570796, 0, 0],1.4, 1.05)
 	end
@@ -211,6 +219,7 @@ def unnamed():
 	thrd_rg2 = run rg2_thrd() 
 	thrd_grip = run ler_garra()
 	while True:
-		speedj([velocity[1]/2,velocity[2]/2,velocity[3]/2,velocity[4]/2,velocity[5]/2,velocity[6]/2], 2, 0.001)
+		speedj([velocity[1],velocity[2],velocity[3],velocity[4],velocity[5],velocity[6]], 2, 0.001)
+		
 	end
 end

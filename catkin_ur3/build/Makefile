@@ -597,6 +597,19 @@ control_msgs_generate_messages_cpp/fast:
 .PHONY : control_msgs_generate_messages_cpp/fast
 
 #=============================================================================
+# Target rules for targets named read_data
+
+# Build rule for target.
+read_data: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 read_data
+.PHONY : read_data
+
+# fast build rule for target.
+read_data/fast:
+	$(MAKE) -f ur3/CMakeFiles/read_data.dir/build.make ur3/CMakeFiles/read_data.dir/build
+.PHONY : read_data/fast
+
+#=============================================================================
 # Target rules for targets named rosgraph_msgs_generate_messages_eus
 
 # Build rule for target.
@@ -1032,6 +1045,7 @@ help:
 	@echo "... trajectory_msgs_generate_messages_py"
 	@echo "... std_msgs_generate_messages_cpp"
 	@echo "... control_msgs_generate_messages_cpp"
+	@echo "... read_data"
 	@echo "... rosgraph_msgs_generate_messages_eus"
 	@echo "... actionlib_msgs_generate_messages_cpp"
 	@echo "... roscpp_generate_messages_cpp"

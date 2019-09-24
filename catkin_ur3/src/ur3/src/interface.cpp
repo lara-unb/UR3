@@ -1,5 +1,8 @@
 // Programa para teste na junta 5 do ur3////////////////////////////////
-
+//commando to setup joystick
+//rosparam set joy_node/dev "/dev/input/jsX" change X for your divice.
+//rosrun joy joy_node 
+//rostopic echo joy 
 ////////////////////////////////////////////////////////////////////////
 #include "ros/ros.h"
 #include "sensor_msgs/JointState.h"
@@ -9,6 +12,7 @@
 #include "ur3/end_Effector_msg.h"
 #include "geometry_msgs/Wrench.h"
 #include "geometry_msgs/Pose.h"
+#include "std_msgs/Float32.h"
 #include <X11/keysymdef.h>
 #include <sys/socket.h>
 #include <stdlib.h> 
@@ -26,9 +30,9 @@
 #include "send_script.h"
 #include "reverse_word.h"
 #include "join_data.h"
+#include "read_data.h"
 
-#define PORT 5000
-#define PI 3.1415
+
 float referencia = 0;
 float refe[8];
 int gripper_boll[1];
@@ -49,9 +53,9 @@ void joyCallback(const sensor_msgs::Joy::ConstPtr& joy_data){
 	 int button0 = joy_data->buttons[0];
 	 int button2 = joy_data->buttons[2];
 	 int button3 = joy_data->buttons[3];
-
+	 refe[8] = joy_data->axes[2];
 	 if (button0 == 0){
-     	refe[0] = joy_data->axes[3];
+     	refe[0] = joy_data->axes[2];
 	 	refe[1] = (joy_data->axes[0])*-1;
 	 	refe[2] = joy_data->axes[1];
 	 	refe[3] = 0;
@@ -64,7 +68,7 @@ void joyCallback(const sensor_msgs::Joy::ConstPtr& joy_data){
 	 	refe[1] = 0;
 	 	refe[2] = 0;
 		refe[3] = joy_data->axes[1];
-	 	refe[4] = joy_data->axes[3];
+	 	refe[4] = joy_data->axes[2];
 	 	refe[5] = joy_data->axes[0];
 	 }
 	 
@@ -79,25 +83,30 @@ int main(int argc, char **argv){
 	refe[0] = 0; refe[1] = 0; refe[2] = 0; refe[3] = 0; refe[4] = 0;
 	refe[5] = 0; refe[6] = 40; refe[7] = 0; refe[8] = 0;
 	float* data_join_out;
+	float* prbs_inp = read_data();
 	// primeira coisa:
 	// tem que enviar o arquivo urscript
 	send_script(); // a função send_script envia o arquivo para o robô
 	///////////////////////////////////
-	int new_socket;
+	int new_socket = open_socket();;
 	// abrindo a comunicaçção tcp socket
-	new_socket = open_socket();
 	////////////////////////////////////
+		// void *context = zmq_ctx_new ();
+		// void *responder = zmq_socket (context, ZMQ_REP);
+		// int rc = zmq_bind (responder, "tcp://*:5000");
+		// assert (rc == 0);
+	///////////////////////////////////////////
 	// Declaração dos buffers de entrada e saida 
-    //int32_t buffer_in  = 0;
+   
 	int32_t buffer_in_[8];
-	int8_t buffer_out[2024]; 
+	int8_t buffer_out[256]; 
 	float tempo = 0;
    	/////////////////////////////
 	// criação de um arquivo .csv para armazenar os dados
 	FILE *fp;
     char filename[20]= "dados.csv";
 	fp=fopen(filename,"w+");
-	fprintf(fp,"     t     ,   pj0    ,    vj0    ,    tj0    ,    pj1    ,    vj1    ,    tj1    ,    pj2    ,    vj2    ,    tj2    ,    pj3    ,    vj3    ,    tj3    ,    pj4    ,    vj4    ,    tj4    ,    pj5    ,    vj5    ,    tj5    \n");
+	fprintf(fp,"     t     ,   ref   ,   pj0    ,    vj0    ,    tj0    ,    pj1    ,    vj1    ,    tj1    ,    pj2    ,    vj2    ,    tj2    ,    pj3    ,    vj3    ,    tj3    ,    pj4    ,    vj4    ,    tj4    ,    pj5    ,    vj5    ,    tj5    \n");
 	//////////////////////
 	/////////////////////
 	float norma_float = 1000000.0;
@@ -108,21 +117,18 @@ int main(int argc, char **argv){
 	ros::init(argc, argv, "ur3");
 	ros::NodeHandle n;
 	//Declaração das publicões 
-	ros::Publisher arm_pub = n.advertise<sensor_msgs::JointState>("arm",0);
+	ros::Publisher arm_pub = n.advertise<sensor_msgs::JointState>("arm",10);
+	ros::Publisher ref_pub = n.advertise<std_msgs::Float32>("ref",10);
 	ros::Publisher end_Effector_pub = n.advertise<ur3::end_Effector_msg>("end_effector",0);
 	//ros::Publisher gripper_pub = n.advertise<control_msgs::GripperCommand>("gripper",0);
 	///////////////////////////////////////////////////////////////////////////////////
 	ros::Subscriber sub_joy = n.subscribe("joy", 10, joyCallback);
-	ros::Rate loop_rate(55);
+	ros::Rate loop_rate(50);
 	//Declaração das estruturas de dados para as publicações
 	sensor_msgs::JointState arm;
 	ur3::end_Effector_msg end_effector;
-	//control_msgs::GripperCommand gripper;
-	/////////////////////////////////////
-	//gripper.position = 0;
-	//gripper.max_effort = 0;
-	//gripper.gripper.position = 0;
-	//gripper.gripper.max_effort = 0;
+	std_msgs::Float32 ref;
+	
 	arm.header.frame_id = " ";
 	arm.name.resize(6);
 	arm.position.resize(6);
@@ -135,11 +141,20 @@ int main(int argc, char **argv){
 	arm.name[4] = "Wrist 2";
 	arm.name[5] = "Wrist 3";
 	
-	int number = 0;
+	int prbs_count= 0;
 	
 	//////////////////////////////////////////////////////////
+	printf("The robotic arm is ready!\n");
     while (ros::ok()){
 		/////////////////////////////////////////////////////
+		//referencia 
+		if(prbs_count >=2998){
+			 prbs_count = 0;
+		}
+		// printf("%f\n",prbs_inp[prbs_count]);
+		
+		prbs_count ++;
+		////////////////////////////////////
 		//arm ur3
 		buffer_in_[0] = (int)(refe[0]*norma_float);
 		buffer_in_[0] = reverse(buffer_in_[0]);
@@ -151,6 +166,7 @@ int main(int argc, char **argv){
 		buffer_in_[3] = reverse(buffer_in_[3]);
 		buffer_in_[4] = (int)(refe[4]*norma_float);
 		buffer_in_[4] = reverse(buffer_in_[4]);
+		// buffer_in_[5] = (int)((prbs_inp[prbs_count]/4)*norma_float); //sending prbs signal to joint 5
 		buffer_in_[5] = (int)(refe[5]*norma_float);
 		buffer_in_[5] = reverse(buffer_in_[5]);
 		// gripper
@@ -163,10 +179,12 @@ int main(int argc, char **argv){
 		buffer_in_[7] = (int)(refe[7]*norma_float);
 		buffer_in_[7] = reverse(buffer_in_[7]);
 		send(new_socket, buffer_in_, 32, 0);
+		//zmq_send (responder, buffer_in_, 32, 0);
 		/////////////////////////////////////////////////////////
-		number = 0;
-		///////////////////////////////////////////////////////////
-		number = recv(new_socket, &buffer_out, 256, 0);
+		
+		////////*///////////////////////////////////////////////////
+		recv(new_socket, &buffer_out, 256, 0);
+		//zmq_recv (responder, buffer_out, 256, 0);
 		
 		/////////////////////////////////////////////////////
 		data_join_out = join_data(buffer_out);
@@ -206,6 +224,9 @@ int main(int argc, char **argv){
 		end_effector.wrench.torque.x = data_join_out[37];
 		end_effector.wrench.torque.x = data_join_out[38];
 		////////////////////////////////////////
+		//Arm joints...
+		////////////////////////////////////////
+		ref.data = data_join_out[39];
 		arm.position[5] = data_join_out[15];
 		arm.velocity[5] = data_join_out[16];
 		arm.effort[5] = data_join_out[17];
@@ -230,14 +251,16 @@ int main(int argc, char **argv){
 		arm.velocity[0] = data_join_out[1];
 		arm.effort[0] = data_join_out[2];
 		//////////////////////////////////////
-		fprintf(fp, "\n%10.5f, %10.5f, %10.5f, %10.5f, %10.5f, %10.5f, %10.5f, %10.5f, %10.5f, %10.5f, %10.5f, %10.5f, %10.5f, %10.5f, %10.5f, %10.5f, %10.5f, %10.5f, %10.5f", tempo, data_join_out[0], data_join_out[1], data_join_out[2], data_join_out[3], data_join_out[4], data_join_out[5], data_join_out[6], data_join_out[7], data_join_out[8], data_join_out[9], data_join_out[10], data_join_out[11], data_join_out[12], data_join_out[13], data_join_out[14], data_join_out[15], data_join_out[16], data_join_out[17]);
+		fprintf(fp, "\n%10.5f, %10.5f, %10.5f, %10.5f, %10.5f, %10.5f, %10.5f, %10.5f, %10.5f, %10.5f, %10.5f, %10.5f, %10.5f, %10.5f, %10.5f, %10.5f, %10.5f, %10.5f, %10.5f, %10.5f", tempo,data_join_out[39], data_join_out[0], data_join_out[1], data_join_out[2], data_join_out[3], data_join_out[4], data_join_out[5], data_join_out[6], data_join_out[7], data_join_out[8], data_join_out[9], data_join_out[10], data_join_out[11], data_join_out[12], data_join_out[13], data_join_out[14], data_join_out[15], data_join_out[16], data_join_out[17]);
 		//fprintf(fp, "\n%10.5f, %10.5f", tempo, data_join_out[0]);
-		tempo = tempo + 0.02;
+		tempo = tempo + 0.008;
 		
 		arm.header.stamp = ros::Time::now();
 		end_effector.header.stamp = ros::Time::now();
 		arm_pub.publish(arm);
 		end_Effector_pub.publish(end_effector);
+		ref_pub.publish(ref);
+		
 		ros::spinOnce();
 		loop_rate.sleep();		
 		
@@ -245,3 +268,4 @@ int main(int argc, char **argv){
 	fclose(fp);
 	return 0;
 } 
+

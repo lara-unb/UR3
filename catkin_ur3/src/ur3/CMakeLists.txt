@@ -4,6 +4,11 @@ project(ur3)
 ## Compile as C++11, supported in ROS Kinetic and newer
 # add_compile_options(-std=c++11)
 
+
+
+
+
+
 ## Find catkin macros and libraries
 ## if COMPONENTS list like find_package(catkin REQUIRED COMPONENTS xyz)
 ## is used, also find other catkin packages
@@ -214,6 +219,7 @@ add_library(open_socket SHARED src/open_socket.cpp include/ur3/open_socket.h)
 add_library(send_script SHARED src/send_script.cpp include/ur3/send_script.h)
 add_library(join_data SHARED src/join_data.cpp include/ur3/join_data.h)
 add_library(reverse_word SHARED src/join_data.cpp include/ur3/reverse_word.h)
+add_library(read_data SHARED src/read_data.cpp include/ur3/read_data.h)
 
 install(TARGETS open_socket DESTINATION lib)
 install(FILES src/open_socket.h DESTINATION include)
@@ -227,7 +233,9 @@ install(FILES src/join_data.h DESTINATION include)
 install(TARGETS reverse_word DESTINATION lib)
 install(FILES src/reverse_word.h DESTINATION include)
 
-add_executable(interface src/interface.cpp src/open_socket.cpp src/send_script.cpp 
-src/join_data.cpp src/reverse_word.cpp)
-target_link_libraries(interface open_socket send_script join_data reverse_word ${catkin_LIBRARIES})
+install(TARGETS read_data DESTINATION lib)
+install(FILES src/read_data.h DESTINATION include)
 
+add_executable(interface src/interface.cpp src/open_socket.cpp src/send_script.cpp 
+src/join_data.cpp src/reverse_word.cpp src/read_data.cpp)
+target_link_libraries(interface open_socket send_script join_data reverse_word read_data ${catkin_LIBRARIES})

@@ -4,6 +4,7 @@
 ur3/CMakeFiles/interface.dir/src/interface.cpp.o: /home/rafael/UR3/catkin_ur3/devel/include/ur3/end_Effector_msg.h
 ur3/CMakeFiles/interface.dir/src/interface.cpp.o: /home/rafael/UR3/catkin_ur3/src/ur3/include/ur3/join_data.h
 ur3/CMakeFiles/interface.dir/src/interface.cpp.o: /home/rafael/UR3/catkin_ur3/src/ur3/include/ur3/open_socket.h
+ur3/CMakeFiles/interface.dir/src/interface.cpp.o: /home/rafael/UR3/catkin_ur3/src/ur3/include/ur3/read_data.h
 ur3/CMakeFiles/interface.dir/src/interface.cpp.o: /home/rafael/UR3/catkin_ur3/src/ur3/include/ur3/reverse_word.h
 ur3/CMakeFiles/interface.dir/src/interface.cpp.o: /home/rafael/UR3/catkin_ur3/src/ur3/include/ur3/send_script.h
 ur3/CMakeFiles/interface.dir/src/interface.cpp.o: /home/rafael/UR3/catkin_ur3/src/ur3/src/interface.cpp
@@ -73,6 +74,7 @@ ur3/CMakeFiles/interface.dir/src/interface.cpp.o: /opt/ros/melodic/include/rosco
 ur3/CMakeFiles/interface.dir/src/interface.cpp.o: /opt/ros/melodic/include/sensor_msgs/JointState.h
 ur3/CMakeFiles/interface.dir/src/interface.cpp.o: /opt/ros/melodic/include/sensor_msgs/Joy.h
 ur3/CMakeFiles/interface.dir/src/interface.cpp.o: /opt/ros/melodic/include/std_msgs/Bool.h
+ur3/CMakeFiles/interface.dir/src/interface.cpp.o: /opt/ros/melodic/include/std_msgs/Float32.h
 ur3/CMakeFiles/interface.dir/src/interface.cpp.o: /opt/ros/melodic/include/std_msgs/Header.h
 ur3/CMakeFiles/interface.dir/src/interface.cpp.o: /opt/ros/melodic/include/xmlrpcpp/XmlRpcDecl.h
 ur3/CMakeFiles/interface.dir/src/interface.cpp.o: /opt/ros/melodic/include/xmlrpcpp/XmlRpcValue.h
@@ -81,6 +83,8 @@ ur3/CMakeFiles/interface.dir/src/join_data.cpp.o: /home/rafael/UR3/catkin_ur3/sr
 ur3/CMakeFiles/interface.dir/src/join_data.cpp.o: /home/rafael/UR3/catkin_ur3/src/ur3/src/join_data.cpp
 
 ur3/CMakeFiles/interface.dir/src/open_socket.cpp.o: /home/rafael/UR3/catkin_ur3/src/ur3/src/open_socket.cpp
+
+ur3/CMakeFiles/interface.dir/src/read_data.cpp.o: /home/rafael/UR3/catkin_ur3/src/ur3/src/read_data.cpp
 
 ur3/CMakeFiles/interface.dir/src/reverse_word.cpp.o: /home/rafael/UR3/catkin_ur3/src/ur3/src/reverse_word.cpp
 

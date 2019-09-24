@@ -41,3 +41,22 @@
 >> Hoje fiz mais um pesquisa para tentar fazer a garra rg2 funcional, não obtive sucesso. 
 
 >>Parece não existir muitas referência para a pinça robôtica. Nós próximos dias, estarei fazendo mais pesquisas a respeito do assunto. 
+
+## __21-09-2019__
+
+>> Atuamente, estamos com problemas na transferância de dados do computador do robô para o computador que coleta os dados.
+
+>> próximos dias seram feitos experimentos com uma nova bibliotéca de de transferencia de dados. Os testes que foram feitos até agora foi usado a bibliotéca socket.h . 
+
+## __22-09-2019__
+>> Hoje depois de uma pesquisa sobre a comunicação tcp usando a biblióteca socket.h, foi constatado que o numero da porta era uma variávei de total relevancia para a comunicação. Depois da pesquisa, foi percebido que a porta 5000 era usada tanto pelo SO quanto pela minha aplicação.
+
+>>Uma porta que poderia ser usada somente pela a aplicção é a porta 60200. depois de alguns testes foi verificado que ainda há perda de cacostes com essaporta.
+
+## __23-09-2019__
+>> Foi sugerido pelo professor Geovany mudar a bibliotéca de comunicação. A sugestão foi trocar a socket.h pela zmq.h(zeromq).
+
+>>Segundo a documentação da zeromq ela funciona de forma assíncriona colocando em uma fila os pacotes atrazados.
+
+>> Próxinos dias será estudado como é feita sua implementação em C para ser anexado ao codigo da interface.
+

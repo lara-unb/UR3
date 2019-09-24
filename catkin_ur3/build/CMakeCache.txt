@@ -245,6 +245,9 @@ LSB_RELEASE_EXECUTABLE:FILEPATH=/usr/bin/lsb_release
 //Path to a program.
 NOSETESTS:FILEPATH=/usr/bin/nosetests-2.7
 
+//pkg-config executable
+PKG_CONFIG_EXECUTABLE:FILEPATH=/usr/bin/pkg-config
+
 //Path to a program.
 PYTHON_EXECUTABLE:FILEPATH=/usr/bin/python2
 
@@ -271,6 +274,15 @@ UBUNTU:BOOL=TRUE
 
 //LSB Distrib - codename tag
 UBUNTU_BIONIC:BOOL=TRUE
+
+//The directory containing a CMake configuration file for ZeroMQ.
+ZeroMQ_DIR:PATH=/home/rafael/anaconda3/lib/cmake/ZeroMQ
+
+//Path to a file.
+ZeroMQ_INCLUDE_DIR:PATH=/usr/include
+
+//Path to a library.
+ZeroMQ_LIBRARY:FILEPATH=/usr/lib/x86_64-linux-gnu/libzmq.so
 
 //Path to a file.
 _gmock_INCLUDES:FILEPATH=/usr/include/gmock/gmock.h
@@ -372,6 +384,12 @@ join_data_LIB_DEPENDS:STATIC=
 //Path to a library.
 lib:FILEPATH=/opt/ros/melodic/lib/libxmlrpcpp.so
 
+//The directory containing a CMake configuration file for libzmq3-dev.
+libzmq3-dev_DIR:PATH=libzmq3-dev_DIR-NOTFOUND
+
+//The directory containing a CMake configuration file for libzmq3.
+libzmq3_DIR:PATH=libzmq3_DIR-NOTFOUND
+
 //The directory containing a CMake configuration file for message_generation.
 message_generation_DIR:PATH=/opt/ros/melodic/share/message_generation/cmake
 
@@ -380,6 +398,9 @@ message_runtime_DIR:PATH=/opt/ros/melodic/share/message_runtime/cmake
 
 //Dependencies for target
 open_socket_LIB_DEPENDS:STATIC=
+
+//Dependencies for target
+read_data_LIB_DEPENDS:STATIC=
 
 //Dependencies for target
 reverse_word_LIB_DEPENDS:STATIC=
@@ -424,6 +445,9 @@ ur3_SOURCE_DIR:STATIC=/home/rafael/UR3/catkin_ur3/src/ur3
 
 //The directory containing a CMake configuration file for xmlrpcpp.
 xmlrpcpp_DIR:PATH=/opt/ros/melodic/share/xmlrpcpp/cmake
+
+//The directory containing a CMake configuration file for zmq.
+zmq_DIR:PATH=zmq_DIR-NOTFOUND
 
 
 ########################
@@ -576,6 +600,8 @@ CMAKE_STRIP-ADVANCED:INTERNAL=1
 CMAKE_UNAME:INTERNAL=/bin/uname
 //ADVANCED property for variable: CMAKE_VERBOSE_MAKEFILE
 CMAKE_VERBOSE_MAKEFILE-ADVANCED:INTERNAL=1
+//Details about finding PkgConfig
+FIND_PACKAGE_MESSAGE_DETAILS_PkgConfig:INTERNAL=[/usr/bin/pkg-config][v0.29.1()]
 //Details about finding PythonInterp
 FIND_PACKAGE_MESSAGE_DETAILS_PythonInterp:INTERNAL=[/usr/bin/python2][v2.7.15()]
 //Details about finding Threads
@@ -600,10 +626,37 @@ GTEST_LIBRARY_DEBUG-ADVANCED:INTERNAL=1
 GTEST_MAIN_LIBRARY-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: GTEST_MAIN_LIBRARY_DEBUG
 GTEST_MAIN_LIBRARY_DEBUG-ADVANCED:INTERNAL=1
+PC_ZeroMQ_CFLAGS:INTERNAL=
+PC_ZeroMQ_CFLAGS_I:INTERNAL=
+PC_ZeroMQ_CFLAGS_OTHER:INTERNAL=
+PC_ZeroMQ_FOUND:INTERNAL=
+PC_ZeroMQ_INCLUDEDIR:INTERNAL=
+PC_ZeroMQ_LIBDIR:INTERNAL=
+PC_ZeroMQ_LIBS:INTERNAL=
+PC_ZeroMQ_LIBS_L:INTERNAL=
+PC_ZeroMQ_LIBS_OTHER:INTERNAL=
+PC_ZeroMQ_LIBS_PATHS:INTERNAL=
+PC_ZeroMQ_PREFIX:INTERNAL=
+PC_ZeroMQ_STATIC_CFLAGS:INTERNAL=
+PC_ZeroMQ_STATIC_CFLAGS_I:INTERNAL=
+PC_ZeroMQ_STATIC_CFLAGS_OTHER:INTERNAL=
+PC_ZeroMQ_STATIC_LIBDIR:INTERNAL=
+PC_ZeroMQ_STATIC_LIBS:INTERNAL=
+PC_ZeroMQ_STATIC_LIBS_L:INTERNAL=
+PC_ZeroMQ_STATIC_LIBS_OTHER:INTERNAL=
+PC_ZeroMQ_STATIC_LIBS_PATHS:INTERNAL=
+PC_ZeroMQ_VERSION:INTERNAL=
+PC_ZeroMQ_zmq_INCLUDEDIR:INTERNAL=
+PC_ZeroMQ_zmq_LIBDIR:INTERNAL=
+PC_ZeroMQ_zmq_PREFIX:INTERNAL=
+PC_ZeroMQ_zmq_VERSION:INTERNAL=
+//ADVANCED property for variable: PKG_CONFIG_EXECUTABLE
+PKG_CONFIG_EXECUTABLE-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: PYTHON_EXECUTABLE
 PYTHON_EXECUTABLE-ADVANCED:INTERNAL=1
 //This needs to be in PYTHONPATH when 'setup.py install' is called.
 //  And it needs to match.  But setuptools won't tell us where
 // it will install things.
 PYTHON_INSTALL_DIR:INTERNAL=lib/python2.7/dist-packages
+__pkg_config_checked_PC_ZeroMQ:INTERNAL=1
 

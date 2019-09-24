@@ -32,7 +32,6 @@ int send_script(){
     }
     // resetar o robô
     FILE *fp1 = fopen("prog_reset.script", "rb");
-    //FILE *fp1 = fopen("close.script", "rb");
     if(fp1 == NULL){
         perror("File");
         return 2;
