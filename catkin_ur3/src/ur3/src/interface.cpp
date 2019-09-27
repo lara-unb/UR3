@@ -5,6 +5,8 @@
 //rostopic echo joy 
 ////////////////////////////////////////////////////////////////////////
 #include "ros/ros.h"
+#include <std_msgs/Empty.h>
+#include <boost/thread/thread.hpp>
 #include "sensor_msgs/JointState.h"
 #include "control_msgs/GripperCommand.h"
 #include "std_msgs/Header.h"
@@ -12,7 +14,7 @@
 #include "ur3/end_Effector_msg.h"
 #include "geometry_msgs/Wrench.h"
 #include "geometry_msgs/Pose.h"
-#include "std_msgs/Float32.h"
+#include "ur3/ref_msg.h"
 #include <X11/keysymdef.h>
 #include <sys/socket.h>
 #include <stdlib.h> 
@@ -24,21 +26,18 @@
 #include <stdlib.h>
 #include <sstream>
 #include <inttypes.h>
-#include <math.h>
 #include <ctime>
 #include "open_socket.h"
 #include "send_script.h"
-#include "reverse_word.h"
-#include "join_data.h"
 #include "read_data.h"
 
+#include <netdb.h>
 
-float referencia = 0;
-float refe[8];
-int gripper_boll[1];
-      
-/// little endian <-> big endian ///////
- int reverse(int32_t num){
+
+float refe[10];
+int gripper_boll[2];
+
+inline int reverse_word(int32_t num){
 	uint32_t b0,b1,b2,b3;
 	uint32_t res;
 	b0 = (num & 0x000000ff) << 24u;
@@ -47,6 +46,64 @@ int gripper_boll[1];
 	b3 = (num & 0xff000000) >> 24u;
 	res = b0 | b1 | b2 | b3;
 	return res;
+}  
+
+void send_data(int new_socket){
+
+  int32_t buffer_in_[8];
+  ros::NodeHandle node;
+  ros::Publisher ref_pub = node.advertise<ur3::ref_msg>("reference",10);
+  ur3::ref_msg ref;
+
+  ref.refer.data.resize(6);
+  ros::Rate loop_rate(125);
+  float norma_float = 1000000.0;
+  while (ros::ok()){
+	  	ref.refer.data[0] = refe[0];
+		buffer_in_[0] = (int)(refe[0]*norma_float);
+		buffer_in_[0] = reverse_word(buffer_in_[0]);
+		ref.refer.data[1] = refe[1];
+		buffer_in_[1] = (int)(refe[1]*norma_float);
+		buffer_in_[1] = reverse_word(buffer_in_[1]);
+		ref.refer.data[2] = refe[2];
+		buffer_in_[2] = (int)(refe[2]*norma_float);
+		buffer_in_[2] = reverse_word(buffer_in_[2]);
+		ref.refer.data[3] = refe[3];
+		buffer_in_[3] = (int)(refe[3]*norma_float);
+		buffer_in_[3] = reverse_word(buffer_in_[3]);
+		ref.refer.data[4] = refe[4];
+		buffer_in_[4] = (int)(refe[4]*norma_float);
+		buffer_in_[4] = reverse_word(buffer_in_[4]);
+		
+		// buffer_in_[5] = (int)((prbs_inp[prbs_count]/4)*norma_float); //sending prbs signal to joint 5
+		ref.refer.data[5] = refe[5];
+		buffer_in_[5] = (int)(refe[5]*norma_float);
+		buffer_in_[5] = reverse_word(buffer_in_[5]);
+		// gripper
+		
+		refe[6] = gripper_boll[0];
+		refe[7] = gripper_boll[1];
+		//printf("\n%f",refe[7]);
+		buffer_in_[6] = (int)(refe[6]*norma_float);
+		buffer_in_[6] = reverse_word(buffer_in_[6]);
+		buffer_in_[7] = (int)(refe[7]*norma_float);
+		buffer_in_[7] = reverse_word(buffer_in_[7]);
+		send(new_socket, buffer_in_, 32, 0);
+		/////////////////////////////////////////////////////////
+		ref.header.stamp = ros::Time::now();
+		ref_pub.publish(ref);
+		loop_rate.sleep();
+  }
+}
+
+
+/// little endian <-> big endian ///////
+inline void reverse (int32_t n[3]){
+	// int* vector = new int[2]; 
+	n[0] = ( ((n[0] & 0x000000FF)<<24) + ((n[0] & 0x0000FF00)<<8) + ((n[0] & 0x00FF0000)>>8) + (( n[0] & 0xFF000000)>>24) );
+	n[1] = ( ((n[1] & 0x000000FF)<<24) + ((n[1] & 0x0000FF00)<<8) + ((n[1] & 0x00FF0000)>>8) + (( n[1] & 0xFF000000)>>24) );
+	n[2] = ( ((n[2] & 0x000000FF)<<24) + ((n[2] & 0x0000FF00)<<8) + ((n[2] & 0x00FF0000)>>8) + (( n[2] & 0xFF000000)>>24) );
+   return;
 }
 ///////////////////////////////////////
 void joyCallback(const sensor_msgs::Joy::ConstPtr& joy_data){
@@ -55,7 +112,7 @@ void joyCallback(const sensor_msgs::Joy::ConstPtr& joy_data){
 	 int button3 = joy_data->buttons[3];
 	 refe[8] = joy_data->axes[2];
 	 if (button0 == 0){
-     	refe[0] = joy_data->axes[2];
+     	refe[0] = joy_data->axes[3];
 	 	refe[1] = (joy_data->axes[0])*-1;
 	 	refe[2] = joy_data->axes[1];
 	 	refe[3] = 0;
@@ -68,7 +125,7 @@ void joyCallback(const sensor_msgs::Joy::ConstPtr& joy_data){
 	 	refe[1] = 0;
 	 	refe[2] = 0;
 		refe[3] = joy_data->axes[1];
-	 	refe[4] = joy_data->axes[2];
+	 	refe[4] = joy_data->axes[3];
 	 	refe[5] = joy_data->axes[0];
 	 }
 	 
@@ -79,56 +136,38 @@ void joyCallback(const sensor_msgs::Joy::ConstPtr& joy_data){
 ///////////////////////////////////////
 
 int main(int argc, char **argv){ 
+
 	bool statado;
 	refe[0] = 0; refe[1] = 0; refe[2] = 0; refe[3] = 0; refe[4] = 0;
 	refe[5] = 0; refe[6] = 40; refe[7] = 0; refe[8] = 0;
-	float* data_join_out;
-	float* prbs_inp = read_data();
+	
+	//Experimento usando um sinal de entrada prbs
+	float* prbs_inp = read_data(); 
 	// primeira coisa:
 	// tem que enviar o arquivo urscript
 	send_script(); // a função send_script envia o arquivo para o robô
 	///////////////////////////////////
 	int new_socket = open_socket();;
 	// abrindo a comunicaçção tcp socket
-	////////////////////////////////////
-		// void *context = zmq_ctx_new ();
-		// void *responder = zmq_socket (context, ZMQ_REP);
-		// int rc = zmq_bind (responder, "tcp://*:5000");
-		// assert (rc == 0);
-	///////////////////////////////////////////
-	// Declaração dos buffers de entrada e saida 
-   
-	int32_t buffer_in_[8];
-	int8_t buffer_out[256]; 
-	float tempo = 0;
+	///////////////////////////////////////////////////////
+	//int8_t buffer_out[1024]; 
    	/////////////////////////////
-	// criação de um arquivo .csv para armazenar os dados
-	FILE *fp;
-    char filename[20]= "dados.csv";
-	fp=fopen(filename,"w+");
-	fprintf(fp,"     t     ,   ref   ,   pj0    ,    vj0    ,    tj0    ,    pj1    ,    vj1    ,    tj1    ,    pj2    ,    vj2    ,    tj2    ,    pj3    ,    vj3    ,    tj3    ,    pj4    ,    vj4    ,    tj4    ,    pj5    ,    vj5    ,    tj5    \n");
-	//////////////////////
-	/////////////////////
 	float norma_float = 1000000.0;
-	
-	float conta = 0;
 	///////////////////////
-	//ROS 
+	//ROS
 	ros::init(argc, argv, "ur3");
-	ros::NodeHandle n;
+	boost::thread thread_b(send_data,new_socket);
+	ros::NodeHandle node;
 	//Declaração das publicões 
-	ros::Publisher arm_pub = n.advertise<sensor_msgs::JointState>("arm",10);
-	ros::Publisher ref_pub = n.advertise<std_msgs::Float32>("ref",10);
-	ros::Publisher end_Effector_pub = n.advertise<ur3::end_Effector_msg>("end_effector",0);
-	//ros::Publisher gripper_pub = n.advertise<control_msgs::GripperCommand>("gripper",0);
+	ros::Publisher arm_pub = node.advertise<sensor_msgs::JointState>("arm",10);
+	ros::Publisher end_Effector_pub = node.advertise<ur3::end_Effector_msg>("end_effector",10);
 	///////////////////////////////////////////////////////////////////////////////////
-	ros::Subscriber sub_joy = n.subscribe("joy", 10, joyCallback);
-	ros::Rate loop_rate(50);
+	ros::Subscriber sub_joy = node.subscribe("joy", 10, joyCallback);
+	ros::Rate loop_rate(125);
 	//Declaração das estruturas de dados para as publicações
 	sensor_msgs::JointState arm;
 	ur3::end_Effector_msg end_effector;
-	std_msgs::Float32 ref;
-	
+
 	arm.header.frame_id = " ";
 	arm.name.resize(6);
 	arm.position.resize(6);
@@ -142,130 +181,121 @@ int main(int argc, char **argv){
 	arm.name[5] = "Wrist 3";
 	
 	int prbs_count= 0;
-	
+	int32_t vector_arm[3];
+	int8_t buffer_out[156]; 
+	int b;
+
 	//////////////////////////////////////////////////////////
 	printf("The robotic arm is ready!\n");
     while (ros::ok()){
 		/////////////////////////////////////////////////////
-		//referencia 
-		if(prbs_count >=2998){
-			 prbs_count = 0;
-		}
-		// printf("%f\n",prbs_inp[prbs_count]);
+		// //referencia 
+		// if(prbs_count >=2998){
+		// 	 prbs_count = 0;
+		// }
+		// // printf("%f\n",prbs_inp[prbs_count]);
 		
-		prbs_count ++;
-		////////////////////////////////////
-		//arm ur3
-		buffer_in_[0] = (int)(refe[0]*norma_float);
-		buffer_in_[0] = reverse(buffer_in_[0]);
-		buffer_in_[1] = (int)(refe[1]*norma_float);
-		buffer_in_[1] = reverse(buffer_in_[1]);
-		buffer_in_[2] = (int)(refe[2]*norma_float);
-		buffer_in_[2] = reverse(buffer_in_[2]);
-		buffer_in_[3] = (int)(refe[3]*norma_float);
-		buffer_in_[3] = reverse(buffer_in_[3]);
-		buffer_in_[4] = (int)(refe[4]*norma_float);
-		buffer_in_[4] = reverse(buffer_in_[4]);
-		// buffer_in_[5] = (int)((prbs_inp[prbs_count]/4)*norma_float); //sending prbs signal to joint 5
-		buffer_in_[5] = (int)(refe[5]*norma_float);
-		buffer_in_[5] = reverse(buffer_in_[5]);
-		// gripper
+		// prbs_count ++;
 		
-		refe[6] = gripper_boll[0];
-		refe[7] = gripper_boll[1];
-		//printf("\n%f",refe[7]);
-		buffer_in_[6] = (int)(refe[6]*norma_float);
-		buffer_in_[6] = reverse(buffer_in_[6]);
-		buffer_in_[7] = (int)(refe[7]*norma_float);
-		buffer_in_[7] = reverse(buffer_in_[7]);
-		send(new_socket, buffer_in_, 32, 0);
-		//zmq_send (responder, buffer_in_, 32, 0);
-		/////////////////////////////////////////////////////////
+		/////////////////////////////////////////////////////////////
+		b = recv(new_socket, &buffer_out, 156, 0);
 		
-		////////*///////////////////////////////////////////////////
-		recv(new_socket, &buffer_out, 256, 0);
-		//zmq_recv (responder, buffer_out, 256, 0);
-		
-		/////////////////////////////////////////////////////
-		data_join_out = join_data(buffer_out);
+		///////////////////////////////////////////////////////////
+		//beginning arm 
+		memcpy(&vector_arm, &buffer_out[0], 3*sizeof(int32_t));
+		reverse(vector_arm);
+		arm.position[0] = ((float)vector_arm[0])/norma_float;
+		arm.velocity[0] = ((float)vector_arm[1])/norma_float;
+		arm.effort[0] = ((float)vector_arm[2])/norma_float;
+		//////////////////////////////////////
+		memcpy(&vector_arm, &buffer_out[12], 3*sizeof(int32_t));
+		reverse(vector_arm);
+		arm.position[1] = ((float)vector_arm[0])/norma_float;
+		arm.velocity[1] = ((float)vector_arm[1])/norma_float;
+		arm.effort[1] = ((float)vector_arm[2])/norma_float;
+		//////////////////////////////////////
+		memcpy(&vector_arm, &buffer_out[24], 3*sizeof(int32_t));
+		reverse(vector_arm);
+		arm.position[2] = ((float)vector_arm[0])/norma_float;
+		arm.velocity[2] = ((float)vector_arm[1])/norma_float;
+		arm.effort[2] = ((float)vector_arm[2])/norma_float;
+		//////////////////////////////////////////////////////
+		memcpy(&vector_arm, &buffer_out[36], 3*sizeof(int32_t));
+		reverse(vector_arm);
+		arm.position[3] = ((float)vector_arm[0])/norma_float;
+		arm.velocity[3] = ((float)vector_arm[1])/norma_float;
+		arm.effort[3] = ((float)vector_arm[2])/norma_float;
+		//////////////////////////////////////////////////////
+		memcpy(&vector_arm, &buffer_out[48], 3*sizeof(int32_t));
+		reverse(vector_arm);
+		arm.position[4] = ((float)vector_arm[0])/norma_float;
+		arm.velocity[4] = ((float)vector_arm[1])/norma_float;
+		arm.effort[4] = ((float)vector_arm[2])/norma_float;
+		//////////////////////////////////////////////////////
+		memcpy(&vector_arm, &buffer_out[60], 3*sizeof(int32_t));
+		reverse(vector_arm);
+		arm.position[5] = ((float)vector_arm[0])/norma_float;
+		arm.velocity[5] = ((float)vector_arm[1])/norma_float;
+		arm.effort[5] = ((float)vector_arm[2])/norma_float;
+		//////////////////////////////////////////////////////
+		//end arm
 		/////////////////////////////////////////////////
-		// gripper
-		end_effector.gripper.position = data_join_out[18];
-		end_effector.gripper.max_effort = data_join_out[19];
-		end_effector.state.data = data_join_out[20]; // estado da grarr (aberto ou fechado)
+		// beginning gripper
+		memcpy(&vector_arm, &buffer_out[72], 3*sizeof(int32_t));
+		reverse(vector_arm);
+		end_effector.gripper.position = ((float)vector_arm[0])/norma_float;
+		end_effector.gripper.max_effort = ((float)vector_arm[1])/norma_float;
+		end_effector.state.data = ((float)vector_arm[2])/norma_float;
 		/////////////////////////////////////////
 		// tcp pose
 		////position
-		end_effector.pose.position.x = data_join_out[21];
-		end_effector.pose.position.y = data_join_out[22];
-		end_effector.pose.position.z = data_join_out[23];
+		memcpy(&vector_arm, &buffer_out[84], 3*sizeof(int32_t));
+		reverse(vector_arm);
+		end_effector.pose.position.x = ((float)vector_arm[0])/norma_float;
+		end_effector.pose.position.y = ((float)vector_arm[1])/norma_float;
+		end_effector.pose.position.z = ((float)vector_arm[2])/norma_float;
 		////orientation
-		end_effector.pose.orientation.x = data_join_out[24];
-		end_effector.pose.orientation.y = data_join_out[25];
-		end_effector.pose.orientation.z = data_join_out[26];
+		memcpy(&vector_arm, &buffer_out[96], 3*sizeof(int32_t));
+		reverse(vector_arm);
+		end_effector.pose.orientation.x = ((float)vector_arm[0])/norma_float;
+		end_effector.pose.orientation.y = ((float)vector_arm[1])/norma_float;
+		end_effector.pose.orientation.z = ((float)vector_arm[2])/norma_float;
 		////////////////////////////////////////////////////
 		// tcp velocity
 		//// linear
-		end_effector.velocity.linear.x = data_join_out[27];
-		end_effector.velocity.linear.y = data_join_out[28];
-		end_effector.velocity.linear.z = data_join_out[29];
+		memcpy(&vector_arm, &buffer_out[108], 3*sizeof(int32_t));
+		reverse(vector_arm);
+		end_effector.velocity.linear.x = ((float)vector_arm[0])/norma_float;
+		end_effector.velocity.linear.y = ((float)vector_arm[1])/norma_float;
+		end_effector.velocity.linear.z = ((float)vector_arm[2])/norma_float;
 		//// angular
-		end_effector.velocity.angular.x = data_join_out[30];
-		end_effector.velocity.angular.y = data_join_out[31];
-		end_effector.velocity.angular.z = data_join_out[32];
+		memcpy(&vector_arm, &buffer_out[120], 3*sizeof(int32_t));
+		reverse(vector_arm);
+		end_effector.velocity.angular.x = ((float)vector_arm[0])/norma_float;
+		end_effector.velocity.angular.y = ((float)vector_arm[1])/norma_float;
+		end_effector.velocity.angular.z = ((float)vector_arm[2])/norma_float;
 		////////////////////////////////////////
 		// tcp force
 		//// force
-		end_effector.wrench.force.x = data_join_out[33];
-		end_effector.wrench.force.y = data_join_out[34];
-		end_effector.wrench.force.z = data_join_out[35];
+		memcpy(&vector_arm, &buffer_out[132], 3*sizeof(int32_t));
+		reverse(vector_arm);
+		end_effector.wrench.force.x = ((float)vector_arm[0])/norma_float;
+		end_effector.wrench.force.y = ((float)vector_arm[1])/norma_float;
+		end_effector.wrench.force.z = ((float)vector_arm[2])/norma_float;
 		//// torque
-		end_effector.wrench.torque.x = data_join_out[36];
-		end_effector.wrench.torque.x = data_join_out[37];
-		end_effector.wrench.torque.x = data_join_out[38];
+		memcpy(&vector_arm, &buffer_out[144], 3*sizeof(int32_t));
+		reverse(vector_arm);
+		end_effector.wrench.torque.x = ((float)vector_arm[0])/norma_float;
+		end_effector.wrench.torque.x = ((float)vector_arm[1])/norma_float;
+		end_effector.wrench.torque.x = ((float)vector_arm[2])/norma_float;
 		////////////////////////////////////////
-		//Arm joints...
-		////////////////////////////////////////
-		ref.data = data_join_out[39];
-		arm.position[5] = data_join_out[15];
-		arm.velocity[5] = data_join_out[16];
-		arm.effort[5] = data_join_out[17];
-		///////////////////////////////////////
-		arm.position[4] = data_join_out[12];
-		arm.velocity[4] = data_join_out[13];
-		arm.effort[4] = data_join_out[14];
-		///////////////////////////////////////
-		arm.position[3] = data_join_out[9];
-		arm.velocity[3] = data_join_out[10];
-		arm.effort[3] = data_join_out[11];
-		////////////////////////////////////////
-		arm.position[2] = data_join_out[6];
-		arm.velocity[2] = data_join_out[7];
-		arm.effort[2] = data_join_out[8];
-		//////////////////////////////////////
-		arm.position[1] = data_join_out[3];
-		arm.velocity[1] = data_join_out[4];
-		arm.effort[1] = data_join_out[5];
-		//////////////////////////////////////
-		arm.position[0] = data_join_out[0];
-		arm.velocity[0] = data_join_out[1];
-		arm.effort[0] = data_join_out[2];
-		//////////////////////////////////////
-		fprintf(fp, "\n%10.5f, %10.5f, %10.5f, %10.5f, %10.5f, %10.5f, %10.5f, %10.5f, %10.5f, %10.5f, %10.5f, %10.5f, %10.5f, %10.5f, %10.5f, %10.5f, %10.5f, %10.5f, %10.5f, %10.5f", tempo,data_join_out[39], data_join_out[0], data_join_out[1], data_join_out[2], data_join_out[3], data_join_out[4], data_join_out[5], data_join_out[6], data_join_out[7], data_join_out[8], data_join_out[9], data_join_out[10], data_join_out[11], data_join_out[12], data_join_out[13], data_join_out[14], data_join_out[15], data_join_out[16], data_join_out[17]);
-		//fprintf(fp, "\n%10.5f, %10.5f", tempo, data_join_out[0]);
-		tempo = tempo + 0.008;
-		
 		arm.header.stamp = ros::Time::now();
 		end_effector.header.stamp = ros::Time::now();
 		arm_pub.publish(arm);
 		end_Effector_pub.publish(end_effector);
-		ref_pub.publish(ref);
-		
 		ros::spinOnce();
-		loop_rate.sleep();		
-		
+		loop_rate.sleep();	
 	}
-	fclose(fp);
 	return 0;
 } 
 

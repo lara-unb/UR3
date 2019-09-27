@@ -376,19 +376,6 @@ ur3_generate_messages_lisp/fast:
 .PHONY : ur3_generate_messages_lisp/fast
 
 #=============================================================================
-# Target rules for targets named ur3_geneus
-
-# Build rule for target.
-ur3_geneus: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 ur3_geneus
-.PHONY : ur3_geneus
-
-# fast build rule for target.
-ur3_geneus/fast:
-	$(MAKE) -f ur3/CMakeFiles/ur3_geneus.dir/build.make ur3/CMakeFiles/ur3_geneus.dir/build
-.PHONY : ur3_geneus/fast
-
-#=============================================================================
 # Target rules for targets named ur3_generate_messages_eus
 
 # Build rule for target.
@@ -428,19 +415,6 @@ ur3_generate_messages_cpp/fast:
 .PHONY : ur3_generate_messages_cpp/fast
 
 #=============================================================================
-# Target rules for targets named _ur3_generate_messages_check_deps_arm_msg
-
-# Build rule for target.
-_ur3_generate_messages_check_deps_arm_msg: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 _ur3_generate_messages_check_deps_arm_msg
-.PHONY : _ur3_generate_messages_check_deps_arm_msg
-
-# fast build rule for target.
-_ur3_generate_messages_check_deps_arm_msg/fast:
-	$(MAKE) -f ur3/CMakeFiles/_ur3_generate_messages_check_deps_arm_msg.dir/build.make ur3/CMakeFiles/_ur3_generate_messages_check_deps_arm_msg.dir/build
-.PHONY : _ur3_generate_messages_check_deps_arm_msg/fast
-
-#=============================================================================
 # Target rules for targets named _ur3_generate_messages_check_deps_gripper_msg
 
 # Build rule for target.
@@ -452,6 +426,32 @@ _ur3_generate_messages_check_deps_gripper_msg: cmake_check_build_system
 _ur3_generate_messages_check_deps_gripper_msg/fast:
 	$(MAKE) -f ur3/CMakeFiles/_ur3_generate_messages_check_deps_gripper_msg.dir/build.make ur3/CMakeFiles/_ur3_generate_messages_check_deps_gripper_msg.dir/build
 .PHONY : _ur3_generate_messages_check_deps_gripper_msg/fast
+
+#=============================================================================
+# Target rules for targets named ur3_geneus
+
+# Build rule for target.
+ur3_geneus: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 ur3_geneus
+.PHONY : ur3_geneus
+
+# fast build rule for target.
+ur3_geneus/fast:
+	$(MAKE) -f ur3/CMakeFiles/ur3_geneus.dir/build.make ur3/CMakeFiles/ur3_geneus.dir/build
+.PHONY : ur3_geneus/fast
+
+#=============================================================================
+# Target rules for targets named _ur3_generate_messages_check_deps_ref_msg
+
+# Build rule for target.
+_ur3_generate_messages_check_deps_ref_msg: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 _ur3_generate_messages_check_deps_ref_msg
+.PHONY : _ur3_generate_messages_check_deps_ref_msg
+
+# fast build rule for target.
+_ur3_generate_messages_check_deps_ref_msg/fast:
+	$(MAKE) -f ur3/CMakeFiles/_ur3_generate_messages_check_deps_ref_msg.dir/build.make ur3/CMakeFiles/_ur3_generate_messages_check_deps_ref_msg.dir/build
+.PHONY : _ur3_generate_messages_check_deps_ref_msg/fast
 
 #=============================================================================
 # Target rules for targets named std_msgs_generate_messages_py
@@ -1028,12 +1028,12 @@ help:
 	@echo "... ur3_generate_messages_nodejs"
 	@echo "... ur3_genlisp"
 	@echo "... ur3_generate_messages_lisp"
-	@echo "... ur3_geneus"
 	@echo "... ur3_generate_messages_eus"
 	@echo "... ur3_gencpp"
 	@echo "... ur3_generate_messages_cpp"
-	@echo "... _ur3_generate_messages_check_deps_arm_msg"
 	@echo "... _ur3_generate_messages_check_deps_gripper_msg"
+	@echo "... ur3_geneus"
+	@echo "... _ur3_generate_messages_check_deps_ref_msg"
 	@echo "... std_msgs_generate_messages_py"
 	@echo "... std_msgs_generate_messages_nodejs"
 	@echo "... _ur3_generate_messages_check_deps_end_Effector_msg"

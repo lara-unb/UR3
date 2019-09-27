@@ -1,6 +1,6 @@
 # generated from genmsg/cmake/pkg-genmsg.context.in
 
-messages_str = "/home/rafael/UR3/catkin_ur3/src/ur3/msg/arm_msg.msg;/home/rafael/UR3/catkin_ur3/src/ur3/msg/gripper_msg.msg;/home/rafael/UR3/catkin_ur3/src/ur3/msg/end_Effector_msg.msg"
+messages_str = "/home/rafael/UR3/catkin_ur3/src/ur3/msg/ref_msg.msg;/home/rafael/UR3/catkin_ur3/src/ur3/msg/gripper_msg.msg;/home/rafael/UR3/catkin_ur3/src/ur3/msg/end_Effector_msg.msg"
 services_str = ""
 pkg_name = "ur3"
 dependencies_str = "std_msgs;control_msgs;geometry_msgs"

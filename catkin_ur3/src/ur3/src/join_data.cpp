@@ -193,9 +193,9 @@ float* join_data(int8_t* buffer_out){
 	data[37] = ((float)vel_int32)/norma_float; // y
 	data[38] = ((float)torque_int32)/norma_float; // z
 	//referencia
-	memcpy(&pose_int32, &buffer_out[156], sizeof(int32_t));
-	pose_int32 = reverse_word(pose_int32);
-	data[39] = ((float)pose_int32)/norma_float; // x 
+	// memcpy(&pose_int32, &buffer_out[156], sizeof(int32_t));
+	// pose_int32 = reverse_word(pose_int32);
+	// data[39] = ((float)pose_int32)/norma_float; // x 
 	//////////////////////////////////////////////////////////
 	return data;
 } 

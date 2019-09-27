@@ -54,8 +54,8 @@ CMAKE_BINARY_DIR = /home/rafael/UR3/catkin_ur3/build
 include ur3/CMakeFiles/ur3_generate_messages_nodejs.dir/progress.make
 
 ur3/CMakeFiles/ur3_generate_messages_nodejs: /home/rafael/UR3/catkin_ur3/devel/share/gennodejs/ros/ur3/msg/end_Effector_msg.js
+ur3/CMakeFiles/ur3_generate_messages_nodejs: /home/rafael/UR3/catkin_ur3/devel/share/gennodejs/ros/ur3/msg/ref_msg.js
 ur3/CMakeFiles/ur3_generate_messages_nodejs: /home/rafael/UR3/catkin_ur3/devel/share/gennodejs/ros/ur3/msg/gripper_msg.js
-ur3/CMakeFiles/ur3_generate_messages_nodejs: /home/rafael/UR3/catkin_ur3/devel/share/gennodejs/ros/ur3/msg/arm_msg.js
 
 
 /home/rafael/UR3/catkin_ur3/devel/share/gennodejs/ros/ur3/msg/end_Effector_msg.js: /opt/ros/melodic/lib/gennodejs/gen_nodejs.py
@@ -72,6 +72,15 @@ ur3/CMakeFiles/ur3_generate_messages_nodejs: /home/rafael/UR3/catkin_ur3/devel/s
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/rafael/UR3/catkin_ur3/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Generating Javascript code from ur3/end_Effector_msg.msg"
 	cd /home/rafael/UR3/catkin_ur3/build/ur3 && ../catkin_generated/env_cached.sh /usr/bin/python2 /opt/ros/melodic/share/gennodejs/cmake/../../../lib/gennodejs/gen_nodejs.py /home/rafael/UR3/catkin_ur3/src/ur3/msg/end_Effector_msg.msg -Iur3:/home/rafael/UR3/catkin_ur3/src/ur3/msg -Istd_msgs:/opt/ros/melodic/share/std_msgs/cmake/../msg -Icontrol_msgs:/opt/ros/melodic/share/control_msgs/cmake/../msg -Igeometry_msgs:/opt/ros/melodic/share/geometry_msgs/cmake/../msg -Iactionlib_msgs:/opt/ros/melodic/share/actionlib_msgs/cmake/../msg -Itrajectory_msgs:/opt/ros/melodic/share/trajectory_msgs/cmake/../msg -p ur3 -o /home/rafael/UR3/catkin_ur3/devel/share/gennodejs/ros/ur3/msg
 
+/home/rafael/UR3/catkin_ur3/devel/share/gennodejs/ros/ur3/msg/ref_msg.js: /opt/ros/melodic/lib/gennodejs/gen_nodejs.py
+/home/rafael/UR3/catkin_ur3/devel/share/gennodejs/ros/ur3/msg/ref_msg.js: /home/rafael/UR3/catkin_ur3/src/ur3/msg/ref_msg.msg
+/home/rafael/UR3/catkin_ur3/devel/share/gennodejs/ros/ur3/msg/ref_msg.js: /opt/ros/melodic/share/std_msgs/msg/MultiArrayLayout.msg
+/home/rafael/UR3/catkin_ur3/devel/share/gennodejs/ros/ur3/msg/ref_msg.js: /opt/ros/melodic/share/std_msgs/msg/Float32MultiArray.msg
+/home/rafael/UR3/catkin_ur3/devel/share/gennodejs/ros/ur3/msg/ref_msg.js: /opt/ros/melodic/share/std_msgs/msg/MultiArrayDimension.msg
+/home/rafael/UR3/catkin_ur3/devel/share/gennodejs/ros/ur3/msg/ref_msg.js: /opt/ros/melodic/share/std_msgs/msg/Header.msg
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/rafael/UR3/catkin_ur3/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Generating Javascript code from ur3/ref_msg.msg"
+	cd /home/rafael/UR3/catkin_ur3/build/ur3 && ../catkin_generated/env_cached.sh /usr/bin/python2 /opt/ros/melodic/share/gennodejs/cmake/../../../lib/gennodejs/gen_nodejs.py /home/rafael/UR3/catkin_ur3/src/ur3/msg/ref_msg.msg -Iur3:/home/rafael/UR3/catkin_ur3/src/ur3/msg -Istd_msgs:/opt/ros/melodic/share/std_msgs/cmake/../msg -Icontrol_msgs:/opt/ros/melodic/share/control_msgs/cmake/../msg -Igeometry_msgs:/opt/ros/melodic/share/geometry_msgs/cmake/../msg -Iactionlib_msgs:/opt/ros/melodic/share/actionlib_msgs/cmake/../msg -Itrajectory_msgs:/opt/ros/melodic/share/trajectory_msgs/cmake/../msg -p ur3 -o /home/rafael/UR3/catkin_ur3/devel/share/gennodejs/ros/ur3/msg
+
 /home/rafael/UR3/catkin_ur3/devel/share/gennodejs/ros/ur3/msg/gripper_msg.js: /opt/ros/melodic/lib/gennodejs/gen_nodejs.py
 /home/rafael/UR3/catkin_ur3/devel/share/gennodejs/ros/ur3/msg/gripper_msg.js: /home/rafael/UR3/catkin_ur3/src/ur3/msg/gripper_msg.msg
 /home/rafael/UR3/catkin_ur3/devel/share/gennodejs/ros/ur3/msg/gripper_msg.js: /opt/ros/melodic/share/std_msgs/msg/Bool.msg
@@ -82,18 +91,13 @@ ur3/CMakeFiles/ur3_generate_messages_nodejs: /home/rafael/UR3/catkin_ur3/devel/s
 /home/rafael/UR3/catkin_ur3/devel/share/gennodejs/ros/ur3/msg/gripper_msg.js: /opt/ros/melodic/share/geometry_msgs/msg/Point.msg
 /home/rafael/UR3/catkin_ur3/devel/share/gennodejs/ros/ur3/msg/gripper_msg.js: /opt/ros/melodic/share/geometry_msgs/msg/Wrench.msg
 /home/rafael/UR3/catkin_ur3/devel/share/gennodejs/ros/ur3/msg/gripper_msg.js: /opt/ros/melodic/share/geometry_msgs/msg/Quaternion.msg
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/rafael/UR3/catkin_ur3/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Generating Javascript code from ur3/gripper_msg.msg"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/rafael/UR3/catkin_ur3/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Generating Javascript code from ur3/gripper_msg.msg"
 	cd /home/rafael/UR3/catkin_ur3/build/ur3 && ../catkin_generated/env_cached.sh /usr/bin/python2 /opt/ros/melodic/share/gennodejs/cmake/../../../lib/gennodejs/gen_nodejs.py /home/rafael/UR3/catkin_ur3/src/ur3/msg/gripper_msg.msg -Iur3:/home/rafael/UR3/catkin_ur3/src/ur3/msg -Istd_msgs:/opt/ros/melodic/share/std_msgs/cmake/../msg -Icontrol_msgs:/opt/ros/melodic/share/control_msgs/cmake/../msg -Igeometry_msgs:/opt/ros/melodic/share/geometry_msgs/cmake/../msg -Iactionlib_msgs:/opt/ros/melodic/share/actionlib_msgs/cmake/../msg -Itrajectory_msgs:/opt/ros/melodic/share/trajectory_msgs/cmake/../msg -p ur3 -o /home/rafael/UR3/catkin_ur3/devel/share/gennodejs/ros/ur3/msg
-
-/home/rafael/UR3/catkin_ur3/devel/share/gennodejs/ros/ur3/msg/arm_msg.js: /opt/ros/melodic/lib/gennodejs/gen_nodejs.py
-/home/rafael/UR3/catkin_ur3/devel/share/gennodejs/ros/ur3/msg/arm_msg.js: /home/rafael/UR3/catkin_ur3/src/ur3/msg/arm_msg.msg
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/rafael/UR3/catkin_ur3/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Generating Javascript code from ur3/arm_msg.msg"
-	cd /home/rafael/UR3/catkin_ur3/build/ur3 && ../catkin_generated/env_cached.sh /usr/bin/python2 /opt/ros/melodic/share/gennodejs/cmake/../../../lib/gennodejs/gen_nodejs.py /home/rafael/UR3/catkin_ur3/src/ur3/msg/arm_msg.msg -Iur3:/home/rafael/UR3/catkin_ur3/src/ur3/msg -Istd_msgs:/opt/ros/melodic/share/std_msgs/cmake/../msg -Icontrol_msgs:/opt/ros/melodic/share/control_msgs/cmake/../msg -Igeometry_msgs:/opt/ros/melodic/share/geometry_msgs/cmake/../msg -Iactionlib_msgs:/opt/ros/melodic/share/actionlib_msgs/cmake/../msg -Itrajectory_msgs:/opt/ros/melodic/share/trajectory_msgs/cmake/../msg -p ur3 -o /home/rafael/UR3/catkin_ur3/devel/share/gennodejs/ros/ur3/msg
 
 ur3_generate_messages_nodejs: ur3/CMakeFiles/ur3_generate_messages_nodejs
 ur3_generate_messages_nodejs: /home/rafael/UR3/catkin_ur3/devel/share/gennodejs/ros/ur3/msg/end_Effector_msg.js
+ur3_generate_messages_nodejs: /home/rafael/UR3/catkin_ur3/devel/share/gennodejs/ros/ur3/msg/ref_msg.js
 ur3_generate_messages_nodejs: /home/rafael/UR3/catkin_ur3/devel/share/gennodejs/ros/ur3/msg/gripper_msg.js
-ur3_generate_messages_nodejs: /home/rafael/UR3/catkin_ur3/devel/share/gennodejs/ros/ur3/msg/arm_msg.js
 ur3_generate_messages_nodejs: ur3/CMakeFiles/ur3_generate_messages_nodejs.dir/build.make
 
 .PHONY : ur3_generate_messages_nodejs

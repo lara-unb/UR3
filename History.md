@@ -60,3 +60,26 @@
 
 >> Próxinos dias será estudado como é feita sua implementação em C para ser anexado ao codigo da interface.
 
+
+## __23-09-2019__
+>> Hoje foi feito um teste para averiguar se o gargalo da comunicação estava acontecendo no rotiador. O resultado é que 64 bytes leva 1ms p ser enviado.
+
+
+ ## __24-09-2019__
+ >> A bibliotéca zmq.h não funcionou. O robô não entende as mensagens enviadas pelo computador.
+
+ ## __25-09-2019__
+ >> um solução que aumentou o taxa de amostragem para 100hz foi tirar algumas partes de códico do loop do ros. 
+ 
+ >> A parte de escrever dados foi retirada. Agora os dados são inscritos usando o comando rosbag record /arm /end_effector /ref. 
+
+ >> Com o rosbag pode-se 
+
+ >> Proximos dias o envio de dados será feito por um thread fora do loop dos ros.
+
+ >> Foi confirmado que as perdadas de pacotes se devem ao loop do ros está rodando mais rapido do que a aquisição de dados.
+
+## __27-09-2019__
+>> A thread de envio de dados foi feita e está funcionado sem erros.
+>> as perdadas de pacotes não ocorrem mais. Foi feito 5 experimentos de 5 minutos cadas e não houve perdas de pacotes. 
+## __FIM__ 
