@@ -217,8 +217,8 @@ include_directories(
 
 add_library(open_socket SHARED src/open_socket.cpp include/ur3/open_socket.h)
 add_library(send_script SHARED src/send_script.cpp include/ur3/send_script.h)
-add_library(join_data SHARED src/join_data.cpp include/ur3/join_data.h)
-add_library(reverse_word SHARED src/join_data.cpp include/ur3/reverse_word.h)
+
+
 add_library(read_data SHARED src/read_data.cpp include/ur3/read_data.h)
 
 install(TARGETS open_socket DESTINATION lib)
@@ -227,14 +227,12 @@ install(FILES src/open_socket.h DESTINATION include)
 install(TARGETS send_script DESTINATION lib)
 install(FILES src/send_script.h DESTINATION include)
 
-install(TARGETS join_data DESTINATION lib)
-install(FILES src/join_data.h DESTINATION include)
+
 
 
 
 install(TARGETS read_data DESTINATION lib)
 install(FILES src/read_data.h DESTINATION include)
 
-add_executable(interface src/interface.cpp src/open_socket.cpp src/send_script.cpp 
-src/join_data.cpp src/read_data.cpp)
-target_link_libraries(interface open_socket send_script join_data read_data ${catkin_LIBRARIES})
+add_executable(interface src/interface.cpp src/open_socket.cpp src/send_script.cpp src/read_data.cpp)
+target_link_libraries(interface open_socket send_script read_data ${catkin_LIBRARIES})

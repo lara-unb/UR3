@@ -168,36 +168,6 @@ depend:
 .PHONY : depend
 
 # Convenience name for target.
-ur3/CMakeFiles/reverse_word.dir/rule:
-	cd /home/rafael/UR3/catkin_ur3/build && $(MAKE) -f CMakeFiles/Makefile2 ur3/CMakeFiles/reverse_word.dir/rule
-.PHONY : ur3/CMakeFiles/reverse_word.dir/rule
-
-# Convenience name for target.
-reverse_word: ur3/CMakeFiles/reverse_word.dir/rule
-
-.PHONY : reverse_word
-
-# fast build rule for target.
-reverse_word/fast:
-	cd /home/rafael/UR3/catkin_ur3/build && $(MAKE) -f ur3/CMakeFiles/reverse_word.dir/build.make ur3/CMakeFiles/reverse_word.dir/build
-.PHONY : reverse_word/fast
-
-# Convenience name for target.
-ur3/CMakeFiles/join_data.dir/rule:
-	cd /home/rafael/UR3/catkin_ur3/build && $(MAKE) -f CMakeFiles/Makefile2 ur3/CMakeFiles/join_data.dir/rule
-.PHONY : ur3/CMakeFiles/join_data.dir/rule
-
-# Convenience name for target.
-join_data: ur3/CMakeFiles/join_data.dir/rule
-
-.PHONY : join_data
-
-# fast build rule for target.
-join_data/fast:
-	cd /home/rafael/UR3/catkin_ur3/build && $(MAKE) -f ur3/CMakeFiles/join_data.dir/build.make ur3/CMakeFiles/join_data.dir/build
-.PHONY : join_data/fast
-
-# Convenience name for target.
 ur3/CMakeFiles/send_script.dir/rule:
 	cd /home/rafael/UR3/catkin_ur3/build && $(MAKE) -f CMakeFiles/Makefile2 ur3/CMakeFiles/send_script.dir/rule
 .PHONY : ur3/CMakeFiles/send_script.dir/rule
@@ -1019,39 +989,6 @@ src/interface.cpp.s:
 	cd /home/rafael/UR3/catkin_ur3/build && $(MAKE) -f ur3/CMakeFiles/interface.dir/build.make ur3/CMakeFiles/interface.dir/src/interface.cpp.s
 .PHONY : src/interface.cpp.s
 
-src/join_data.o: src/join_data.cpp.o
-
-.PHONY : src/join_data.o
-
-# target to build an object file
-src/join_data.cpp.o:
-	cd /home/rafael/UR3/catkin_ur3/build && $(MAKE) -f ur3/CMakeFiles/reverse_word.dir/build.make ur3/CMakeFiles/reverse_word.dir/src/join_data.cpp.o
-	cd /home/rafael/UR3/catkin_ur3/build && $(MAKE) -f ur3/CMakeFiles/join_data.dir/build.make ur3/CMakeFiles/join_data.dir/src/join_data.cpp.o
-	cd /home/rafael/UR3/catkin_ur3/build && $(MAKE) -f ur3/CMakeFiles/interface.dir/build.make ur3/CMakeFiles/interface.dir/src/join_data.cpp.o
-.PHONY : src/join_data.cpp.o
-
-src/join_data.i: src/join_data.cpp.i
-
-.PHONY : src/join_data.i
-
-# target to preprocess a source file
-src/join_data.cpp.i:
-	cd /home/rafael/UR3/catkin_ur3/build && $(MAKE) -f ur3/CMakeFiles/reverse_word.dir/build.make ur3/CMakeFiles/reverse_word.dir/src/join_data.cpp.i
-	cd /home/rafael/UR3/catkin_ur3/build && $(MAKE) -f ur3/CMakeFiles/join_data.dir/build.make ur3/CMakeFiles/join_data.dir/src/join_data.cpp.i
-	cd /home/rafael/UR3/catkin_ur3/build && $(MAKE) -f ur3/CMakeFiles/interface.dir/build.make ur3/CMakeFiles/interface.dir/src/join_data.cpp.i
-.PHONY : src/join_data.cpp.i
-
-src/join_data.s: src/join_data.cpp.s
-
-.PHONY : src/join_data.s
-
-# target to generate assembly for a file
-src/join_data.cpp.s:
-	cd /home/rafael/UR3/catkin_ur3/build && $(MAKE) -f ur3/CMakeFiles/reverse_word.dir/build.make ur3/CMakeFiles/reverse_word.dir/src/join_data.cpp.s
-	cd /home/rafael/UR3/catkin_ur3/build && $(MAKE) -f ur3/CMakeFiles/join_data.dir/build.make ur3/CMakeFiles/join_data.dir/src/join_data.cpp.s
-	cd /home/rafael/UR3/catkin_ur3/build && $(MAKE) -f ur3/CMakeFiles/interface.dir/build.make ur3/CMakeFiles/interface.dir/src/join_data.cpp.s
-.PHONY : src/join_data.cpp.s
-
 src/open_socket.o: src/open_socket.cpp.o
 
 .PHONY : src/open_socket.o
@@ -1152,8 +1089,6 @@ help:
 	@echo "... install"
 	@echo "... list_install_components"
 	@echo "... test"
-	@echo "... reverse_word"
-	@echo "... join_data"
 	@echo "... send_script"
 	@echo "... open_socket"
 	@echo "... ur3_generate_messages_nodejs"
@@ -1213,9 +1148,6 @@ help:
 	@echo "... src/interface.o"
 	@echo "... src/interface.i"
 	@echo "... src/interface.s"
-	@echo "... src/join_data.o"
-	@echo "... src/join_data.i"
-	@echo "... src/join_data.s"
 	@echo "... src/open_socket.o"
 	@echo "... src/open_socket.i"
 	@echo "... src/open_socket.s"

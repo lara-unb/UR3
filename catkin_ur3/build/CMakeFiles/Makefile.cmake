@@ -235,8 +235,6 @@ set(CMAKE_DEPEND_INFO_FILES
   "gtest/googlemock/CMakeFiles/gmock.dir/DependInfo.cmake"
   "gtest/googlemock/gtest/CMakeFiles/gtest_main.dir/DependInfo.cmake"
   "gtest/googlemock/gtest/CMakeFiles/gtest.dir/DependInfo.cmake"
-  "ur3/CMakeFiles/reverse_word.dir/DependInfo.cmake"
-  "ur3/CMakeFiles/join_data.dir/DependInfo.cmake"
   "ur3/CMakeFiles/send_script.dir/DependInfo.cmake"
   "ur3/CMakeFiles/open_socket.dir/DependInfo.cmake"
   "ur3/CMakeFiles/ur3_generate_messages_nodejs.dir/DependInfo.cmake"

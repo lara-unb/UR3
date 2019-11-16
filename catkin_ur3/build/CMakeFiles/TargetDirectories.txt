@@ -39,8 +39,6 @@
 /home/rafael/UR3/catkin_ur3/build/ur3/CMakeFiles/install.dir
 /home/rafael/UR3/catkin_ur3/build/ur3/CMakeFiles/list_install_components.dir
 /home/rafael/UR3/catkin_ur3/build/ur3/CMakeFiles/test.dir
-/home/rafael/UR3/catkin_ur3/build/ur3/CMakeFiles/reverse_word.dir
-/home/rafael/UR3/catkin_ur3/build/ur3/CMakeFiles/join_data.dir
 /home/rafael/UR3/catkin_ur3/build/ur3/CMakeFiles/send_script.dir
 /home/rafael/UR3/catkin_ur3/build/ur3/CMakeFiles/open_socket.dir
 /home/rafael/UR3/catkin_ur3/build/ur3/CMakeFiles/ur3_generate_messages_nodejs.dir

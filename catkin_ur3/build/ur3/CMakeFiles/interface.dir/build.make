@@ -129,33 +129,9 @@ ur3/CMakeFiles/interface.dir/src/send_script.cpp.o.provides: ur3/CMakeFiles/inte
 ur3/CMakeFiles/interface.dir/src/send_script.cpp.o.provides.build: ur3/CMakeFiles/interface.dir/src/send_script.cpp.o
 
 
-ur3/CMakeFiles/interface.dir/src/join_data.cpp.o: ur3/CMakeFiles/interface.dir/flags.make
-ur3/CMakeFiles/interface.dir/src/join_data.cpp.o: /home/rafael/UR3/catkin_ur3/src/ur3/src/join_data.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/rafael/UR3/catkin_ur3/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object ur3/CMakeFiles/interface.dir/src/join_data.cpp.o"
-	cd /home/rafael/UR3/catkin_ur3/build/ur3 && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/interface.dir/src/join_data.cpp.o -c /home/rafael/UR3/catkin_ur3/src/ur3/src/join_data.cpp
-
-ur3/CMakeFiles/interface.dir/src/join_data.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/interface.dir/src/join_data.cpp.i"
-	cd /home/rafael/UR3/catkin_ur3/build/ur3 && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/rafael/UR3/catkin_ur3/src/ur3/src/join_data.cpp > CMakeFiles/interface.dir/src/join_data.cpp.i
-
-ur3/CMakeFiles/interface.dir/src/join_data.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/interface.dir/src/join_data.cpp.s"
-	cd /home/rafael/UR3/catkin_ur3/build/ur3 && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/rafael/UR3/catkin_ur3/src/ur3/src/join_data.cpp -o CMakeFiles/interface.dir/src/join_data.cpp.s
-
-ur3/CMakeFiles/interface.dir/src/join_data.cpp.o.requires:
-
-.PHONY : ur3/CMakeFiles/interface.dir/src/join_data.cpp.o.requires
-
-ur3/CMakeFiles/interface.dir/src/join_data.cpp.o.provides: ur3/CMakeFiles/interface.dir/src/join_data.cpp.o.requires
-	$(MAKE) -f ur3/CMakeFiles/interface.dir/build.make ur3/CMakeFiles/interface.dir/src/join_data.cpp.o.provides.build
-.PHONY : ur3/CMakeFiles/interface.dir/src/join_data.cpp.o.provides
-
-ur3/CMakeFiles/interface.dir/src/join_data.cpp.o.provides.build: ur3/CMakeFiles/interface.dir/src/join_data.cpp.o
-
-
 ur3/CMakeFiles/interface.dir/src/read_data.cpp.o: ur3/CMakeFiles/interface.dir/flags.make
 ur3/CMakeFiles/interface.dir/src/read_data.cpp.o: /home/rafael/UR3/catkin_ur3/src/ur3/src/read_data.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/rafael/UR3/catkin_ur3/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object ur3/CMakeFiles/interface.dir/src/read_data.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/rafael/UR3/catkin_ur3/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object ur3/CMakeFiles/interface.dir/src/read_data.cpp.o"
 	cd /home/rafael/UR3/catkin_ur3/build/ur3 && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/interface.dir/src/read_data.cpp.o -c /home/rafael/UR3/catkin_ur3/src/ur3/src/read_data.cpp
 
 ur3/CMakeFiles/interface.dir/src/read_data.cpp.i: cmake_force
@@ -182,7 +158,6 @@ interface_OBJECTS = \
 "CMakeFiles/interface.dir/src/interface.cpp.o" \
 "CMakeFiles/interface.dir/src/open_socket.cpp.o" \
 "CMakeFiles/interface.dir/src/send_script.cpp.o" \
-"CMakeFiles/interface.dir/src/join_data.cpp.o" \
 "CMakeFiles/interface.dir/src/read_data.cpp.o"
 
 # External object files for target interface
@@ -191,12 +166,10 @@ interface_EXTERNAL_OBJECTS =
 /home/rafael/UR3/catkin_ur3/devel/lib/ur3/interface: ur3/CMakeFiles/interface.dir/src/interface.cpp.o
 /home/rafael/UR3/catkin_ur3/devel/lib/ur3/interface: ur3/CMakeFiles/interface.dir/src/open_socket.cpp.o
 /home/rafael/UR3/catkin_ur3/devel/lib/ur3/interface: ur3/CMakeFiles/interface.dir/src/send_script.cpp.o
-/home/rafael/UR3/catkin_ur3/devel/lib/ur3/interface: ur3/CMakeFiles/interface.dir/src/join_data.cpp.o
 /home/rafael/UR3/catkin_ur3/devel/lib/ur3/interface: ur3/CMakeFiles/interface.dir/src/read_data.cpp.o
 /home/rafael/UR3/catkin_ur3/devel/lib/ur3/interface: ur3/CMakeFiles/interface.dir/build.make
 /home/rafael/UR3/catkin_ur3/devel/lib/ur3/interface: /home/rafael/UR3/catkin_ur3/devel/lib/libopen_socket.so
 /home/rafael/UR3/catkin_ur3/devel/lib/ur3/interface: /home/rafael/UR3/catkin_ur3/devel/lib/libsend_script.so
-/home/rafael/UR3/catkin_ur3/devel/lib/ur3/interface: /home/rafael/UR3/catkin_ur3/devel/lib/libjoin_data.so
 /home/rafael/UR3/catkin_ur3/devel/lib/ur3/interface: /home/rafael/UR3/catkin_ur3/devel/lib/libread_data.so
 /home/rafael/UR3/catkin_ur3/devel/lib/ur3/interface: /opt/ros/melodic/lib/libroscpp.so
 /home/rafael/UR3/catkin_ur3/devel/lib/ur3/interface: /usr/lib/x86_64-linux-gnu/libboost_filesystem.so
@@ -218,7 +191,7 @@ interface_EXTERNAL_OBJECTS =
 /home/rafael/UR3/catkin_ur3/devel/lib/ur3/interface: /usr/lib/x86_64-linux-gnu/libpthread.so
 /home/rafael/UR3/catkin_ur3/devel/lib/ur3/interface: /usr/lib/x86_64-linux-gnu/libconsole_bridge.so.0.4
 /home/rafael/UR3/catkin_ur3/devel/lib/ur3/interface: ur3/CMakeFiles/interface.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/rafael/UR3/catkin_ur3/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Linking CXX executable /home/rafael/UR3/catkin_ur3/devel/lib/ur3/interface"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/rafael/UR3/catkin_ur3/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Linking CXX executable /home/rafael/UR3/catkin_ur3/devel/lib/ur3/interface"
 	cd /home/rafael/UR3/catkin_ur3/build/ur3 && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/interface.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -229,7 +202,6 @@ ur3/CMakeFiles/interface.dir/build: /home/rafael/UR3/catkin_ur3/devel/lib/ur3/in
 ur3/CMakeFiles/interface.dir/requires: ur3/CMakeFiles/interface.dir/src/interface.cpp.o.requires
 ur3/CMakeFiles/interface.dir/requires: ur3/CMakeFiles/interface.dir/src/open_socket.cpp.o.requires
 ur3/CMakeFiles/interface.dir/requires: ur3/CMakeFiles/interface.dir/src/send_script.cpp.o.requires
-ur3/CMakeFiles/interface.dir/requires: ur3/CMakeFiles/interface.dir/src/join_data.cpp.o.requires
 ur3/CMakeFiles/interface.dir/requires: ur3/CMakeFiles/interface.dir/src/read_data.cpp.o.requires
 
 .PHONY : ur3/CMakeFiles/interface.dir/requires

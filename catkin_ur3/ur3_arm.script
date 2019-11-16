@@ -132,7 +132,7 @@ def unnamed():
 
   set_tool_voltage(24)
   set_tcp(p[0,-0,0.18659,0,-0,0])
-  HOSTNAME = "192.168.1.63" # real
+  HOSTNAME = "192.168.1.62" # real
   #HOSTNAME = "0.0.0.0" # simulador 
   PORT = 60200
   pi = 3.14159265359
@@ -143,27 +143,30 @@ def unnamed():
 			
 			v_juntas = get_actual_joint_speeds()
 			p_juntas = get_actual_joint_positions()
-			t_juntas = get_joint_torques()
+			#t_juntas = get_joint_torques()
 			
+
+			
+
 			#signals output
 			socket_send_int(p_juntas[0]*1000000)
 			socket_send_int(v_juntas[0]*1000000)
-			socket_send_int(t_juntas[0]*1000000)
+			socket_send_int(read_port_register(290))
 			socket_send_int(p_juntas[1]*1000000)
 			socket_send_int(v_juntas[1]*1000000)
-			socket_send_int(t_juntas[1]*1000000)
+			socket_send_int(read_port_register(291))
 			socket_send_int(p_juntas[2]*1000000)
 			socket_send_int(v_juntas[2]*1000000)
-			socket_send_int(t_juntas[2]*1000000)
+			socket_send_int(read_port_register(292))
 			socket_send_int(p_juntas[3]*1000000)
 			socket_send_int(v_juntas[3]*1000000)
-			socket_send_int(t_juntas[3]*1000000)
+			socket_send_int(read_port_register(293))
 			socket_send_int(p_juntas[4]*1000000)
 			socket_send_int(v_juntas[4]*1000000)
-			socket_send_int(t_juntas[4]*1000000)
+			socket_send_int(read_port_register(294))
 			socket_send_int(p_juntas[5]*1000000)
 			socket_send_int(v_juntas[5]*1000000)
-			socket_send_int(t_juntas[5]*1000000)
+			socket_send_int(read_port_register(295))
 			#########################################
 			
 			
@@ -209,8 +212,8 @@ def unnamed():
 			socket_send_int(force[3]*1000000)
 			socket_send_int(force[4]*1000000)
 			socket_send_int(force[5]*1000000)
-			
-			sync()
+			sleep(0.008)
+			#sync()
 		end
 		
 	end
@@ -236,15 +239,17 @@ def unnamed():
 
 	end
 	thrd_rg2 = run rg2_thrd() 
-	#join thrd_rg2
+	
 	thrd_arm = run read_data_arm()
-	#join thrd_arm
+	
 	thrd_grip = run read_data_rg2()
-	#join thrd_grip
+	
 	thrd_in = run write_data()
-	#join thrd_in
+	
 	while True:
-		speedj([velocity[1]/2,velocity[2]/2,velocity[3]/2,velocity[4]/2,velocity[5]/2,velocity[6]/2], 2, 0.0001)	
-		
+		#speedj([velocity[1]/4,velocity[1]/4,velocity[1]/4,velocity[1]/4,velocity[1]/4,velocity[1]/4], 50, 0.0001)
+		#speedj([0,0,0,0,0,1], 2, 0.0001)
+		speedj([velocity[1],velocity[2],velocity[3],velocity[4],velocity[5],velocity[6]], 3, 0.0001)	
+		#sync()
 	end
 end

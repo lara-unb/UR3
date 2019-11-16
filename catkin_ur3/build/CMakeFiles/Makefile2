@@ -408,8 +408,6 @@ clean: gtest/googlemock/gtest/CMakeFiles/gtest.dir/clean
 # Directory level rules for directory ur3
 
 # Convenience name for "all" pass in the directory.
-ur3/all: ur3/CMakeFiles/reverse_word.dir/all
-ur3/all: ur3/CMakeFiles/join_data.dir/all
 ur3/all: ur3/CMakeFiles/send_script.dir/all
 ur3/all: ur3/CMakeFiles/open_socket.dir/all
 ur3/all: ur3/CMakeFiles/read_data.dir/all
@@ -419,8 +417,6 @@ ur3/all: ur3/CMakeFiles/interface.dir/all
 .PHONY : ur3/all
 
 # Convenience name for "clean" pass in the directory.
-ur3/clean: ur3/CMakeFiles/reverse_word.dir/clean
-ur3/clean: ur3/CMakeFiles/join_data.dir/clean
 ur3/clean: ur3/CMakeFiles/send_script.dir/clean
 ur3/clean: ur3/CMakeFiles/open_socket.dir/clean
 ur3/clean: ur3/CMakeFiles/ur3_generate_messages_nodejs.dir/clean
@@ -483,87 +479,13 @@ ur3/preinstall:
 .PHONY : ur3/preinstall
 
 #=============================================================================
-# Target rules for target ur3/CMakeFiles/reverse_word.dir
-
-# All Build rule for target.
-ur3/CMakeFiles/reverse_word.dir/all:
-	$(MAKE) -f ur3/CMakeFiles/reverse_word.dir/build.make ur3/CMakeFiles/reverse_word.dir/depend
-	$(MAKE) -f ur3/CMakeFiles/reverse_word.dir/build.make ur3/CMakeFiles/reverse_word.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/rafael/UR3/catkin_ur3/build/CMakeFiles --progress-num=24,25 "Built target reverse_word"
-.PHONY : ur3/CMakeFiles/reverse_word.dir/all
-
-# Include target in all.
-all: ur3/CMakeFiles/reverse_word.dir/all
-
-.PHONY : all
-
-# Build rule for subdir invocation for target.
-ur3/CMakeFiles/reverse_word.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/rafael/UR3/catkin_ur3/build/CMakeFiles 2
-	$(MAKE) -f CMakeFiles/Makefile2 ur3/CMakeFiles/reverse_word.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/rafael/UR3/catkin_ur3/build/CMakeFiles 0
-.PHONY : ur3/CMakeFiles/reverse_word.dir/rule
-
-# Convenience name for target.
-reverse_word: ur3/CMakeFiles/reverse_word.dir/rule
-
-.PHONY : reverse_word
-
-# clean rule for target.
-ur3/CMakeFiles/reverse_word.dir/clean:
-	$(MAKE) -f ur3/CMakeFiles/reverse_word.dir/build.make ur3/CMakeFiles/reverse_word.dir/clean
-.PHONY : ur3/CMakeFiles/reverse_word.dir/clean
-
-# clean rule for target.
-clean: ur3/CMakeFiles/reverse_word.dir/clean
-
-.PHONY : clean
-
-#=============================================================================
-# Target rules for target ur3/CMakeFiles/join_data.dir
-
-# All Build rule for target.
-ur3/CMakeFiles/join_data.dir/all:
-	$(MAKE) -f ur3/CMakeFiles/join_data.dir/build.make ur3/CMakeFiles/join_data.dir/depend
-	$(MAKE) -f ur3/CMakeFiles/join_data.dir/build.make ur3/CMakeFiles/join_data.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/rafael/UR3/catkin_ur3/build/CMakeFiles --progress-num=18,19 "Built target join_data"
-.PHONY : ur3/CMakeFiles/join_data.dir/all
-
-# Include target in all.
-all: ur3/CMakeFiles/join_data.dir/all
-
-.PHONY : all
-
-# Build rule for subdir invocation for target.
-ur3/CMakeFiles/join_data.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/rafael/UR3/catkin_ur3/build/CMakeFiles 2
-	$(MAKE) -f CMakeFiles/Makefile2 ur3/CMakeFiles/join_data.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/rafael/UR3/catkin_ur3/build/CMakeFiles 0
-.PHONY : ur3/CMakeFiles/join_data.dir/rule
-
-# Convenience name for target.
-join_data: ur3/CMakeFiles/join_data.dir/rule
-
-.PHONY : join_data
-
-# clean rule for target.
-ur3/CMakeFiles/join_data.dir/clean:
-	$(MAKE) -f ur3/CMakeFiles/join_data.dir/build.make ur3/CMakeFiles/join_data.dir/clean
-.PHONY : ur3/CMakeFiles/join_data.dir/clean
-
-# clean rule for target.
-clean: ur3/CMakeFiles/join_data.dir/clean
-
-.PHONY : clean
-
-#=============================================================================
 # Target rules for target ur3/CMakeFiles/send_script.dir
 
 # All Build rule for target.
 ur3/CMakeFiles/send_script.dir/all:
 	$(MAKE) -f ur3/CMakeFiles/send_script.dir/build.make ur3/CMakeFiles/send_script.dir/depend
 	$(MAKE) -f ur3/CMakeFiles/send_script.dir/build.make ur3/CMakeFiles/send_script.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/rafael/UR3/catkin_ur3/build/CMakeFiles --progress-num=26,27 "Built target send_script"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/rafael/UR3/catkin_ur3/build/CMakeFiles --progress-num=21,22 "Built target send_script"
 .PHONY : ur3/CMakeFiles/send_script.dir/all
 
 # Include target in all.
@@ -600,7 +522,7 @@ clean: ur3/CMakeFiles/send_script.dir/clean
 ur3/CMakeFiles/open_socket.dir/all:
 	$(MAKE) -f ur3/CMakeFiles/open_socket.dir/build.make ur3/CMakeFiles/open_socket.dir/depend
 	$(MAKE) -f ur3/CMakeFiles/open_socket.dir/build.make ur3/CMakeFiles/open_socket.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/rafael/UR3/catkin_ur3/build/CMakeFiles --progress-num=20,21 "Built target open_socket"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/rafael/UR3/catkin_ur3/build/CMakeFiles --progress-num=17,18 "Built target open_socket"
 .PHONY : ur3/CMakeFiles/open_socket.dir/all
 
 # Include target in all.
@@ -642,7 +564,7 @@ ur3/CMakeFiles/ur3_generate_messages_nodejs.dir/all: ur3/CMakeFiles/control_msgs
 ur3/CMakeFiles/ur3_generate_messages_nodejs.dir/all: ur3/CMakeFiles/geometry_msgs_generate_messages_nodejs.dir/all
 	$(MAKE) -f ur3/CMakeFiles/ur3_generate_messages_nodejs.dir/build.make ur3/CMakeFiles/ur3_generate_messages_nodejs.dir/depend
 	$(MAKE) -f ur3/CMakeFiles/ur3_generate_messages_nodejs.dir/build.make ur3/CMakeFiles/ur3_generate_messages_nodejs.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/rafael/UR3/catkin_ur3/build/CMakeFiles --progress-num=38,39,40 "Built target ur3_generate_messages_nodejs"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/rafael/UR3/catkin_ur3/build/CMakeFiles --progress-num=33,34,35 "Built target ur3_generate_messages_nodejs"
 .PHONY : ur3/CMakeFiles/ur3_generate_messages_nodejs.dir/all
 
 # Build rule for subdir invocation for target.
@@ -711,7 +633,7 @@ ur3/CMakeFiles/ur3_generate_messages_lisp.dir/all: ur3/CMakeFiles/control_msgs_g
 ur3/CMakeFiles/ur3_generate_messages_lisp.dir/all: ur3/CMakeFiles/geometry_msgs_generate_messages_lisp.dir/all
 	$(MAKE) -f ur3/CMakeFiles/ur3_generate_messages_lisp.dir/build.make ur3/CMakeFiles/ur3_generate_messages_lisp.dir/depend
 	$(MAKE) -f ur3/CMakeFiles/ur3_generate_messages_lisp.dir/build.make ur3/CMakeFiles/ur3_generate_messages_lisp.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/rafael/UR3/catkin_ur3/build/CMakeFiles --progress-num=35,36,37 "Built target ur3_generate_messages_lisp"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/rafael/UR3/catkin_ur3/build/CMakeFiles --progress-num=30,31,32 "Built target ur3_generate_messages_lisp"
 .PHONY : ur3/CMakeFiles/ur3_generate_messages_lisp.dir/all
 
 # Build rule for subdir invocation for target.
@@ -748,7 +670,7 @@ ur3/CMakeFiles/ur3_generate_messages_eus.dir/all: ur3/CMakeFiles/geometry_msgs_g
 ur3/CMakeFiles/ur3_generate_messages_eus.dir/all: ur3/CMakeFiles/control_msgs_generate_messages_eus.dir/all
 	$(MAKE) -f ur3/CMakeFiles/ur3_generate_messages_eus.dir/build.make ur3/CMakeFiles/ur3_generate_messages_eus.dir/depend
 	$(MAKE) -f ur3/CMakeFiles/ur3_generate_messages_eus.dir/build.make ur3/CMakeFiles/ur3_generate_messages_eus.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/rafael/UR3/catkin_ur3/build/CMakeFiles --progress-num=31,32,33,34 "Built target ur3_generate_messages_eus"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/rafael/UR3/catkin_ur3/build/CMakeFiles --progress-num=26,27,28,29 "Built target ur3_generate_messages_eus"
 .PHONY : ur3/CMakeFiles/ur3_generate_messages_eus.dir/all
 
 # Build rule for subdir invocation for target.
@@ -817,7 +739,7 @@ ur3/CMakeFiles/ur3_generate_messages_cpp.dir/all: ur3/CMakeFiles/control_msgs_ge
 ur3/CMakeFiles/ur3_generate_messages_cpp.dir/all: ur3/CMakeFiles/geometry_msgs_generate_messages_cpp.dir/all
 	$(MAKE) -f ur3/CMakeFiles/ur3_generate_messages_cpp.dir/build.make ur3/CMakeFiles/ur3_generate_messages_cpp.dir/depend
 	$(MAKE) -f ur3/CMakeFiles/ur3_generate_messages_cpp.dir/build.make ur3/CMakeFiles/ur3_generate_messages_cpp.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/rafael/UR3/catkin_ur3/build/CMakeFiles --progress-num=28,29,30 "Built target ur3_generate_messages_cpp"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/rafael/UR3/catkin_ur3/build/CMakeFiles --progress-num=23,24,25 "Built target ur3_generate_messages_cpp"
 .PHONY : ur3/CMakeFiles/ur3_generate_messages_cpp.dir/all
 
 # Build rule for subdir invocation for target.
@@ -1297,7 +1219,7 @@ clean: ur3/CMakeFiles/control_msgs_generate_messages_cpp.dir/clean
 ur3/CMakeFiles/read_data.dir/all:
 	$(MAKE) -f ur3/CMakeFiles/read_data.dir/build.make ur3/CMakeFiles/read_data.dir/depend
 	$(MAKE) -f ur3/CMakeFiles/read_data.dir/build.make ur3/CMakeFiles/read_data.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/rafael/UR3/catkin_ur3/build/CMakeFiles --progress-num=22,23 "Built target read_data"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/rafael/UR3/catkin_ur3/build/CMakeFiles --progress-num=19,20 "Built target read_data"
 .PHONY : ur3/CMakeFiles/read_data.dir/all
 
 # Include target in all.
@@ -1572,7 +1494,7 @@ ur3/CMakeFiles/ur3_generate_messages_py.dir/all: ur3/CMakeFiles/control_msgs_gen
 ur3/CMakeFiles/ur3_generate_messages_py.dir/all: ur3/CMakeFiles/geometry_msgs_generate_messages_py.dir/all
 	$(MAKE) -f ur3/CMakeFiles/ur3_generate_messages_py.dir/build.make ur3/CMakeFiles/ur3_generate_messages_py.dir/depend
 	$(MAKE) -f ur3/CMakeFiles/ur3_generate_messages_py.dir/build.make ur3/CMakeFiles/ur3_generate_messages_py.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/rafael/UR3/catkin_ur3/build/CMakeFiles --progress-num=41,42,43,44 "Built target ur3_generate_messages_py"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/rafael/UR3/catkin_ur3/build/CMakeFiles --progress-num=36,37,38,39 "Built target ur3_generate_messages_py"
 .PHONY : ur3/CMakeFiles/ur3_generate_messages_py.dir/all
 
 # Build rule for subdir invocation for target.
@@ -2241,13 +2163,12 @@ clean: ur3/CMakeFiles/trajectory_msgs_generate_messages_lisp.dir/clean
 # Target rules for target ur3/CMakeFiles/interface.dir
 
 # All Build rule for target.
-ur3/CMakeFiles/interface.dir/all: ur3/CMakeFiles/join_data.dir/all
 ur3/CMakeFiles/interface.dir/all: ur3/CMakeFiles/send_script.dir/all
 ur3/CMakeFiles/interface.dir/all: ur3/CMakeFiles/open_socket.dir/all
 ur3/CMakeFiles/interface.dir/all: ur3/CMakeFiles/read_data.dir/all
 	$(MAKE) -f ur3/CMakeFiles/interface.dir/build.make ur3/CMakeFiles/interface.dir/depend
 	$(MAKE) -f ur3/CMakeFiles/interface.dir/build.make ur3/CMakeFiles/interface.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/rafael/UR3/catkin_ur3/build/CMakeFiles --progress-num=12,13,14,15,16,17 "Built target interface"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/rafael/UR3/catkin_ur3/build/CMakeFiles --progress-num=12,13,14,15,16 "Built target interface"
 .PHONY : ur3/CMakeFiles/interface.dir/all
 
 # Include target in all.
@@ -2257,7 +2178,7 @@ all: ur3/CMakeFiles/interface.dir/all
 
 # Build rule for subdir invocation for target.
 ur3/CMakeFiles/interface.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/rafael/UR3/catkin_ur3/build/CMakeFiles 14
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/rafael/UR3/catkin_ur3/build/CMakeFiles 11
 	$(MAKE) -f CMakeFiles/Makefile2 ur3/CMakeFiles/interface.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/rafael/UR3/catkin_ur3/build/CMakeFiles 0
 .PHONY : ur3/CMakeFiles/interface.dir/rule

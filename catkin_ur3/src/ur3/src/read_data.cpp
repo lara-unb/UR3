@@ -3,7 +3,7 @@
 #include <cstdio>
 #include <string.h>
 float* read_data(){
-	float* data = new float[3000];
+	float* data = new float[8000];
     FILE *p;
     char c = 'a';
 	char num_str[2];

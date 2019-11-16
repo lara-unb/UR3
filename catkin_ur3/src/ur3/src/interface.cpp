@@ -15,6 +15,7 @@
 #include "geometry_msgs/Wrench.h"
 #include "geometry_msgs/Pose.h"
 #include "ur3/ref_msg.h"
+#include "std_msgs/Float64.h"// lib demo_1
 #include <X11/keysymdef.h>
 #include <sys/socket.h>
 #include <stdlib.h> 
@@ -30,8 +31,6 @@
 #include "open_socket.h"
 #include "send_script.h"
 #include "read_data.h"
-
-#include <netdb.h>
 
 
 float refe[10];
@@ -49,16 +48,29 @@ inline int reverse_word(int32_t num){
 }  
 
 void send_data(int new_socket){
-
+   
   int32_t buffer_in_[8];
   ros::NodeHandle node;
-  ros::Publisher ref_pub = node.advertise<ur3::ref_msg>("reference",10);
+  ros::Publisher ref_pub = node.advertise<ur3::ref_msg>("ref",10);
   ur3::ref_msg ref;
 
   ref.refer.data.resize(6);
   ros::Rate loop_rate(125);
   float norma_float = 1000000.0;
+  
+  //Experimento usando um sinal de entrada prbs
+	float* prbs_inp = read_data(); 
+
+  int prbs_count = 0;
   while (ros::ok()){
+	  	// //referencia 
+		// if(prbs_count >=7498){
+		// 	 prbs_count = 0;
+		// }		
+		// prbs_count ++;
+
+		// //printf("%i\n",prbs_count);
+
 	  	ref.refer.data[0] = refe[0];
 		buffer_in_[0] = (int)(refe[0]*norma_float);
 		buffer_in_[0] = reverse_word(buffer_in_[0]);
@@ -76,7 +88,7 @@ void send_data(int new_socket){
 		buffer_in_[4] = reverse_word(buffer_in_[4]);
 		
 		// buffer_in_[5] = (int)((prbs_inp[prbs_count]/4)*norma_float); //sending prbs signal to joint 5
-		ref.refer.data[5] = refe[5];
+		ref.refer.data[5] = buffer_in_[5];
 		buffer_in_[5] = (int)(refe[5]*norma_float);
 		buffer_in_[5] = reverse_word(buffer_in_[5]);
 		// gripper
@@ -112,26 +124,35 @@ void joyCallback(const sensor_msgs::Joy::ConstPtr& joy_data){
 	 int button3 = joy_data->buttons[3];
 	 refe[8] = joy_data->axes[2];
 	 if (button0 == 0){
-     	refe[0] = joy_data->axes[3];
-	 	refe[1] = (joy_data->axes[0])*-1;
-	 	refe[2] = joy_data->axes[1];
-	 	refe[3] = 0;
-	 	refe[4] = 0;
-	 	refe[5] = 0;
+     	//refe[5] = joy_data->axes[3]/2;
+	 	// refe[1] = (joy_data->axes[0])*-1/2;
+	 	// refe[2] = joy_data->axes[1]/2;
+	 	// refe[3] = 0;
+	 	// refe[4] = 0;
+	 	// refe[5] = 0;
 	 } 
 	 else
 	 {
-		refe[0] = 0;
-	 	refe[1] = 0;
-	 	refe[2] = 0;
-		refe[3] = joy_data->axes[1];
-	 	refe[4] = joy_data->axes[3];
-	 	refe[5] = joy_data->axes[0];
+		// refe[0] = 0;
+	 	// refe[1] = 0;
+	 	// refe[2] = 0;
+		// refe[3] = joy_data->axes[1]/2;
+	 	// refe[4] = joy_data->axes[3]/2;
+	 	// refe[5] = joy_data->axes[0]/2;
 	 }
 	 
 	 gripper_boll[0] = button2;
 	 gripper_boll[1] = button3; 
 	
+}
+
+void demo_Callback(const std_msgs::Float64::ConstPtr& demo_data){
+	refe[0] = demo_data->data;
+	refe[1] = refe[0];
+	refe[2] = refe[0];
+	refe[3] = refe[0];
+	refe[4] = refe[0];
+	refe[5] = refe[0];	
 }
 ///////////////////////////////////////
 
@@ -141,13 +162,12 @@ int main(int argc, char **argv){
 	refe[0] = 0; refe[1] = 0; refe[2] = 0; refe[3] = 0; refe[4] = 0;
 	refe[5] = 0; refe[6] = 40; refe[7] = 0; refe[8] = 0;
 	
-	//Experimento usando um sinal de entrada prbs
-	float* prbs_inp = read_data(); 
+	
 	// primeira coisa:
 	// tem que enviar o arquivo urscript
 	send_script(); // a função send_script envia o arquivo para o robô
 	///////////////////////////////////
-	int new_socket = open_socket();;
+	int new_socket = open_socket();
 	// abrindo a comunicaçção tcp socket
 	///////////////////////////////////////////////////////
 	//int8_t buffer_out[1024]; 
@@ -163,6 +183,8 @@ int main(int argc, char **argv){
 	ros::Publisher end_Effector_pub = node.advertise<ur3::end_Effector_msg>("end_effector",10);
 	///////////////////////////////////////////////////////////////////////////////////
 	ros::Subscriber sub_joy = node.subscribe("joy", 10, joyCallback);
+	ros::Subscriber sub_demo = node.subscribe("demo_1", 10, demo_Callback);
+	
 	ros::Rate loop_rate(125);
 	//Declaração das estruturas de dados para as publicações
 	sensor_msgs::JointState arm;
@@ -186,57 +208,64 @@ int main(int argc, char **argv){
 	int b;
 
 	//////////////////////////////////////////////////////////
-	printf("The robotic arm is ready!\n");
+	
+	printf("UR3 is ready!\n");
+	
     while (ros::ok()){
 		/////////////////////////////////////////////////////
-		// //referencia 
-		// if(prbs_count >=2998){
-		// 	 prbs_count = 0;
-		// }
-		// // printf("%f\n",prbs_inp[prbs_count]);
 		
-		// prbs_count ++;
 		
 		/////////////////////////////////////////////////////////////
 		b = recv(new_socket, &buffer_out, 156, 0);
-		
 		///////////////////////////////////////////////////////////
 		//beginning arm 
 		memcpy(&vector_arm, &buffer_out[0], 3*sizeof(int32_t));
 		reverse(vector_arm);
 		arm.position[0] = ((float)vector_arm[0])/norma_float;
 		arm.velocity[0] = ((float)vector_arm[1])/norma_float;
-		arm.effort[0] = ((float)vector_arm[2])/norma_float;
+		arm.effort[0] = -0.012925*((float)vector_arm[2]);
+		//arm.velocity[0] = arm.position[0]/arm.effort[0];
+		//printf("%f  %f  %f\n",arm.effort[0],arm.position[0] ,arm.velocity[0]);
 		//////////////////////////////////////
 		memcpy(&vector_arm, &buffer_out[12], 3*sizeof(int32_t));
 		reverse(vector_arm);
 		arm.position[1] = ((float)vector_arm[0])/norma_float;
 		arm.velocity[1] = ((float)vector_arm[1])/norma_float;
-		arm.effort[1] = ((float)vector_arm[2])/norma_float;
+		arm.effort[1] = -0.013088*((float)vector_arm[2]); // 
+		// arm.velocity[1] = arm.position[1]/arm.effort[1];
+		// printf("%f  %f  %f\n",arm.effort[1],arm.position[1] ,arm.velocity[1]);
 		//////////////////////////////////////
 		memcpy(&vector_arm, &buffer_out[24], 3*sizeof(int32_t));
 		reverse(vector_arm);
 		arm.position[2] = ((float)vector_arm[0])/norma_float;
 		arm.velocity[2] = ((float)vector_arm[1])/norma_float;
-		arm.effort[2] = ((float)vector_arm[2])/norma_float;
+		arm.effort[2] = -0.009358*((float)vector_arm[2]);
+		// arm.velocity[2] = arm.position[2]/arm.effort[2];
+		// printf("%f  %f  %f\n",arm.effort[2],arm.position[2] ,arm.velocity[2]);
 		//////////////////////////////////////////////////////
 		memcpy(&vector_arm, &buffer_out[36], 3*sizeof(int32_t));
 		reverse(vector_arm);
 		arm.position[3] = ((float)vector_arm[0])/norma_float;
 		arm.velocity[3] = ((float)vector_arm[1])/norma_float;
-		arm.effort[3] = ((float)vector_arm[2])/norma_float;
+		arm.effort[3] = -0.004572*((float)vector_arm[2]);
+		// arm.velocity[3] = arm.position[3]/arm.effort[3];
+		// printf("%f  %f  %f\n",arm.effort[3],arm.position[3] ,arm.velocity[3]);
 		//////////////////////////////////////////////////////
 		memcpy(&vector_arm, &buffer_out[48], 3*sizeof(int32_t));
 		reverse(vector_arm);
 		arm.position[4] = ((float)vector_arm[0])/norma_float;
 		arm.velocity[4] = ((float)vector_arm[1])/norma_float;
-		arm.effort[4] = ((float)vector_arm[2])/norma_float;
+		arm.effort[4] = -0.004572*((float)vector_arm[2]);
+		// arm.velocity[4] = arm.position[4]/arm.effort[4];
+		// printf("%f\n",arm.velocity[4]);
 		//////////////////////////////////////////////////////
 		memcpy(&vector_arm, &buffer_out[60], 3*sizeof(int32_t));
 		reverse(vector_arm);
 		arm.position[5] = ((float)vector_arm[0])/norma_float;
 		arm.velocity[5] = ((float)vector_arm[1])/norma_float;
-		arm.effort[5] = ((float)vector_arm[2])/norma_float;
+		arm.effort[5] = -0.004548*((float)vector_arm[2]);
+		// arm.velocity[5] = arm.position[5]/arm.effort[5];
+		// printf("%f\n",arm.velocity[5]);
 		//////////////////////////////////////////////////////
 		//end arm
 		/////////////////////////////////////////////////

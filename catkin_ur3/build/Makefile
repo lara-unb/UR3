@@ -285,32 +285,6 @@ gtest/fast:
 .PHONY : gtest/fast
 
 #=============================================================================
-# Target rules for targets named reverse_word
-
-# Build rule for target.
-reverse_word: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 reverse_word
-.PHONY : reverse_word
-
-# fast build rule for target.
-reverse_word/fast:
-	$(MAKE) -f ur3/CMakeFiles/reverse_word.dir/build.make ur3/CMakeFiles/reverse_word.dir/build
-.PHONY : reverse_word/fast
-
-#=============================================================================
-# Target rules for targets named join_data
-
-# Build rule for target.
-join_data: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 join_data
-.PHONY : join_data
-
-# fast build rule for target.
-join_data/fast:
-	$(MAKE) -f ur3/CMakeFiles/join_data.dir/build.make ur3/CMakeFiles/join_data.dir/build
-.PHONY : join_data/fast
-
-#=============================================================================
 # Target rules for targets named send_script
 
 # Build rule for target.
@@ -1021,8 +995,6 @@ help:
 	@echo "... gmock"
 	@echo "... gtest_main"
 	@echo "... gtest"
-	@echo "... reverse_word"
-	@echo "... join_data"
 	@echo "... send_script"
 	@echo "... open_socket"
 	@echo "... ur3_generate_messages_nodejs"
