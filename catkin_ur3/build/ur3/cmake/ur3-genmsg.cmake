@@ -2,7 +2,7 @@
 
 message(STATUS "ur3: 3 messages, 0 services")
 
-set(MSG_I_FLAGS "-Iur3:/home/rafael/UR3/catkin_ur3/src/ur3/msg;-Istd_msgs:/opt/ros/melodic/share/std_msgs/cmake/../msg;-Icontrol_msgs:/opt/ros/melodic/share/control_msgs/cmake/../msg;-Igeometry_msgs:/opt/ros/melodic/share/geometry_msgs/cmake/../msg;-Iactionlib_msgs:/opt/ros/melodic/share/actionlib_msgs/cmake/../msg;-Itrajectory_msgs:/opt/ros/melodic/share/trajectory_msgs/cmake/../msg")
+set(MSG_I_FLAGS "-Iur3:/home/rafael/UR3_interface/catkin_ur3/src/ur3/msg;-Istd_msgs:/opt/ros/melodic/share/std_msgs/cmake/../msg;-Icontrol_msgs:/opt/ros/melodic/share/control_msgs/cmake/../msg;-Igeometry_msgs:/opt/ros/melodic/share/geometry_msgs/cmake/../msg;-Iactionlib_msgs:/opt/ros/melodic/share/actionlib_msgs/cmake/../msg;-Itrajectory_msgs:/opt/ros/melodic/share/trajectory_msgs/cmake/../msg")
 
 # Find all generators
 find_package(gencpp REQUIRED)
@@ -17,19 +17,19 @@ add_custom_target(ur3_generate_messages ALL)
 
 
 
-get_filename_component(_filename "/home/rafael/UR3/catkin_ur3/src/ur3/msg/end_Effector_msg.msg" NAME_WE)
+get_filename_component(_filename "/home/rafael/UR3_interface/catkin_ur3/src/ur3/msg/gripper_msg.msg" NAME_WE)
 add_custom_target(_ur3_generate_messages_check_deps_${_filename}
-  COMMAND ${CATKIN_ENV} ${PYTHON_EXECUTABLE} ${GENMSG_CHECK_DEPS_SCRIPT} "ur3" "/home/rafael/UR3/catkin_ur3/src/ur3/msg/end_Effector_msg.msg" "std_msgs/Bool:control_msgs/GripperCommand:geometry_msgs/Twist:geometry_msgs/Vector3:geometry_msgs/Pose:std_msgs/Header:geometry_msgs/Quaternion:geometry_msgs/Wrench:geometry_msgs/Point"
+  COMMAND ${CATKIN_ENV} ${PYTHON_EXECUTABLE} ${GENMSG_CHECK_DEPS_SCRIPT} "ur3" "/home/rafael/UR3_interface/catkin_ur3/src/ur3/msg/gripper_msg.msg" "std_msgs/Bool:control_msgs/GripperCommand:geometry_msgs/Vector3:geometry_msgs/Pose:std_msgs/Header:geometry_msgs/Point:geometry_msgs/Wrench:geometry_msgs/Quaternion"
 )
 
-get_filename_component(_filename "/home/rafael/UR3/catkin_ur3/src/ur3/msg/ref_msg.msg" NAME_WE)
+get_filename_component(_filename "/home/rafael/UR3_interface/catkin_ur3/src/ur3/msg/end_Effector_msg.msg" NAME_WE)
 add_custom_target(_ur3_generate_messages_check_deps_${_filename}
-  COMMAND ${CATKIN_ENV} ${PYTHON_EXECUTABLE} ${GENMSG_CHECK_DEPS_SCRIPT} "ur3" "/home/rafael/UR3/catkin_ur3/src/ur3/msg/ref_msg.msg" "std_msgs/MultiArrayLayout:std_msgs/Float32MultiArray:std_msgs/MultiArrayDimension:std_msgs/Header"
+  COMMAND ${CATKIN_ENV} ${PYTHON_EXECUTABLE} ${GENMSG_CHECK_DEPS_SCRIPT} "ur3" "/home/rafael/UR3_interface/catkin_ur3/src/ur3/msg/end_Effector_msg.msg" "std_msgs/Bool:control_msgs/GripperCommand:geometry_msgs/Twist:geometry_msgs/Vector3:geometry_msgs/Pose:std_msgs/Header:geometry_msgs/Quaternion:geometry_msgs/Wrench:geometry_msgs/Point"
 )
 
-get_filename_component(_filename "/home/rafael/UR3/catkin_ur3/src/ur3/msg/gripper_msg.msg" NAME_WE)
+get_filename_component(_filename "/home/rafael/UR3_interface/catkin_ur3/src/ur3/msg/ref_msg.msg" NAME_WE)
 add_custom_target(_ur3_generate_messages_check_deps_${_filename}
-  COMMAND ${CATKIN_ENV} ${PYTHON_EXECUTABLE} ${GENMSG_CHECK_DEPS_SCRIPT} "ur3" "/home/rafael/UR3/catkin_ur3/src/ur3/msg/gripper_msg.msg" "std_msgs/Bool:control_msgs/GripperCommand:geometry_msgs/Vector3:geometry_msgs/Pose:std_msgs/Header:geometry_msgs/Point:geometry_msgs/Wrench:geometry_msgs/Quaternion"
+  COMMAND ${CATKIN_ENV} ${PYTHON_EXECUTABLE} ${GENMSG_CHECK_DEPS_SCRIPT} "ur3" "/home/rafael/UR3_interface/catkin_ur3/src/ur3/msg/ref_msg.msg" "std_msgs/MultiArrayLayout:std_msgs/Float32MultiArray:std_msgs/MultiArrayDimension:std_msgs/Header"
 )
 
 #
@@ -39,21 +39,21 @@ add_custom_target(_ur3_generate_messages_check_deps_${_filename}
 ### Section generating for lang: gencpp
 ### Generating Messages
 _generate_msg_cpp(ur3
-  "/home/rafael/UR3/catkin_ur3/src/ur3/msg/end_Effector_msg.msg"
+  "/home/rafael/UR3_interface/catkin_ur3/src/ur3/msg/gripper_msg.msg"
+  "${MSG_I_FLAGS}"
+  "/opt/ros/melodic/share/std_msgs/cmake/../msg/Bool.msg;/opt/ros/melodic/share/control_msgs/cmake/../msg/GripperCommand.msg;/opt/ros/melodic/share/geometry_msgs/cmake/../msg/Vector3.msg;/opt/ros/melodic/share/geometry_msgs/cmake/../msg/Pose.msg;/opt/ros/melodic/share/std_msgs/cmake/../msg/Header.msg;/opt/ros/melodic/share/geometry_msgs/cmake/../msg/Point.msg;/opt/ros/melodic/share/geometry_msgs/cmake/../msg/Wrench.msg;/opt/ros/melodic/share/geometry_msgs/cmake/../msg/Quaternion.msg"
+  ${CATKIN_DEVEL_PREFIX}/${gencpp_INSTALL_DIR}/ur3
+)
+_generate_msg_cpp(ur3
+  "/home/rafael/UR3_interface/catkin_ur3/src/ur3/msg/end_Effector_msg.msg"
   "${MSG_I_FLAGS}"
   "/opt/ros/melodic/share/std_msgs/cmake/../msg/Bool.msg;/opt/ros/melodic/share/control_msgs/cmake/../msg/GripperCommand.msg;/opt/ros/melodic/share/geometry_msgs/cmake/../msg/Twist.msg;/opt/ros/melodic/share/geometry_msgs/cmake/../msg/Vector3.msg;/opt/ros/melodic/share/geometry_msgs/cmake/../msg/Pose.msg;/opt/ros/melodic/share/std_msgs/cmake/../msg/Header.msg;/opt/ros/melodic/share/geometry_msgs/cmake/../msg/Quaternion.msg;/opt/ros/melodic/share/geometry_msgs/cmake/../msg/Wrench.msg;/opt/ros/melodic/share/geometry_msgs/cmake/../msg/Point.msg"
   ${CATKIN_DEVEL_PREFIX}/${gencpp_INSTALL_DIR}/ur3
 )
 _generate_msg_cpp(ur3
-  "/home/rafael/UR3/catkin_ur3/src/ur3/msg/ref_msg.msg"
+  "/home/rafael/UR3_interface/catkin_ur3/src/ur3/msg/ref_msg.msg"
   "${MSG_I_FLAGS}"
   "/opt/ros/melodic/share/std_msgs/cmake/../msg/MultiArrayLayout.msg;/opt/ros/melodic/share/std_msgs/cmake/../msg/Float32MultiArray.msg;/opt/ros/melodic/share/std_msgs/cmake/../msg/MultiArrayDimension.msg;/opt/ros/melodic/share/std_msgs/cmake/../msg/Header.msg"
-  ${CATKIN_DEVEL_PREFIX}/${gencpp_INSTALL_DIR}/ur3
-)
-_generate_msg_cpp(ur3
-  "/home/rafael/UR3/catkin_ur3/src/ur3/msg/gripper_msg.msg"
-  "${MSG_I_FLAGS}"
-  "/opt/ros/melodic/share/std_msgs/cmake/../msg/Bool.msg;/opt/ros/melodic/share/control_msgs/cmake/../msg/GripperCommand.msg;/opt/ros/melodic/share/geometry_msgs/cmake/../msg/Vector3.msg;/opt/ros/melodic/share/geometry_msgs/cmake/../msg/Pose.msg;/opt/ros/melodic/share/std_msgs/cmake/../msg/Header.msg;/opt/ros/melodic/share/geometry_msgs/cmake/../msg/Point.msg;/opt/ros/melodic/share/geometry_msgs/cmake/../msg/Wrench.msg;/opt/ros/melodic/share/geometry_msgs/cmake/../msg/Quaternion.msg"
   ${CATKIN_DEVEL_PREFIX}/${gencpp_INSTALL_DIR}/ur3
 )
 
@@ -71,11 +71,11 @@ add_custom_target(ur3_generate_messages_cpp
 add_dependencies(ur3_generate_messages ur3_generate_messages_cpp)
 
 # add dependencies to all check dependencies targets
-get_filename_component(_filename "/home/rafael/UR3/catkin_ur3/src/ur3/msg/end_Effector_msg.msg" NAME_WE)
+get_filename_component(_filename "/home/rafael/UR3_interface/catkin_ur3/src/ur3/msg/gripper_msg.msg" NAME_WE)
 add_dependencies(ur3_generate_messages_cpp _ur3_generate_messages_check_deps_${_filename})
-get_filename_component(_filename "/home/rafael/UR3/catkin_ur3/src/ur3/msg/ref_msg.msg" NAME_WE)
+get_filename_component(_filename "/home/rafael/UR3_interface/catkin_ur3/src/ur3/msg/end_Effector_msg.msg" NAME_WE)
 add_dependencies(ur3_generate_messages_cpp _ur3_generate_messages_check_deps_${_filename})
-get_filename_component(_filename "/home/rafael/UR3/catkin_ur3/src/ur3/msg/gripper_msg.msg" NAME_WE)
+get_filename_component(_filename "/home/rafael/UR3_interface/catkin_ur3/src/ur3/msg/ref_msg.msg" NAME_WE)
 add_dependencies(ur3_generate_messages_cpp _ur3_generate_messages_check_deps_${_filename})
 
 # target for backward compatibility
@@ -88,21 +88,21 @@ list(APPEND ${PROJECT_NAME}_EXPORTED_TARGETS ur3_generate_messages_cpp)
 ### Section generating for lang: geneus
 ### Generating Messages
 _generate_msg_eus(ur3
-  "/home/rafael/UR3/catkin_ur3/src/ur3/msg/end_Effector_msg.msg"
+  "/home/rafael/UR3_interface/catkin_ur3/src/ur3/msg/gripper_msg.msg"
+  "${MSG_I_FLAGS}"
+  "/opt/ros/melodic/share/std_msgs/cmake/../msg/Bool.msg;/opt/ros/melodic/share/control_msgs/cmake/../msg/GripperCommand.msg;/opt/ros/melodic/share/geometry_msgs/cmake/../msg/Vector3.msg;/opt/ros/melodic/share/geometry_msgs/cmake/../msg/Pose.msg;/opt/ros/melodic/share/std_msgs/cmake/../msg/Header.msg;/opt/ros/melodic/share/geometry_msgs/cmake/../msg/Point.msg;/opt/ros/melodic/share/geometry_msgs/cmake/../msg/Wrench.msg;/opt/ros/melodic/share/geometry_msgs/cmake/../msg/Quaternion.msg"
+  ${CATKIN_DEVEL_PREFIX}/${geneus_INSTALL_DIR}/ur3
+)
+_generate_msg_eus(ur3
+  "/home/rafael/UR3_interface/catkin_ur3/src/ur3/msg/end_Effector_msg.msg"
   "${MSG_I_FLAGS}"
   "/opt/ros/melodic/share/std_msgs/cmake/../msg/Bool.msg;/opt/ros/melodic/share/control_msgs/cmake/../msg/GripperCommand.msg;/opt/ros/melodic/share/geometry_msgs/cmake/../msg/Twist.msg;/opt/ros/melodic/share/geometry_msgs/cmake/../msg/Vector3.msg;/opt/ros/melodic/share/geometry_msgs/cmake/../msg/Pose.msg;/opt/ros/melodic/share/std_msgs/cmake/../msg/Header.msg;/opt/ros/melodic/share/geometry_msgs/cmake/../msg/Quaternion.msg;/opt/ros/melodic/share/geometry_msgs/cmake/../msg/Wrench.msg;/opt/ros/melodic/share/geometry_msgs/cmake/../msg/Point.msg"
   ${CATKIN_DEVEL_PREFIX}/${geneus_INSTALL_DIR}/ur3
 )
 _generate_msg_eus(ur3
-  "/home/rafael/UR3/catkin_ur3/src/ur3/msg/ref_msg.msg"
+  "/home/rafael/UR3_interface/catkin_ur3/src/ur3/msg/ref_msg.msg"
   "${MSG_I_FLAGS}"
   "/opt/ros/melodic/share/std_msgs/cmake/../msg/MultiArrayLayout.msg;/opt/ros/melodic/share/std_msgs/cmake/../msg/Float32MultiArray.msg;/opt/ros/melodic/share/std_msgs/cmake/../msg/MultiArrayDimension.msg;/opt/ros/melodic/share/std_msgs/cmake/../msg/Header.msg"
-  ${CATKIN_DEVEL_PREFIX}/${geneus_INSTALL_DIR}/ur3
-)
-_generate_msg_eus(ur3
-  "/home/rafael/UR3/catkin_ur3/src/ur3/msg/gripper_msg.msg"
-  "${MSG_I_FLAGS}"
-  "/opt/ros/melodic/share/std_msgs/cmake/../msg/Bool.msg;/opt/ros/melodic/share/control_msgs/cmake/../msg/GripperCommand.msg;/opt/ros/melodic/share/geometry_msgs/cmake/../msg/Vector3.msg;/opt/ros/melodic/share/geometry_msgs/cmake/../msg/Pose.msg;/opt/ros/melodic/share/std_msgs/cmake/../msg/Header.msg;/opt/ros/melodic/share/geometry_msgs/cmake/../msg/Point.msg;/opt/ros/melodic/share/geometry_msgs/cmake/../msg/Wrench.msg;/opt/ros/melodic/share/geometry_msgs/cmake/../msg/Quaternion.msg"
   ${CATKIN_DEVEL_PREFIX}/${geneus_INSTALL_DIR}/ur3
 )
 
@@ -120,11 +120,11 @@ add_custom_target(ur3_generate_messages_eus
 add_dependencies(ur3_generate_messages ur3_generate_messages_eus)
 
 # add dependencies to all check dependencies targets
-get_filename_component(_filename "/home/rafael/UR3/catkin_ur3/src/ur3/msg/end_Effector_msg.msg" NAME_WE)
+get_filename_component(_filename "/home/rafael/UR3_interface/catkin_ur3/src/ur3/msg/gripper_msg.msg" NAME_WE)
 add_dependencies(ur3_generate_messages_eus _ur3_generate_messages_check_deps_${_filename})
-get_filename_component(_filename "/home/rafael/UR3/catkin_ur3/src/ur3/msg/ref_msg.msg" NAME_WE)
+get_filename_component(_filename "/home/rafael/UR3_interface/catkin_ur3/src/ur3/msg/end_Effector_msg.msg" NAME_WE)
 add_dependencies(ur3_generate_messages_eus _ur3_generate_messages_check_deps_${_filename})
-get_filename_component(_filename "/home/rafael/UR3/catkin_ur3/src/ur3/msg/gripper_msg.msg" NAME_WE)
+get_filename_component(_filename "/home/rafael/UR3_interface/catkin_ur3/src/ur3/msg/ref_msg.msg" NAME_WE)
 add_dependencies(ur3_generate_messages_eus _ur3_generate_messages_check_deps_${_filename})
 
 # target for backward compatibility
@@ -137,21 +137,21 @@ list(APPEND ${PROJECT_NAME}_EXPORTED_TARGETS ur3_generate_messages_eus)
 ### Section generating for lang: genlisp
 ### Generating Messages
 _generate_msg_lisp(ur3
-  "/home/rafael/UR3/catkin_ur3/src/ur3/msg/end_Effector_msg.msg"
+  "/home/rafael/UR3_interface/catkin_ur3/src/ur3/msg/gripper_msg.msg"
+  "${MSG_I_FLAGS}"
+  "/opt/ros/melodic/share/std_msgs/cmake/../msg/Bool.msg;/opt/ros/melodic/share/control_msgs/cmake/../msg/GripperCommand.msg;/opt/ros/melodic/share/geometry_msgs/cmake/../msg/Vector3.msg;/opt/ros/melodic/share/geometry_msgs/cmake/../msg/Pose.msg;/opt/ros/melodic/share/std_msgs/cmake/../msg/Header.msg;/opt/ros/melodic/share/geometry_msgs/cmake/../msg/Point.msg;/opt/ros/melodic/share/geometry_msgs/cmake/../msg/Wrench.msg;/opt/ros/melodic/share/geometry_msgs/cmake/../msg/Quaternion.msg"
+  ${CATKIN_DEVEL_PREFIX}/${genlisp_INSTALL_DIR}/ur3
+)
+_generate_msg_lisp(ur3
+  "/home/rafael/UR3_interface/catkin_ur3/src/ur3/msg/end_Effector_msg.msg"
   "${MSG_I_FLAGS}"
   "/opt/ros/melodic/share/std_msgs/cmake/../msg/Bool.msg;/opt/ros/melodic/share/control_msgs/cmake/../msg/GripperCommand.msg;/opt/ros/melodic/share/geometry_msgs/cmake/../msg/Twist.msg;/opt/ros/melodic/share/geometry_msgs/cmake/../msg/Vector3.msg;/opt/ros/melodic/share/geometry_msgs/cmake/../msg/Pose.msg;/opt/ros/melodic/share/std_msgs/cmake/../msg/Header.msg;/opt/ros/melodic/share/geometry_msgs/cmake/../msg/Quaternion.msg;/opt/ros/melodic/share/geometry_msgs/cmake/../msg/Wrench.msg;/opt/ros/melodic/share/geometry_msgs/cmake/../msg/Point.msg"
   ${CATKIN_DEVEL_PREFIX}/${genlisp_INSTALL_DIR}/ur3
 )
 _generate_msg_lisp(ur3
-  "/home/rafael/UR3/catkin_ur3/src/ur3/msg/ref_msg.msg"
+  "/home/rafael/UR3_interface/catkin_ur3/src/ur3/msg/ref_msg.msg"
   "${MSG_I_FLAGS}"
   "/opt/ros/melodic/share/std_msgs/cmake/../msg/MultiArrayLayout.msg;/opt/ros/melodic/share/std_msgs/cmake/../msg/Float32MultiArray.msg;/opt/ros/melodic/share/std_msgs/cmake/../msg/MultiArrayDimension.msg;/opt/ros/melodic/share/std_msgs/cmake/../msg/Header.msg"
-  ${CATKIN_DEVEL_PREFIX}/${genlisp_INSTALL_DIR}/ur3
-)
-_generate_msg_lisp(ur3
-  "/home/rafael/UR3/catkin_ur3/src/ur3/msg/gripper_msg.msg"
-  "${MSG_I_FLAGS}"
-  "/opt/ros/melodic/share/std_msgs/cmake/../msg/Bool.msg;/opt/ros/melodic/share/control_msgs/cmake/../msg/GripperCommand.msg;/opt/ros/melodic/share/geometry_msgs/cmake/../msg/Vector3.msg;/opt/ros/melodic/share/geometry_msgs/cmake/../msg/Pose.msg;/opt/ros/melodic/share/std_msgs/cmake/../msg/Header.msg;/opt/ros/melodic/share/geometry_msgs/cmake/../msg/Point.msg;/opt/ros/melodic/share/geometry_msgs/cmake/../msg/Wrench.msg;/opt/ros/melodic/share/geometry_msgs/cmake/../msg/Quaternion.msg"
   ${CATKIN_DEVEL_PREFIX}/${genlisp_INSTALL_DIR}/ur3
 )
 
@@ -169,11 +169,11 @@ add_custom_target(ur3_generate_messages_lisp
 add_dependencies(ur3_generate_messages ur3_generate_messages_lisp)
 
 # add dependencies to all check dependencies targets
-get_filename_component(_filename "/home/rafael/UR3/catkin_ur3/src/ur3/msg/end_Effector_msg.msg" NAME_WE)
+get_filename_component(_filename "/home/rafael/UR3_interface/catkin_ur3/src/ur3/msg/gripper_msg.msg" NAME_WE)
 add_dependencies(ur3_generate_messages_lisp _ur3_generate_messages_check_deps_${_filename})
-get_filename_component(_filename "/home/rafael/UR3/catkin_ur3/src/ur3/msg/ref_msg.msg" NAME_WE)
+get_filename_component(_filename "/home/rafael/UR3_interface/catkin_ur3/src/ur3/msg/end_Effector_msg.msg" NAME_WE)
 add_dependencies(ur3_generate_messages_lisp _ur3_generate_messages_check_deps_${_filename})
-get_filename_component(_filename "/home/rafael/UR3/catkin_ur3/src/ur3/msg/gripper_msg.msg" NAME_WE)
+get_filename_component(_filename "/home/rafael/UR3_interface/catkin_ur3/src/ur3/msg/ref_msg.msg" NAME_WE)
 add_dependencies(ur3_generate_messages_lisp _ur3_generate_messages_check_deps_${_filename})
 
 # target for backward compatibility
@@ -186,21 +186,21 @@ list(APPEND ${PROJECT_NAME}_EXPORTED_TARGETS ur3_generate_messages_lisp)
 ### Section generating for lang: gennodejs
 ### Generating Messages
 _generate_msg_nodejs(ur3
-  "/home/rafael/UR3/catkin_ur3/src/ur3/msg/end_Effector_msg.msg"
+  "/home/rafael/UR3_interface/catkin_ur3/src/ur3/msg/gripper_msg.msg"
+  "${MSG_I_FLAGS}"
+  "/opt/ros/melodic/share/std_msgs/cmake/../msg/Bool.msg;/opt/ros/melodic/share/control_msgs/cmake/../msg/GripperCommand.msg;/opt/ros/melodic/share/geometry_msgs/cmake/../msg/Vector3.msg;/opt/ros/melodic/share/geometry_msgs/cmake/../msg/Pose.msg;/opt/ros/melodic/share/std_msgs/cmake/../msg/Header.msg;/opt/ros/melodic/share/geometry_msgs/cmake/../msg/Point.msg;/opt/ros/melodic/share/geometry_msgs/cmake/../msg/Wrench.msg;/opt/ros/melodic/share/geometry_msgs/cmake/../msg/Quaternion.msg"
+  ${CATKIN_DEVEL_PREFIX}/${gennodejs_INSTALL_DIR}/ur3
+)
+_generate_msg_nodejs(ur3
+  "/home/rafael/UR3_interface/catkin_ur3/src/ur3/msg/end_Effector_msg.msg"
   "${MSG_I_FLAGS}"
   "/opt/ros/melodic/share/std_msgs/cmake/../msg/Bool.msg;/opt/ros/melodic/share/control_msgs/cmake/../msg/GripperCommand.msg;/opt/ros/melodic/share/geometry_msgs/cmake/../msg/Twist.msg;/opt/ros/melodic/share/geometry_msgs/cmake/../msg/Vector3.msg;/opt/ros/melodic/share/geometry_msgs/cmake/../msg/Pose.msg;/opt/ros/melodic/share/std_msgs/cmake/../msg/Header.msg;/opt/ros/melodic/share/geometry_msgs/cmake/../msg/Quaternion.msg;/opt/ros/melodic/share/geometry_msgs/cmake/../msg/Wrench.msg;/opt/ros/melodic/share/geometry_msgs/cmake/../msg/Point.msg"
   ${CATKIN_DEVEL_PREFIX}/${gennodejs_INSTALL_DIR}/ur3
 )
 _generate_msg_nodejs(ur3
-  "/home/rafael/UR3/catkin_ur3/src/ur3/msg/ref_msg.msg"
+  "/home/rafael/UR3_interface/catkin_ur3/src/ur3/msg/ref_msg.msg"
   "${MSG_I_FLAGS}"
   "/opt/ros/melodic/share/std_msgs/cmake/../msg/MultiArrayLayout.msg;/opt/ros/melodic/share/std_msgs/cmake/../msg/Float32MultiArray.msg;/opt/ros/melodic/share/std_msgs/cmake/../msg/MultiArrayDimension.msg;/opt/ros/melodic/share/std_msgs/cmake/../msg/Header.msg"
-  ${CATKIN_DEVEL_PREFIX}/${gennodejs_INSTALL_DIR}/ur3
-)
-_generate_msg_nodejs(ur3
-  "/home/rafael/UR3/catkin_ur3/src/ur3/msg/gripper_msg.msg"
-  "${MSG_I_FLAGS}"
-  "/opt/ros/melodic/share/std_msgs/cmake/../msg/Bool.msg;/opt/ros/melodic/share/control_msgs/cmake/../msg/GripperCommand.msg;/opt/ros/melodic/share/geometry_msgs/cmake/../msg/Vector3.msg;/opt/ros/melodic/share/geometry_msgs/cmake/../msg/Pose.msg;/opt/ros/melodic/share/std_msgs/cmake/../msg/Header.msg;/opt/ros/melodic/share/geometry_msgs/cmake/../msg/Point.msg;/opt/ros/melodic/share/geometry_msgs/cmake/../msg/Wrench.msg;/opt/ros/melodic/share/geometry_msgs/cmake/../msg/Quaternion.msg"
   ${CATKIN_DEVEL_PREFIX}/${gennodejs_INSTALL_DIR}/ur3
 )
 
@@ -218,11 +218,11 @@ add_custom_target(ur3_generate_messages_nodejs
 add_dependencies(ur3_generate_messages ur3_generate_messages_nodejs)
 
 # add dependencies to all check dependencies targets
-get_filename_component(_filename "/home/rafael/UR3/catkin_ur3/src/ur3/msg/end_Effector_msg.msg" NAME_WE)
+get_filename_component(_filename "/home/rafael/UR3_interface/catkin_ur3/src/ur3/msg/gripper_msg.msg" NAME_WE)
 add_dependencies(ur3_generate_messages_nodejs _ur3_generate_messages_check_deps_${_filename})
-get_filename_component(_filename "/home/rafael/UR3/catkin_ur3/src/ur3/msg/ref_msg.msg" NAME_WE)
+get_filename_component(_filename "/home/rafael/UR3_interface/catkin_ur3/src/ur3/msg/end_Effector_msg.msg" NAME_WE)
 add_dependencies(ur3_generate_messages_nodejs _ur3_generate_messages_check_deps_${_filename})
-get_filename_component(_filename "/home/rafael/UR3/catkin_ur3/src/ur3/msg/gripper_msg.msg" NAME_WE)
+get_filename_component(_filename "/home/rafael/UR3_interface/catkin_ur3/src/ur3/msg/ref_msg.msg" NAME_WE)
 add_dependencies(ur3_generate_messages_nodejs _ur3_generate_messages_check_deps_${_filename})
 
 # target for backward compatibility
@@ -235,21 +235,21 @@ list(APPEND ${PROJECT_NAME}_EXPORTED_TARGETS ur3_generate_messages_nodejs)
 ### Section generating for lang: genpy
 ### Generating Messages
 _generate_msg_py(ur3
-  "/home/rafael/UR3/catkin_ur3/src/ur3/msg/end_Effector_msg.msg"
+  "/home/rafael/UR3_interface/catkin_ur3/src/ur3/msg/gripper_msg.msg"
+  "${MSG_I_FLAGS}"
+  "/opt/ros/melodic/share/std_msgs/cmake/../msg/Bool.msg;/opt/ros/melodic/share/control_msgs/cmake/../msg/GripperCommand.msg;/opt/ros/melodic/share/geometry_msgs/cmake/../msg/Vector3.msg;/opt/ros/melodic/share/geometry_msgs/cmake/../msg/Pose.msg;/opt/ros/melodic/share/std_msgs/cmake/../msg/Header.msg;/opt/ros/melodic/share/geometry_msgs/cmake/../msg/Point.msg;/opt/ros/melodic/share/geometry_msgs/cmake/../msg/Wrench.msg;/opt/ros/melodic/share/geometry_msgs/cmake/../msg/Quaternion.msg"
+  ${CATKIN_DEVEL_PREFIX}/${genpy_INSTALL_DIR}/ur3
+)
+_generate_msg_py(ur3
+  "/home/rafael/UR3_interface/catkin_ur3/src/ur3/msg/end_Effector_msg.msg"
   "${MSG_I_FLAGS}"
   "/opt/ros/melodic/share/std_msgs/cmake/../msg/Bool.msg;/opt/ros/melodic/share/control_msgs/cmake/../msg/GripperCommand.msg;/opt/ros/melodic/share/geometry_msgs/cmake/../msg/Twist.msg;/opt/ros/melodic/share/geometry_msgs/cmake/../msg/Vector3.msg;/opt/ros/melodic/share/geometry_msgs/cmake/../msg/Pose.msg;/opt/ros/melodic/share/std_msgs/cmake/../msg/Header.msg;/opt/ros/melodic/share/geometry_msgs/cmake/../msg/Quaternion.msg;/opt/ros/melodic/share/geometry_msgs/cmake/../msg/Wrench.msg;/opt/ros/melodic/share/geometry_msgs/cmake/../msg/Point.msg"
   ${CATKIN_DEVEL_PREFIX}/${genpy_INSTALL_DIR}/ur3
 )
 _generate_msg_py(ur3
-  "/home/rafael/UR3/catkin_ur3/src/ur3/msg/ref_msg.msg"
+  "/home/rafael/UR3_interface/catkin_ur3/src/ur3/msg/ref_msg.msg"
   "${MSG_I_FLAGS}"
   "/opt/ros/melodic/share/std_msgs/cmake/../msg/MultiArrayLayout.msg;/opt/ros/melodic/share/std_msgs/cmake/../msg/Float32MultiArray.msg;/opt/ros/melodic/share/std_msgs/cmake/../msg/MultiArrayDimension.msg;/opt/ros/melodic/share/std_msgs/cmake/../msg/Header.msg"
-  ${CATKIN_DEVEL_PREFIX}/${genpy_INSTALL_DIR}/ur3
-)
-_generate_msg_py(ur3
-  "/home/rafael/UR3/catkin_ur3/src/ur3/msg/gripper_msg.msg"
-  "${MSG_I_FLAGS}"
-  "/opt/ros/melodic/share/std_msgs/cmake/../msg/Bool.msg;/opt/ros/melodic/share/control_msgs/cmake/../msg/GripperCommand.msg;/opt/ros/melodic/share/geometry_msgs/cmake/../msg/Vector3.msg;/opt/ros/melodic/share/geometry_msgs/cmake/../msg/Pose.msg;/opt/ros/melodic/share/std_msgs/cmake/../msg/Header.msg;/opt/ros/melodic/share/geometry_msgs/cmake/../msg/Point.msg;/opt/ros/melodic/share/geometry_msgs/cmake/../msg/Wrench.msg;/opt/ros/melodic/share/geometry_msgs/cmake/../msg/Quaternion.msg"
   ${CATKIN_DEVEL_PREFIX}/${genpy_INSTALL_DIR}/ur3
 )
 
@@ -267,11 +267,11 @@ add_custom_target(ur3_generate_messages_py
 add_dependencies(ur3_generate_messages ur3_generate_messages_py)
 
 # add dependencies to all check dependencies targets
-get_filename_component(_filename "/home/rafael/UR3/catkin_ur3/src/ur3/msg/end_Effector_msg.msg" NAME_WE)
+get_filename_component(_filename "/home/rafael/UR3_interface/catkin_ur3/src/ur3/msg/gripper_msg.msg" NAME_WE)
 add_dependencies(ur3_generate_messages_py _ur3_generate_messages_check_deps_${_filename})
-get_filename_component(_filename "/home/rafael/UR3/catkin_ur3/src/ur3/msg/ref_msg.msg" NAME_WE)
+get_filename_component(_filename "/home/rafael/UR3_interface/catkin_ur3/src/ur3/msg/end_Effector_msg.msg" NAME_WE)
 add_dependencies(ur3_generate_messages_py _ur3_generate_messages_check_deps_${_filename})
-get_filename_component(_filename "/home/rafael/UR3/catkin_ur3/src/ur3/msg/gripper_msg.msg" NAME_WE)
+get_filename_component(_filename "/home/rafael/UR3_interface/catkin_ur3/src/ur3/msg/ref_msg.msg" NAME_WE)
 add_dependencies(ur3_generate_messages_py _ur3_generate_messages_check_deps_${_filename})
 
 # target for backward compatibility

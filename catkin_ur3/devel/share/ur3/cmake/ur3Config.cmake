@@ -67,14 +67,14 @@ set(ur3_CONFIG_INCLUDED TRUE)
 
 # set variables for source/devel/install prefixes
 if("TRUE" STREQUAL "TRUE")
-  set(ur3_SOURCE_PREFIX /home/rafael/UR3/catkin_ur3/src/ur3)
-  set(ur3_DEVEL_PREFIX /home/rafael/UR3/catkin_ur3/devel)
+  set(ur3_SOURCE_PREFIX /home/rafael/UR3_interface/catkin_ur3/src/ur3)
+  set(ur3_DEVEL_PREFIX /home/rafael/UR3_interface/catkin_ur3/devel)
   set(ur3_INSTALL_PREFIX "")
   set(ur3_PREFIX ${ur3_DEVEL_PREFIX})
 else()
   set(ur3_SOURCE_PREFIX "")
   set(ur3_DEVEL_PREFIX "")
-  set(ur3_INSTALL_PREFIX /home/rafael/UR3/catkin_ur3/install)
+  set(ur3_INSTALL_PREFIX /home/rafael/UR3_interface/catkin_ur3/install)
   set(ur3_PREFIX ${ur3_INSTALL_PREFIX})
 endif()
 
@@ -91,9 +91,9 @@ endif()
 # flag project as catkin-based to distinguish if a find_package()-ed project is a catkin project
 set(ur3_FOUND_CATKIN_PROJECT TRUE)
 
-if(NOT "/home/rafael/UR3/catkin_ur3/devel/include;/home/rafael/UR3/catkin_ur3/src/ur3/include;/home/rafael/UR3/catkin_ur3/src/ur3/msg " STREQUAL " ")
+if(NOT "/home/rafael/UR3_interface/catkin_ur3/devel/include;/home/rafael/UR3_interface/catkin_ur3/src/ur3/include;/home/rafael/UR3_interface/catkin_ur3/src/ur3/msg " STREQUAL " ")
   set(ur3_INCLUDE_DIRS "")
-  set(_include_dirs "/home/rafael/UR3/catkin_ur3/devel/include;/home/rafael/UR3/catkin_ur3/src/ur3/include;/home/rafael/UR3/catkin_ur3/src/ur3/msg")
+  set(_include_dirs "/home/rafael/UR3_interface/catkin_ur3/devel/include;/home/rafael/UR3_interface/catkin_ur3/src/ur3/include;/home/rafael/UR3_interface/catkin_ur3/src/ur3/msg")
   if(NOT " " STREQUAL " ")
     set(_report "Check the issue tracker '' and consider creating a ticket if the problem has not been reported yet.")
   elseif(NOT " " STREQUAL " ")
@@ -110,7 +110,7 @@ if(NOT "/home/rafael/UR3/catkin_ur3/devel/include;/home/rafael/UR3/catkin_ur3/sr
         message(FATAL_ERROR "Project 'ur3' specifies '${idir}' as an include dir, which is not found.  It does not exist in '${include}'.  ${_report}")
       endif()
     else()
-      message(FATAL_ERROR "Project 'ur3' specifies '${idir}' as an include dir, which is not found.  It does neither exist as an absolute directory nor in '/home/rafael/UR3/catkin_ur3/src/ur3/${idir}'.  ${_report}")
+      message(FATAL_ERROR "Project 'ur3' specifies '${idir}' as an include dir, which is not found.  It does neither exist as an absolute directory nor in '/home/rafael/UR3_interface/catkin_ur3/src/ur3/${idir}'.  ${_report}")
     endif()
     _list_append_unique(ur3_INCLUDE_DIRS ${include})
   endforeach()
@@ -123,6 +123,29 @@ foreach(library ${libraries})
     list(APPEND ur3_LIBRARIES ${library})
   elseif(${library} MATCHES "^-l")
     list(APPEND ur3_LIBRARIES ${library})
+  elseif(${library} MATCHES "^-")
+    # This is a linker flag/option (like -pthread)
+    # There's no standard variable for these, so create an interface library to hold it
+    if(NOT ur3_NUM_DUMMY_TARGETS)
+      set(ur3_NUM_DUMMY_TARGETS 0)
+    endif()
+    # Make sure the target name is unique
+    set(interface_target_name "catkin::ur3::wrapped-linker-option${ur3_NUM_DUMMY_TARGETS}")
+    while(TARGET "${interface_target_name}")
+      math(EXPR ur3_NUM_DUMMY_TARGETS "${ur3_NUM_DUMMY_TARGETS}+1")
+      set(interface_target_name "catkin::ur3::wrapped-linker-option${ur3_NUM_DUMMY_TARGETS}")
+    endwhile()
+    add_library("${interface_target_name}" INTERFACE IMPORTED)
+    if("${CMAKE_VERSION}" VERSION_LESS "3.13.0")
+      set_property(
+        TARGET
+        "${interface_target_name}"
+        APPEND PROPERTY
+        INTERFACE_LINK_LIBRARIES "${library}")
+    else()
+      target_link_options("${interface_target_name}" INTERFACE "${library}")
+    endif()
+    list(APPEND ur3_LIBRARIES "${interface_target_name}")
   elseif(TARGET ${library})
     list(APPEND ur3_LIBRARIES ${library})
   elseif(IS_ABSOLUTE ${library})
@@ -131,7 +154,7 @@ foreach(library ${libraries})
     set(lib_path "")
     set(lib "${library}-NOTFOUND")
     # since the path where the library is found is returned we have to iterate over the paths manually
-    foreach(path /home/rafael/UR3/catkin_ur3/devel/lib;/opt/ros/melodic/lib)
+    foreach(path /home/rafael/UR3_interface/catkin_ur3/devel/lib;/home/rafael/VrepUR3/catkin_ur3/devel/lib;/opt/ros/melodic/lib)
       find_library(lib ${library}
         PATHS ${path}
         NO_DEFAULT_PATH NO_CMAKE_FIND_ROOT_PATH)

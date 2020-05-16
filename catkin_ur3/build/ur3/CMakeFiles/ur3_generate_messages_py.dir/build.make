@@ -43,70 +43,70 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/rafael/UR3/catkin_ur3/src
+CMAKE_SOURCE_DIR = /home/rafael/UR3_interface/catkin_ur3/src
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/rafael/UR3/catkin_ur3/build
+CMAKE_BINARY_DIR = /home/rafael/UR3_interface/catkin_ur3/build
 
 # Utility rule file for ur3_generate_messages_py.
 
 # Include the progress variables for this target.
 include ur3/CMakeFiles/ur3_generate_messages_py.dir/progress.make
 
-ur3/CMakeFiles/ur3_generate_messages_py: /home/rafael/UR3/catkin_ur3/devel/lib/python2.7/dist-packages/ur3/msg/_end_Effector_msg.py
-ur3/CMakeFiles/ur3_generate_messages_py: /home/rafael/UR3/catkin_ur3/devel/lib/python2.7/dist-packages/ur3/msg/_ref_msg.py
-ur3/CMakeFiles/ur3_generate_messages_py: /home/rafael/UR3/catkin_ur3/devel/lib/python2.7/dist-packages/ur3/msg/_gripper_msg.py
-ur3/CMakeFiles/ur3_generate_messages_py: /home/rafael/UR3/catkin_ur3/devel/lib/python2.7/dist-packages/ur3/msg/__init__.py
+ur3/CMakeFiles/ur3_generate_messages_py: /home/rafael/UR3_interface/catkin_ur3/devel/lib/python2.7/dist-packages/ur3/msg/_gripper_msg.py
+ur3/CMakeFiles/ur3_generate_messages_py: /home/rafael/UR3_interface/catkin_ur3/devel/lib/python2.7/dist-packages/ur3/msg/_end_Effector_msg.py
+ur3/CMakeFiles/ur3_generate_messages_py: /home/rafael/UR3_interface/catkin_ur3/devel/lib/python2.7/dist-packages/ur3/msg/_ref_msg.py
+ur3/CMakeFiles/ur3_generate_messages_py: /home/rafael/UR3_interface/catkin_ur3/devel/lib/python2.7/dist-packages/ur3/msg/__init__.py
 
 
-/home/rafael/UR3/catkin_ur3/devel/lib/python2.7/dist-packages/ur3/msg/_end_Effector_msg.py: /opt/ros/melodic/lib/genpy/genmsg_py.py
-/home/rafael/UR3/catkin_ur3/devel/lib/python2.7/dist-packages/ur3/msg/_end_Effector_msg.py: /home/rafael/UR3/catkin_ur3/src/ur3/msg/end_Effector_msg.msg
-/home/rafael/UR3/catkin_ur3/devel/lib/python2.7/dist-packages/ur3/msg/_end_Effector_msg.py: /opt/ros/melodic/share/std_msgs/msg/Bool.msg
-/home/rafael/UR3/catkin_ur3/devel/lib/python2.7/dist-packages/ur3/msg/_end_Effector_msg.py: /opt/ros/melodic/share/control_msgs/msg/GripperCommand.msg
-/home/rafael/UR3/catkin_ur3/devel/lib/python2.7/dist-packages/ur3/msg/_end_Effector_msg.py: /opt/ros/melodic/share/geometry_msgs/msg/Twist.msg
-/home/rafael/UR3/catkin_ur3/devel/lib/python2.7/dist-packages/ur3/msg/_end_Effector_msg.py: /opt/ros/melodic/share/geometry_msgs/msg/Vector3.msg
-/home/rafael/UR3/catkin_ur3/devel/lib/python2.7/dist-packages/ur3/msg/_end_Effector_msg.py: /opt/ros/melodic/share/geometry_msgs/msg/Pose.msg
-/home/rafael/UR3/catkin_ur3/devel/lib/python2.7/dist-packages/ur3/msg/_end_Effector_msg.py: /opt/ros/melodic/share/std_msgs/msg/Header.msg
-/home/rafael/UR3/catkin_ur3/devel/lib/python2.7/dist-packages/ur3/msg/_end_Effector_msg.py: /opt/ros/melodic/share/geometry_msgs/msg/Quaternion.msg
-/home/rafael/UR3/catkin_ur3/devel/lib/python2.7/dist-packages/ur3/msg/_end_Effector_msg.py: /opt/ros/melodic/share/geometry_msgs/msg/Wrench.msg
-/home/rafael/UR3/catkin_ur3/devel/lib/python2.7/dist-packages/ur3/msg/_end_Effector_msg.py: /opt/ros/melodic/share/geometry_msgs/msg/Point.msg
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/rafael/UR3/catkin_ur3/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Generating Python from MSG ur3/end_Effector_msg"
-	cd /home/rafael/UR3/catkin_ur3/build/ur3 && ../catkin_generated/env_cached.sh /usr/bin/python2 /opt/ros/melodic/share/genpy/cmake/../../../lib/genpy/genmsg_py.py /home/rafael/UR3/catkin_ur3/src/ur3/msg/end_Effector_msg.msg -Iur3:/home/rafael/UR3/catkin_ur3/src/ur3/msg -Istd_msgs:/opt/ros/melodic/share/std_msgs/cmake/../msg -Icontrol_msgs:/opt/ros/melodic/share/control_msgs/cmake/../msg -Igeometry_msgs:/opt/ros/melodic/share/geometry_msgs/cmake/../msg -Iactionlib_msgs:/opt/ros/melodic/share/actionlib_msgs/cmake/../msg -Itrajectory_msgs:/opt/ros/melodic/share/trajectory_msgs/cmake/../msg -p ur3 -o /home/rafael/UR3/catkin_ur3/devel/lib/python2.7/dist-packages/ur3/msg
+/home/rafael/UR3_interface/catkin_ur3/devel/lib/python2.7/dist-packages/ur3/msg/_gripper_msg.py: /opt/ros/melodic/lib/genpy/genmsg_py.py
+/home/rafael/UR3_interface/catkin_ur3/devel/lib/python2.7/dist-packages/ur3/msg/_gripper_msg.py: /home/rafael/UR3_interface/catkin_ur3/src/ur3/msg/gripper_msg.msg
+/home/rafael/UR3_interface/catkin_ur3/devel/lib/python2.7/dist-packages/ur3/msg/_gripper_msg.py: /opt/ros/melodic/share/std_msgs/msg/Bool.msg
+/home/rafael/UR3_interface/catkin_ur3/devel/lib/python2.7/dist-packages/ur3/msg/_gripper_msg.py: /opt/ros/melodic/share/control_msgs/msg/GripperCommand.msg
+/home/rafael/UR3_interface/catkin_ur3/devel/lib/python2.7/dist-packages/ur3/msg/_gripper_msg.py: /opt/ros/melodic/share/geometry_msgs/msg/Vector3.msg
+/home/rafael/UR3_interface/catkin_ur3/devel/lib/python2.7/dist-packages/ur3/msg/_gripper_msg.py: /opt/ros/melodic/share/geometry_msgs/msg/Pose.msg
+/home/rafael/UR3_interface/catkin_ur3/devel/lib/python2.7/dist-packages/ur3/msg/_gripper_msg.py: /opt/ros/melodic/share/std_msgs/msg/Header.msg
+/home/rafael/UR3_interface/catkin_ur3/devel/lib/python2.7/dist-packages/ur3/msg/_gripper_msg.py: /opt/ros/melodic/share/geometry_msgs/msg/Point.msg
+/home/rafael/UR3_interface/catkin_ur3/devel/lib/python2.7/dist-packages/ur3/msg/_gripper_msg.py: /opt/ros/melodic/share/geometry_msgs/msg/Wrench.msg
+/home/rafael/UR3_interface/catkin_ur3/devel/lib/python2.7/dist-packages/ur3/msg/_gripper_msg.py: /opt/ros/melodic/share/geometry_msgs/msg/Quaternion.msg
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/rafael/UR3_interface/catkin_ur3/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Generating Python from MSG ur3/gripper_msg"
+	cd /home/rafael/UR3_interface/catkin_ur3/build/ur3 && ../catkin_generated/env_cached.sh /usr/bin/python2 /opt/ros/melodic/share/genpy/cmake/../../../lib/genpy/genmsg_py.py /home/rafael/UR3_interface/catkin_ur3/src/ur3/msg/gripper_msg.msg -Iur3:/home/rafael/UR3_interface/catkin_ur3/src/ur3/msg -Istd_msgs:/opt/ros/melodic/share/std_msgs/cmake/../msg -Icontrol_msgs:/opt/ros/melodic/share/control_msgs/cmake/../msg -Igeometry_msgs:/opt/ros/melodic/share/geometry_msgs/cmake/../msg -Iactionlib_msgs:/opt/ros/melodic/share/actionlib_msgs/cmake/../msg -Itrajectory_msgs:/opt/ros/melodic/share/trajectory_msgs/cmake/../msg -p ur3 -o /home/rafael/UR3_interface/catkin_ur3/devel/lib/python2.7/dist-packages/ur3/msg
 
-/home/rafael/UR3/catkin_ur3/devel/lib/python2.7/dist-packages/ur3/msg/_ref_msg.py: /opt/ros/melodic/lib/genpy/genmsg_py.py
-/home/rafael/UR3/catkin_ur3/devel/lib/python2.7/dist-packages/ur3/msg/_ref_msg.py: /home/rafael/UR3/catkin_ur3/src/ur3/msg/ref_msg.msg
-/home/rafael/UR3/catkin_ur3/devel/lib/python2.7/dist-packages/ur3/msg/_ref_msg.py: /opt/ros/melodic/share/std_msgs/msg/MultiArrayLayout.msg
-/home/rafael/UR3/catkin_ur3/devel/lib/python2.7/dist-packages/ur3/msg/_ref_msg.py: /opt/ros/melodic/share/std_msgs/msg/Float32MultiArray.msg
-/home/rafael/UR3/catkin_ur3/devel/lib/python2.7/dist-packages/ur3/msg/_ref_msg.py: /opt/ros/melodic/share/std_msgs/msg/MultiArrayDimension.msg
-/home/rafael/UR3/catkin_ur3/devel/lib/python2.7/dist-packages/ur3/msg/_ref_msg.py: /opt/ros/melodic/share/std_msgs/msg/Header.msg
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/rafael/UR3/catkin_ur3/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Generating Python from MSG ur3/ref_msg"
-	cd /home/rafael/UR3/catkin_ur3/build/ur3 && ../catkin_generated/env_cached.sh /usr/bin/python2 /opt/ros/melodic/share/genpy/cmake/../../../lib/genpy/genmsg_py.py /home/rafael/UR3/catkin_ur3/src/ur3/msg/ref_msg.msg -Iur3:/home/rafael/UR3/catkin_ur3/src/ur3/msg -Istd_msgs:/opt/ros/melodic/share/std_msgs/cmake/../msg -Icontrol_msgs:/opt/ros/melodic/share/control_msgs/cmake/../msg -Igeometry_msgs:/opt/ros/melodic/share/geometry_msgs/cmake/../msg -Iactionlib_msgs:/opt/ros/melodic/share/actionlib_msgs/cmake/../msg -Itrajectory_msgs:/opt/ros/melodic/share/trajectory_msgs/cmake/../msg -p ur3 -o /home/rafael/UR3/catkin_ur3/devel/lib/python2.7/dist-packages/ur3/msg
+/home/rafael/UR3_interface/catkin_ur3/devel/lib/python2.7/dist-packages/ur3/msg/_end_Effector_msg.py: /opt/ros/melodic/lib/genpy/genmsg_py.py
+/home/rafael/UR3_interface/catkin_ur3/devel/lib/python2.7/dist-packages/ur3/msg/_end_Effector_msg.py: /home/rafael/UR3_interface/catkin_ur3/src/ur3/msg/end_Effector_msg.msg
+/home/rafael/UR3_interface/catkin_ur3/devel/lib/python2.7/dist-packages/ur3/msg/_end_Effector_msg.py: /opt/ros/melodic/share/std_msgs/msg/Bool.msg
+/home/rafael/UR3_interface/catkin_ur3/devel/lib/python2.7/dist-packages/ur3/msg/_end_Effector_msg.py: /opt/ros/melodic/share/control_msgs/msg/GripperCommand.msg
+/home/rafael/UR3_interface/catkin_ur3/devel/lib/python2.7/dist-packages/ur3/msg/_end_Effector_msg.py: /opt/ros/melodic/share/geometry_msgs/msg/Twist.msg
+/home/rafael/UR3_interface/catkin_ur3/devel/lib/python2.7/dist-packages/ur3/msg/_end_Effector_msg.py: /opt/ros/melodic/share/geometry_msgs/msg/Vector3.msg
+/home/rafael/UR3_interface/catkin_ur3/devel/lib/python2.7/dist-packages/ur3/msg/_end_Effector_msg.py: /opt/ros/melodic/share/geometry_msgs/msg/Pose.msg
+/home/rafael/UR3_interface/catkin_ur3/devel/lib/python2.7/dist-packages/ur3/msg/_end_Effector_msg.py: /opt/ros/melodic/share/std_msgs/msg/Header.msg
+/home/rafael/UR3_interface/catkin_ur3/devel/lib/python2.7/dist-packages/ur3/msg/_end_Effector_msg.py: /opt/ros/melodic/share/geometry_msgs/msg/Quaternion.msg
+/home/rafael/UR3_interface/catkin_ur3/devel/lib/python2.7/dist-packages/ur3/msg/_end_Effector_msg.py: /opt/ros/melodic/share/geometry_msgs/msg/Wrench.msg
+/home/rafael/UR3_interface/catkin_ur3/devel/lib/python2.7/dist-packages/ur3/msg/_end_Effector_msg.py: /opt/ros/melodic/share/geometry_msgs/msg/Point.msg
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/rafael/UR3_interface/catkin_ur3/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Generating Python from MSG ur3/end_Effector_msg"
+	cd /home/rafael/UR3_interface/catkin_ur3/build/ur3 && ../catkin_generated/env_cached.sh /usr/bin/python2 /opt/ros/melodic/share/genpy/cmake/../../../lib/genpy/genmsg_py.py /home/rafael/UR3_interface/catkin_ur3/src/ur3/msg/end_Effector_msg.msg -Iur3:/home/rafael/UR3_interface/catkin_ur3/src/ur3/msg -Istd_msgs:/opt/ros/melodic/share/std_msgs/cmake/../msg -Icontrol_msgs:/opt/ros/melodic/share/control_msgs/cmake/../msg -Igeometry_msgs:/opt/ros/melodic/share/geometry_msgs/cmake/../msg -Iactionlib_msgs:/opt/ros/melodic/share/actionlib_msgs/cmake/../msg -Itrajectory_msgs:/opt/ros/melodic/share/trajectory_msgs/cmake/../msg -p ur3 -o /home/rafael/UR3_interface/catkin_ur3/devel/lib/python2.7/dist-packages/ur3/msg
 
-/home/rafael/UR3/catkin_ur3/devel/lib/python2.7/dist-packages/ur3/msg/_gripper_msg.py: /opt/ros/melodic/lib/genpy/genmsg_py.py
-/home/rafael/UR3/catkin_ur3/devel/lib/python2.7/dist-packages/ur3/msg/_gripper_msg.py: /home/rafael/UR3/catkin_ur3/src/ur3/msg/gripper_msg.msg
-/home/rafael/UR3/catkin_ur3/devel/lib/python2.7/dist-packages/ur3/msg/_gripper_msg.py: /opt/ros/melodic/share/std_msgs/msg/Bool.msg
-/home/rafael/UR3/catkin_ur3/devel/lib/python2.7/dist-packages/ur3/msg/_gripper_msg.py: /opt/ros/melodic/share/control_msgs/msg/GripperCommand.msg
-/home/rafael/UR3/catkin_ur3/devel/lib/python2.7/dist-packages/ur3/msg/_gripper_msg.py: /opt/ros/melodic/share/geometry_msgs/msg/Vector3.msg
-/home/rafael/UR3/catkin_ur3/devel/lib/python2.7/dist-packages/ur3/msg/_gripper_msg.py: /opt/ros/melodic/share/geometry_msgs/msg/Pose.msg
-/home/rafael/UR3/catkin_ur3/devel/lib/python2.7/dist-packages/ur3/msg/_gripper_msg.py: /opt/ros/melodic/share/std_msgs/msg/Header.msg
-/home/rafael/UR3/catkin_ur3/devel/lib/python2.7/dist-packages/ur3/msg/_gripper_msg.py: /opt/ros/melodic/share/geometry_msgs/msg/Point.msg
-/home/rafael/UR3/catkin_ur3/devel/lib/python2.7/dist-packages/ur3/msg/_gripper_msg.py: /opt/ros/melodic/share/geometry_msgs/msg/Wrench.msg
-/home/rafael/UR3/catkin_ur3/devel/lib/python2.7/dist-packages/ur3/msg/_gripper_msg.py: /opt/ros/melodic/share/geometry_msgs/msg/Quaternion.msg
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/rafael/UR3/catkin_ur3/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Generating Python from MSG ur3/gripper_msg"
-	cd /home/rafael/UR3/catkin_ur3/build/ur3 && ../catkin_generated/env_cached.sh /usr/bin/python2 /opt/ros/melodic/share/genpy/cmake/../../../lib/genpy/genmsg_py.py /home/rafael/UR3/catkin_ur3/src/ur3/msg/gripper_msg.msg -Iur3:/home/rafael/UR3/catkin_ur3/src/ur3/msg -Istd_msgs:/opt/ros/melodic/share/std_msgs/cmake/../msg -Icontrol_msgs:/opt/ros/melodic/share/control_msgs/cmake/../msg -Igeometry_msgs:/opt/ros/melodic/share/geometry_msgs/cmake/../msg -Iactionlib_msgs:/opt/ros/melodic/share/actionlib_msgs/cmake/../msg -Itrajectory_msgs:/opt/ros/melodic/share/trajectory_msgs/cmake/../msg -p ur3 -o /home/rafael/UR3/catkin_ur3/devel/lib/python2.7/dist-packages/ur3/msg
+/home/rafael/UR3_interface/catkin_ur3/devel/lib/python2.7/dist-packages/ur3/msg/_ref_msg.py: /opt/ros/melodic/lib/genpy/genmsg_py.py
+/home/rafael/UR3_interface/catkin_ur3/devel/lib/python2.7/dist-packages/ur3/msg/_ref_msg.py: /home/rafael/UR3_interface/catkin_ur3/src/ur3/msg/ref_msg.msg
+/home/rafael/UR3_interface/catkin_ur3/devel/lib/python2.7/dist-packages/ur3/msg/_ref_msg.py: /opt/ros/melodic/share/std_msgs/msg/MultiArrayLayout.msg
+/home/rafael/UR3_interface/catkin_ur3/devel/lib/python2.7/dist-packages/ur3/msg/_ref_msg.py: /opt/ros/melodic/share/std_msgs/msg/Float32MultiArray.msg
+/home/rafael/UR3_interface/catkin_ur3/devel/lib/python2.7/dist-packages/ur3/msg/_ref_msg.py: /opt/ros/melodic/share/std_msgs/msg/MultiArrayDimension.msg
+/home/rafael/UR3_interface/catkin_ur3/devel/lib/python2.7/dist-packages/ur3/msg/_ref_msg.py: /opt/ros/melodic/share/std_msgs/msg/Header.msg
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/rafael/UR3_interface/catkin_ur3/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Generating Python from MSG ur3/ref_msg"
+	cd /home/rafael/UR3_interface/catkin_ur3/build/ur3 && ../catkin_generated/env_cached.sh /usr/bin/python2 /opt/ros/melodic/share/genpy/cmake/../../../lib/genpy/genmsg_py.py /home/rafael/UR3_interface/catkin_ur3/src/ur3/msg/ref_msg.msg -Iur3:/home/rafael/UR3_interface/catkin_ur3/src/ur3/msg -Istd_msgs:/opt/ros/melodic/share/std_msgs/cmake/../msg -Icontrol_msgs:/opt/ros/melodic/share/control_msgs/cmake/../msg -Igeometry_msgs:/opt/ros/melodic/share/geometry_msgs/cmake/../msg -Iactionlib_msgs:/opt/ros/melodic/share/actionlib_msgs/cmake/../msg -Itrajectory_msgs:/opt/ros/melodic/share/trajectory_msgs/cmake/../msg -p ur3 -o /home/rafael/UR3_interface/catkin_ur3/devel/lib/python2.7/dist-packages/ur3/msg
 
-/home/rafael/UR3/catkin_ur3/devel/lib/python2.7/dist-packages/ur3/msg/__init__.py: /opt/ros/melodic/lib/genpy/genmsg_py.py
-/home/rafael/UR3/catkin_ur3/devel/lib/python2.7/dist-packages/ur3/msg/__init__.py: /home/rafael/UR3/catkin_ur3/devel/lib/python2.7/dist-packages/ur3/msg/_end_Effector_msg.py
-/home/rafael/UR3/catkin_ur3/devel/lib/python2.7/dist-packages/ur3/msg/__init__.py: /home/rafael/UR3/catkin_ur3/devel/lib/python2.7/dist-packages/ur3/msg/_ref_msg.py
-/home/rafael/UR3/catkin_ur3/devel/lib/python2.7/dist-packages/ur3/msg/__init__.py: /home/rafael/UR3/catkin_ur3/devel/lib/python2.7/dist-packages/ur3/msg/_gripper_msg.py
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/rafael/UR3/catkin_ur3/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Generating Python msg __init__.py for ur3"
-	cd /home/rafael/UR3/catkin_ur3/build/ur3 && ../catkin_generated/env_cached.sh /usr/bin/python2 /opt/ros/melodic/share/genpy/cmake/../../../lib/genpy/genmsg_py.py -o /home/rafael/UR3/catkin_ur3/devel/lib/python2.7/dist-packages/ur3/msg --initpy
+/home/rafael/UR3_interface/catkin_ur3/devel/lib/python2.7/dist-packages/ur3/msg/__init__.py: /opt/ros/melodic/lib/genpy/genmsg_py.py
+/home/rafael/UR3_interface/catkin_ur3/devel/lib/python2.7/dist-packages/ur3/msg/__init__.py: /home/rafael/UR3_interface/catkin_ur3/devel/lib/python2.7/dist-packages/ur3/msg/_gripper_msg.py
+/home/rafael/UR3_interface/catkin_ur3/devel/lib/python2.7/dist-packages/ur3/msg/__init__.py: /home/rafael/UR3_interface/catkin_ur3/devel/lib/python2.7/dist-packages/ur3/msg/_end_Effector_msg.py
+/home/rafael/UR3_interface/catkin_ur3/devel/lib/python2.7/dist-packages/ur3/msg/__init__.py: /home/rafael/UR3_interface/catkin_ur3/devel/lib/python2.7/dist-packages/ur3/msg/_ref_msg.py
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/rafael/UR3_interface/catkin_ur3/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Generating Python msg __init__.py for ur3"
+	cd /home/rafael/UR3_interface/catkin_ur3/build/ur3 && ../catkin_generated/env_cached.sh /usr/bin/python2 /opt/ros/melodic/share/genpy/cmake/../../../lib/genpy/genmsg_py.py -o /home/rafael/UR3_interface/catkin_ur3/devel/lib/python2.7/dist-packages/ur3/msg --initpy
 
 ur3_generate_messages_py: ur3/CMakeFiles/ur3_generate_messages_py
-ur3_generate_messages_py: /home/rafael/UR3/catkin_ur3/devel/lib/python2.7/dist-packages/ur3/msg/_end_Effector_msg.py
-ur3_generate_messages_py: /home/rafael/UR3/catkin_ur3/devel/lib/python2.7/dist-packages/ur3/msg/_ref_msg.py
-ur3_generate_messages_py: /home/rafael/UR3/catkin_ur3/devel/lib/python2.7/dist-packages/ur3/msg/_gripper_msg.py
-ur3_generate_messages_py: /home/rafael/UR3/catkin_ur3/devel/lib/python2.7/dist-packages/ur3/msg/__init__.py
+ur3_generate_messages_py: /home/rafael/UR3_interface/catkin_ur3/devel/lib/python2.7/dist-packages/ur3/msg/_gripper_msg.py
+ur3_generate_messages_py: /home/rafael/UR3_interface/catkin_ur3/devel/lib/python2.7/dist-packages/ur3/msg/_end_Effector_msg.py
+ur3_generate_messages_py: /home/rafael/UR3_interface/catkin_ur3/devel/lib/python2.7/dist-packages/ur3/msg/_ref_msg.py
+ur3_generate_messages_py: /home/rafael/UR3_interface/catkin_ur3/devel/lib/python2.7/dist-packages/ur3/msg/__init__.py
 ur3_generate_messages_py: ur3/CMakeFiles/ur3_generate_messages_py.dir/build.make
 
 .PHONY : ur3_generate_messages_py
@@ -117,10 +117,10 @@ ur3/CMakeFiles/ur3_generate_messages_py.dir/build: ur3_generate_messages_py
 .PHONY : ur3/CMakeFiles/ur3_generate_messages_py.dir/build
 
 ur3/CMakeFiles/ur3_generate_messages_py.dir/clean:
-	cd /home/rafael/UR3/catkin_ur3/build/ur3 && $(CMAKE_COMMAND) -P CMakeFiles/ur3_generate_messages_py.dir/cmake_clean.cmake
+	cd /home/rafael/UR3_interface/catkin_ur3/build/ur3 && $(CMAKE_COMMAND) -P CMakeFiles/ur3_generate_messages_py.dir/cmake_clean.cmake
 .PHONY : ur3/CMakeFiles/ur3_generate_messages_py.dir/clean
 
 ur3/CMakeFiles/ur3_generate_messages_py.dir/depend:
-	cd /home/rafael/UR3/catkin_ur3/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/rafael/UR3/catkin_ur3/src /home/rafael/UR3/catkin_ur3/src/ur3 /home/rafael/UR3/catkin_ur3/build /home/rafael/UR3/catkin_ur3/build/ur3 /home/rafael/UR3/catkin_ur3/build/ur3/CMakeFiles/ur3_generate_messages_py.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/rafael/UR3_interface/catkin_ur3/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/rafael/UR3_interface/catkin_ur3/src /home/rafael/UR3_interface/catkin_ur3/src/ur3 /home/rafael/UR3_interface/catkin_ur3/build /home/rafael/UR3_interface/catkin_ur3/build/ur3 /home/rafael/UR3_interface/catkin_ur3/build/ur3/CMakeFiles/ur3_generate_messages_py.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : ur3/CMakeFiles/ur3_generate_messages_py.dir/depend
 

@@ -92,6 +92,25 @@ ros::message_operations::Printer< ::ur3::gripper_msg_<ContainerAllocator> >::str
 return s;
 }
 
+
+template<typename ContainerAllocator1, typename ContainerAllocator2>
+bool operator==(const ::ur3::gripper_msg_<ContainerAllocator1> & lhs, const ::ur3::gripper_msg_<ContainerAllocator2> & rhs)
+{
+  return lhs.header == rhs.header &&
+    lhs.state == rhs.state &&
+    lhs.pose == rhs.pose &&
+    lhs.gripper == rhs.gripper &&
+    lhs.wrench == rhs.wrench &&
+    lhs.velocity == rhs.velocity;
+}
+
+template<typename ContainerAllocator1, typename ContainerAllocator2>
+bool operator!=(const ::ur3::gripper_msg_<ContainerAllocator1> & lhs, const ::ur3::gripper_msg_<ContainerAllocator2> & rhs)
+{
+  return !(lhs == rhs);
+}
+
+
 } // namespace ur3
 
 namespace ros
@@ -99,12 +118,6 @@ namespace ros
 namespace message_traits
 {
 
-
-
-// BOOLTRAITS {'IsFixedSize': False, 'IsMessage': True, 'HasHeader': True}
-// {'actionlib_msgs': ['/opt/ros/melodic/share/actionlib_msgs/cmake/../msg'], 'trajectory_msgs': ['/opt/ros/melodic/share/trajectory_msgs/cmake/../msg'], 'std_msgs': ['/opt/ros/melodic/share/std_msgs/cmake/../msg'], 'control_msgs': ['/opt/ros/melodic/share/control_msgs/cmake/../msg'], 'ur3': ['/home/rafael/UR3/catkin_ur3/src/ur3/msg'], 'geometry_msgs': ['/opt/ros/melodic/share/geometry_msgs/cmake/../msg']}
-
-// !!!!!!!!!!! ['__class__', '__delattr__', '__dict__', '__doc__', '__eq__', '__format__', '__getattribute__', '__hash__', '__init__', '__module__', '__ne__', '__new__', '__reduce__', '__reduce_ex__', '__repr__', '__setattr__', '__sizeof__', '__str__', '__subclasshook__', '__weakref__', '_parsed_fields', 'constants', 'fields', 'full_name', 'has_header', 'header_present', 'names', 'package', 'parsed_fields', 'short_name', 'text', 'types']
 
 
 
